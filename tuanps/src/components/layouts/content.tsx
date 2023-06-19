@@ -1,11 +1,12 @@
-import { Breadcrumb, Layout, Menu, theme } from 'antd';
+import { Breadcrumb, Layout, Menu, Table, theme } from 'antd';
 import type { MenuProps } from 'antd';
-import { LaptopOutlined, NotificationOutlined, UserOutlined } from '@ant-design/icons';
+import { LaptopOutlined, NotificationOutlined, UserOutlined, DashboardOutlined } from '@ant-design/icons';
 import React, { ReactNode, ReactPropTypes } from 'react';
+import { styled } from 'styled-components';
 
 const { Content, Sider } = Layout;
 
-const items2: MenuProps['items'] = [UserOutlined, LaptopOutlined, NotificationOutlined].map(
+const items2: MenuProps['items'] = [DashboardOutlined, UserOutlined, LaptopOutlined, NotificationOutlined].map(
     (icon, index) => {
         const key = String(index + 1);
 
@@ -47,6 +48,7 @@ const ContentComponent = ({ children }: { children: ReactNode }) => {
                 />
             </Sider>
             <Content style={{ padding: '0 24px', minHeight: 280 }}>{children}</Content>
+
         </Layout>
     </Content>
 }
