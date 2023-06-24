@@ -127,7 +127,8 @@ const HomePage = () => {
         Thêm người dùng
       </StyledButton>
       <Table columns={columns} dataSource={data} bordered />
-      <Modal title={status === STATUS.CREATE ? 'Thêm người dùng mới' : 'Cập nhật người dùng'} open={isModalOpen} okText='Confirm' footer={[
+      <Modal title={status === STATUS.CREATE ? 'Thêm người dùng mới' : 'Cập nhật người dùng'} open={isModalOpen} okText='Confirm' 
+      footer={[
         <Button key="back" type='primary' onClick={handleCancel} danger>
           Cancel
         </Button>,
@@ -142,13 +143,17 @@ const HomePage = () => {
           onFinishFailed={onFinishFailed}
           autoComplete="off"
         >
-          <Form.Item
-            label="AccountID"
-            name="AccountID"
-            rules={[{ required: true, message: 'Please input your account ID!' }]}
-          >
-            <Input disabled={true}/>
-          </Form.Item>
+          {
+            !(status === STATUS.CREATE) && (
+              <Form.Item
+                label="AccountID"
+                name="AccountID"
+                rules={[{ required: true, message: 'Please input your account ID!' }]}
+              >
+                <Input disabled={true} />
+              </Form.Item>
+            )
+          }
           <Form.Item
             label="UserName"
             name="Username"
