@@ -1,11 +1,12 @@
 import { Layout, Menu, MenuProps } from 'antd';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 const { Header } = Layout;
 
-const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
+const items1: MenuProps['items'] = ['Home', 'Admin', 'Blog'].map((key) => ({
     key,
-    label: `nav ${key}`,
+    label: <NavLink to={'/admin'} className={'test-abc'}>{key}</NavLink>,
   }));
 
 const HeaderComponent: React.FC = () => {
