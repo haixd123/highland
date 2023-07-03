@@ -1,0 +1,35 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "tuanps123"
+    },
+    {
+      "id": 2,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "id": 10,
+      "name": "tuanps"
+    },
+    {
+      "id": 11,
+      "name": "tuanps123"
+    },
+    {
+      "id": 12,
+      "name": "number 12"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
