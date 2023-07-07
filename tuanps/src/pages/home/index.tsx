@@ -1,10 +1,12 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Button, Checkbox, Form, Input, Modal, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
-import Layouts from "../../components/layouts";
+import Layouts from "../../components/layouts/admin";
 import { styled } from 'styled-components';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux'
+import { DECRE_COUNT, INCREA_COUNT } from '../../stores/actions/actionReducers';
 
 enum STATUS {
   EDIT,
@@ -23,7 +25,13 @@ const HomePage = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
 
-  const [status, setStatus] = useState<STATUS>(STATUS.CREATE)
+  const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
+
+  const counter: any = useSelector(state => state)
+  const dispatch = useDispatch();
+
+  const increaseCounter = useCallback((value: number) => dispatch(INCREA_COUNT(value)), [dispatch])
+  const decreaseCounter = useCallback((value: number) => dispatch(DECRE_COUNT(value)), [dispatch])
 
   const fetchData = async () => {
     //Cach 1: Call bang FETCH 
@@ -123,16 +131,25 @@ const HomePage = () => {
 
   return (
     <Layouts>
+      <Button onClick={() => decreaseCounter((counter?.count.value) as number - 1)}>
+        Giảm giá trị
+      </Button>
+      {
+        counter?.count.value
+      }
+      <Button onClick={() => increaseCounter((counter?.count.value) as number + 1 )}>
+        Tăng giá trị
+      </Button>
       <StyledButton type='primary' onClick={openCreate}>
         Thêm người dùng
       </StyledButton>
       <Table columns={columns} dataSource={data} bordered />
-      <Modal title={status === STATUS.CREATE ? 'Thêm người dùng mới' : 'Cập nhật người dùng'} open={isModalOpen} okText='Confirm' 
-      footer={[
-        <Button key="back" type='primary' onClick={handleCancel} danger>
-          Cancel
-        </Button>,
-      ]} onOk={handleOk} onCancel={handleCancel}>
+      <Modal title={status === STATUS.CREATE ? 'Thêm người dùng mới' : 'Cập nhật người dùng'} open={isModalOpen} okText='Confirm'
+        footer={[
+          <Button key="back" type='primary' onClick={handleCancel} danger>
+            Cancel
+          </Button>,
+        ]} onOk={handleOk} onCancel={handleCancel}>
         <Form
           form={form}
           name="basic"

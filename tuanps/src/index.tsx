@@ -4,22 +4,26 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { GlobalStyle } from './styles/global';
 import { ConfigProvider } from 'antd';
+import { Provider } from 'react-redux'
+import store from './stores';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <ConfigProvider
-      theme={{
-        token: {
-          colorPrimary: '#a000d5',
-        },
-      }}
-    >
-      <App />
-    </ConfigProvider>
+    <Provider store={store}>
+      <GlobalStyle />
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: '#a000d5',
+          },
+        }}
+      >
+        <App />
+      </ConfigProvider>
+    </Provider>
   </React.StrictMode>
 );
 
