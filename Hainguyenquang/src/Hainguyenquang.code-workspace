@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../../../LyThuyetThongTin"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "LyThuyetThongTin"
+	}
+}

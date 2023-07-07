@@ -6,7 +6,6 @@ const tabs = ['inline', 'horizontal']
 const HeaderMenu = ({isInline = false}) => {
     return(
         <Menu
-        style={{}}
         mode={isInline ? "inline" : "horizontal"}
                     items={[
                         {

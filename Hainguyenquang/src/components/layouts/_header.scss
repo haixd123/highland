@@ -1,8 +1,8 @@
   .menuIcon {
-    font-size: "30px";
-    color: "#fff";
-    display: "flex";
-    align-items: "center";
+    font-size: 30px;
+    color: #fff;
+    display: flex;
+    align-items: center;
     background-color: #b22830;
   }
 
@@ -11,6 +11,16 @@
   }
 
   .headerMenu {
+  }
+
+  .testMenuCSS {
+    width: 100%;
+     display: flex;
+     justify-content: flex-end;
+     padding: 0 20px;
+     background-color: #b22830;
+     color: #fff;
+
   }
 
 

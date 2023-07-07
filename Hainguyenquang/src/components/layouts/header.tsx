@@ -107,8 +107,7 @@ const AppMenu = () => {
           xs={{ span: 20, order: 2 }}
         >
           <div className="headerMenuflex">
-          <Menu
-        style={{width: '100%', display: 'flex', justifyContent: 'flex-end', padding: '0 20px', backgroundColor: '#b22830', color: '#fff'}}
+          <Menu className="testMenuCSS"
         mode={"horizontal"}
                     items={[
                         {

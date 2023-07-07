@@ -12,6 +12,7 @@ import SlideProduct from './components/layouts/product/slide';
 import Sale from './components/layouts/product/sale';
 import Product from './components/layouts/product/product';
 // import BasicExample from './components/testmenu'
+import BrowerRouter from './routes';
 
 function App() {
     
