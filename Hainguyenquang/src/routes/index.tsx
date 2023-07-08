@@ -1,19 +1,21 @@
 // import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../home/homepage";
-import MenuPage from "../home/menupage";
-import NewsPage from "../home/newpage";
+import SlidePage from "../home/slidepage";
+import NewsPage from "../home/newspage";
+import AdminPage from "../home/home";
 
 const BrowerRouter = () => {
-    return (
-        <BrowserRouter>
-            <Routes>
-                <Route path='/' element={<HomePage />} />
-                <Route path='/menu' element={<MenuPage />} />
-                <Route path='/news' element={<NewsPage />} />
-            </Routes>
-        </BrowserRouter>
-    )
-}
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<AdminPage />} />
+        <Route path="/home" element={<HomePage />} />
+        <Route path="/slide" element={<SlidePage />} />
+        <Route path="/news" element={<NewsPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+};
 
 export default BrowerRouter;

@@ -1,4 +1,4 @@
-import Slice from '../components/layouts/Slide'
+import Slice from '../components/layouts/slide/Slide'
 
 const admin = () => {
 

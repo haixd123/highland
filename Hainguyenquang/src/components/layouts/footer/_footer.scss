@@ -1,0 +1,31 @@
+.Row {
+  padding: 14px 0;
+  background-color: #53382c;
+  color: #fff;
+}
+
+.Col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+  text-align: center;
+  padding: 5px 0;
+}
+
+.icon-link {
+  font-size: 20px;
+  color: #fff;
+  padding: 10px;
+}
+
+.ShareAltOutlinedLink {
+  color: #fff;
+  margin-right: 15px;
+}
+
+.MailOutlinedLink {
+  display: flex;
+  color: #fff;
+  justify-content: end;
+}

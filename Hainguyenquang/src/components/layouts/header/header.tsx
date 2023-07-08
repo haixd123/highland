@@ -4,23 +4,29 @@ import { MenuOutlined } from "@ant-design/icons";
 import Sider from "antd/es/layout/Sider";
 import { link } from "fs";
 import path from "path";
-import HeaderMenu from "./headermenu";
+import HeaderMenu from "../headerMenu/headermenu";
 import { useState } from "react";
-import "./style.scss";
+import "../style.scss";
 
 const Header = () => {
-    const [openMenu, setOpenMenu] = useState(true);
+  const [openMenu, setOpenMenu] = useState(false);
   return (
     <Layout>
-      <div className="headerMenu" style={{display: 'flex', alignItems: 'center', backgroundColor:'#b22830', padding: '0 15px'}}>
+      <div
+        className="headerMenu"
+        // style={{display: 'flex', alignItems: 'center', backgroundColor:'#b22830', padding: '0 15px'}}
+      >
         <AppMenu />
-        <div className="menuIcon" style={{fontSize: '30px', color: '#fff'}}>
-            <MenuOutlined
-              onClick={() => {
-                setOpenMenu(true);
-              }}
-            />
-          </div>
+        <div
+          className="menuIcon"
+          //  style={{fontSize: '30px', color: '#fff'}}
+        >
+          <MenuOutlined
+            onClick={() => {
+              setOpenMenu(true);
+            }}
+          />
+        </div>
       </div>
 
       <Drawer
@@ -28,51 +34,47 @@ const Header = () => {
         placement="right"
         title="Two-level Drawer"
         width={320}
-        // open={openMenu}
+        open={openMenu}
         onClose={() => {
           setOpenMenu(false);
         }}
       >
         <Menu
-        style={{}}
-        mode={"inline"}
-                    items={[
-                        {
-                            label: <a href="fb.com/quanghai1409">Home</a>,
-                            key: 'home',
-                        },
-                        {
-                            label: 'ContactUs',
-                            key: 'ContactUs',
-                        },
-                        {
-                            label: 'AboutUs',
-                            key: 'AboutUs',
-                        },
-                        {
-                            label: 'WE',
-                            key: 'We',
-                        },
-                        {
-                            label: 'fb',
-                            key: 'fb',
-                        },
-                        {
-                            label: 'gmail',
-                            key: 'gmail',
-                            
-                        },
-                    ]}
-                    >
-
-                    </Menu>
+          style={{}}
+          mode={"inline"}
+          items={[
+            {
+              label: <a href="fb.com/quanghai1409">Home</a>,
+              key: "home",
+            },
+            {
+              label: "ContactUs",
+              key: "ContactUs",
+            },
+            {
+              label: "AboutUs",
+              key: "AboutUs",
+            },
+            {
+              label: "WE",
+              key: "We",
+            },
+            {
+              label: "fb",
+              key: "fb",
+            },
+            {
+              label: "gmail",
+              key: "gmail",
+            },
+          ]}
+        ></Menu>
       </Drawer>
     </Layout>
   );
 };
 
 const AppMenu = () => {
-    
   return (
     <Layout>
       <Row
@@ -80,11 +82,12 @@ const AppMenu = () => {
           backgroundColor: "#b22830",
           // borderTop: "solid 10px #53382c",
           minHeight: "120px",
-          textAlign: 'center'
+          textAlign: "center",
         }}
       >
         <Col
-          style={{ display: "flex", alignItems: "center", minHeight: '120px' }}
+          className="headerImage"
+          // style={{ display: "flex", alignItems: "center", minHeight: '120px' }}
           lg={{ span: 6, order: 1 }}
           md={{ span: 6, order: 1 }}
           sm={{ span: 4, order: 1 }}
@@ -100,45 +103,44 @@ const AppMenu = () => {
           </div>
         </Col>
         <Col
-          style={{ display: "flex", alignItems: "end" }}
+          className="colHeaderMenu"
+          // style={{ display: "flex", alignItems: "end" }}
           lg={{ span: 18, order: 2 }}
           md={{ span: 18, order: 2 }}
           sm={{ span: 20, order: 2 }}
           xs={{ span: 20, order: 2 }}
         >
           <div className="headerMenuflex">
-          <Menu className="testMenuCSS"
-        mode={"horizontal"}
-                    items={[
-                        {
-                            label: <a href="fb.com/quanghai1409">Home</a>,
-                            key: 'home',
-                        },
-                        {
-                            label: 'ContactUs',
-                            key: 'ContactUs',
-                        },
-                        {
-                            label: 'AboutUs',
-                            key: 'AboutUs',
-                        },
-                        {
-                            label: 'WE',
-                            key: 'We',
-                        },
-                        {
-                            label: 'fb',
-                            key: 'fb',
-                        },
-                        {
-                            label: 'gmail',
-                            key: 'gmail',
-                            
-                        },
-                    ]}
-                    >
-
-                    </Menu>
+            <Menu
+              className="testMenuCSS"
+              mode={"horizontal"}
+              items={[
+                {
+                  label: <a href="fb.com/quanghai1409">Home</a>,
+                  key: "home",
+                },
+                {
+                  label: "ContactUs",
+                  key: "ContactUs",
+                },
+                {
+                  label: "AboutUs",
+                  key: "AboutUs",
+                },
+                {
+                  label: "WE",
+                  key: "We",
+                },
+                {
+                  label: "fb",
+                  key: "fb",
+                },
+                {
+                  label: "gmail",
+                  key: "gmail",
+                },
+              ]}
+            ></Menu>
           </div>
           {/* <ul style={{display: 'flex', margin: '0'}}>
                         <li style={{listStyle: 'none'}}>
@@ -163,9 +165,7 @@ const AppMenu = () => {
           md={{ span: 0, order: 2 }}
           sm={{ span: 2, order: 2 }}
           xs={{ span: 2, order: 2 }}
-        >
-          
-        </Col>
+        ></Col>
       </Row>
     </Layout>
   );

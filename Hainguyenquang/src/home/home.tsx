@@ -29,7 +29,7 @@ interface DataType {
   tags: string[];
 }
 
-const HomePage = () => {
+const AdminPage = () => {
 
   const [data, setData] = useState([]);
   const [newData, setNewData] = useState([]);
@@ -258,4 +258,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default AdminPage;

@@ -52,5 +52,9 @@ Data base đã xóa ID nhưng vẫn lưu ẩn
 Thừa phần lề bên phải
 New: sửa lại thời gian đăng, dùng Date(hoặc read từ DB)
 
-Học redux
-làm db bằng json
+
+Học redux -- xong
+làm db bằng json -- xong
+
+CSS animation
+Call api with Json

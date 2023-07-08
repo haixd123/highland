@@ -1,14 +1,15 @@
-import { Col, Row, Image, Button } from "antd"
+import { Col, Image, Button } from "antd"
 import React from 'react';
 import { Rate } from 'antd';
+import '../../style.scss'
+
 
 export const App: React.FC = () => <Rate />;
 
 const Product = () => {
     return(
-      
             <Col
-            style={{margin: '20px 0', padding: '0 30px'}}
+            className="product"
             lg={{ span: 6 }}
             md={{ span: 6 }}
             sm={{ span: 12 }}
@@ -21,7 +22,8 @@ const Product = () => {
                         </a>
                     </div>
                     <div>
-                        <a style={{color: '#000', fontSize: '15px', fontWeight: '500'}} >
+                        <a
+                        className="textContent">
                             <span>[MUA 3 TẶNG 1] Cà phê rang xay Moka Highlands Coffee 200g - dòng cà phê cao cấp</span>
                         </a>
                     </div>
@@ -32,8 +34,10 @@ const Product = () => {
                     <div>
                         <App />
                     </div>
-                    <div >
-                        <Button style={{width: '100%', borderColor: '#b5313a', color: '#b5313a'}}>Chọn mua</Button>
+                    <div>
+                        <Button
+                        className="ButtonContent"
+                        >Chọn mua</Button>
                     </div>
                 </div>
             </Col>
