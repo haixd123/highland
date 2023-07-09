@@ -1,12 +1,13 @@
 
-import React, { useCallback, useEffect, useState } from 'react';
-import { Button, Checkbox, Form, Input, Modal, Space, Table } from 'antd';
+import { useCallback, useEffect, useState } from 'react';
+import { Button, Form, Input, Modal, Space, Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import Layouts from "../../components/layouts/admin";
 import { styled } from 'styled-components';
 import axios from 'axios';
-import { useSelector, useDispatch } from 'react-redux'
-import { DECRE_COUNT, INCREA_COUNT } from '../../stores/actions/actionReducers';
+import { useSelector } from 'react-redux'
+import { getProduct, startCountAction } from '../../stores/actions/actionReducers';
+import store from '../../stores';
 
 enum STATUS {
   EDIT,
@@ -21,18 +22,19 @@ interface DataType {
 }
 
 const HomePage = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
 
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
 
-  const counter: any = useSelector(state => state)
-  const dispatch = useDispatch();
+  const dataRedux: any = useSelector(state => state)
 
-  const increaseCounter = useCallback((value: number) => dispatch(INCREA_COUNT(value)), [dispatch])
-  const decreaseCounter = useCallback((value: number) => dispatch(DECRE_COUNT(value)), [dispatch])
-
+  // const dispatch = useDispatch();
+  const increaseCounter = useCallback((value: number) => store.dispatch(startCountAction(value, true)), [])
+  const decreaseCounter = useCallback((value: number) => store.dispatch(startCountAction(value, false)), [])
+  const data = dataRedux?.productReducer?.products || [];
+  const isLoading = dataRedux.productReducer.isLoading || false;
   const fetchData = async () => {
     //Cach 1: Call bang FETCH 
     // const response = await fetch("http://localhost:8888/account", {method: 'GET'});
@@ -42,12 +44,8 @@ const HomePage = () => {
     // }
 
     // Cach 2: Call bang Axios
-    const response = await axios.get('http://localhost:8888/account');
-    if (response.status === 200) {
-      setData(response.data.data);
-    }
+    store.dispatch(getProduct());
   }
-
 
   const openCreate = () => {
     setIsModalOpen(true);
@@ -131,7 +129,7 @@ const HomePage = () => {
 
   return (
     <Layouts>
-      <Button onClick={() => decreaseCounter((counter?.count.value) as number - 1)}>
+      {/* <Button onClick={() => decreaseCounter((counter?.count.value) as number - 1)}>
         Giảm giá trị
       </Button>
       {
@@ -139,11 +137,11 @@ const HomePage = () => {
       }
       <Button onClick={() => increaseCounter((counter?.count.value) as number + 1 )}>
         Tăng giá trị
-      </Button>
+      </Button> */}
       <StyledButton type='primary' onClick={openCreate}>
         Thêm người dùng
       </StyledButton>
-      <Table columns={columns} dataSource={data} bordered />
+      <Table columns={columns} dataSource={data} bordered loading={isLoading} />
       <Modal title={status === STATUS.CREATE ? 'Thêm người dùng mới' : 'Cập nhật người dùng'} open={isModalOpen} okText='Confirm'
         footer={[
           <Button key="back" type='primary' onClick={handleCancel} danger>
