@@ -1,15 +1,18 @@
 // redux saga or redux thunk
 import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger';
-import { counterReducer } from './reducers/couterReducers';
+import { counterReducer, productReducer } from './reducers/couterReducers';
+import thunk from 'redux-thunk';
+import { combineReducers } from 'redux';
 
 const store = configureStore({
-    reducer: {
-        count: counterReducer,
-    },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+    reducer: combineReducers({
+        counterReducer,
+        productReducer
+    }),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger, thunk),
     devTools: true,
-})
+});
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
