@@ -4,6 +4,21 @@ const mysql = require("mysql");
 const app = express();
 const port = process.env.PORT || 8888;
 const cors = require("cors");
+const multer = require('multer')
+const path = require('path')
+const fs = require("fs");
+
+// SET STORAGE
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'images')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname))
+  }
+})
+
+const upload = multer({ storage })
 
 app.use(cors());
 // connect mysql
@@ -346,6 +361,41 @@ app
       }
     });
   });
+
+app.post('/uploadfile', upload.single('myFile'), function (req, res, next) {
+  const file = req.file;
+
+  if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+  res.send(file)
+});
+
+app.get('/getPhoto/:imageId', function (req, res, next) {
+  const { imageId } = req.params;
+  res.sendFile(__dirname + `/images/${imageId}`);
+})
+
+async function deleteAllFilesInDir(dirPath) {
+  try {
+    const files = fs.readdir(dirPath);
+
+    const deleteFilePromises = files.map(file =>
+      fs.unlink(path.join(dirPath, file)),
+    );
+
+    await Promise.all(deleteFilePromises);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+app.delete('/remove-all-images', async function (req, res, next) {
+  const directory = "/images";
+  await deleteAllFilesInDir(__dirname + directory);  
+});
 
 app.listen(port);
 console.log("Server started at http://localhost:" + port);

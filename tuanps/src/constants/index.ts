@@ -17,3 +17,5 @@ export const MEDIA = {
 }
 
 export const LIGHT_DARK = 'dark';
+
+export const ENV_BE = process.env.REACT_APP_URL_BE || 'http://localhost:8888'
