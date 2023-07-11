@@ -15,7 +15,7 @@ const BrowerRouter = () => {
     <BrowserRouter>
       <Routes>
         {/* admin */}
-        <Route path='/admin/:id' element={<AdminPage />} />
+        <Route path='/admin' element={<AdminPage />} />
         <Route path="/blog" element={<Blog />} />
         <Route path='about' element={<AboutPage />} />
         <Route path='contact' element={<ContactPage />} />

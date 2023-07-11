@@ -15,7 +15,7 @@ const Slide: any = (props: any) => {
     // }}
     >
         <Col
-        lg={{span:12, order: 2 }}
+        lg={{span:12, order: props.style ? 1 : 2 }}
         md={{span:12, order: 2 }}
         sm={{span:24, order: 2 }}
         xs={{span:24, order: 2 }}
@@ -26,21 +26,16 @@ const Slide: any = (props: any) => {
             >
                 <Col 
                 className="sliceColTitle"
-                // style={{textAlign: 'right', fontSize: '45px', lineHeight: '55px', color: '#fff', fontWeight: '700', marginBottom: '10px'}}
                 span={24}>
                 {props.title}
                 </Col>
-
                 <Col
                 className="sliceColContent1" 
-                // style={{textAlign: 'right', fontSize: '15px', lineHeight: '23px',  fontWeight: '500', color: '#fff'}}
                 span={24}>
                 {props.content1}
                 </Col>
-
                 <Col 
                 className="sliceColContent2" 
-                // style={{textAlign: 'right', fontSize: '15px', lineHeight: '23px',  maxWidth: '90%'}}
                 span={24}>
                 {props.content2}
                 </Col>

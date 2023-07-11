@@ -48,7 +48,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 
-Data base đã xóa ID nhưng vẫn lưu ẩn
 Thừa phần lề bên phải
 New: sửa lại thời gian đăng, dùng Date(hoặc read từ DB)
 
@@ -58,3 +57,16 @@ làm db bằng json -- xong
 
 CSS animation
 Call api with Json
+
+admin:
+-product--xong
+-category--xong
+-filter--xong
+
+search -- xong
+
+còn lại:
+call Json api with redux
+CSS animation
+Css - admin
+wrapper??

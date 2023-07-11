@@ -6,7 +6,7 @@ const tabs = ['inline', 'horizontal']
 const HeaderMenu = ({isInline = false}) => {
     return(
         <Menu
-        mode={isInline ? "inline" : "horizontal"}
+        mode={"inline"}
                     items={[
                         {
                             label: <a href="fb.com/quanghai1409">Home</a>,
@@ -37,6 +37,38 @@ const HeaderMenu = ({isInline = false}) => {
                     >
 
                     </Menu>
+        //             <Menu
+        // mode={isInline ? "inline" : "horizontal"}
+        //             items={[
+        //                 {
+        //                     label: <a href="fb.com/quanghai1409">Home</a>,
+        //                     key: 'home',
+        //                 },
+        //                 {
+        //                     label: 'ContactUs',
+        //                     key: 'ContactUs',
+        //                 },
+        //                 {
+        //                     label: 'AboutUs',
+        //                     key: 'AboutUs',
+        //                 },
+        //                 {
+        //                     label: 'WE',
+        //                     key: 'We',
+        //                 },
+        //                 {
+        //                     label: 'fb',
+        //                     key: 'fb',
+        //                 },
+        //                 {
+        //                     label: 'gmail',
+        //                     key: 'gmail',
+                            
+        //                 },
+        //             ]}
+        //             >
+
+        //             </Menu>
     )
 }
 

@@ -7,6 +7,7 @@ const SlidePage = () => {
     <>
       <Header />
       <Slide
+        // style
         slice="slice2"
         title="DỊCH VỤ"
         content1="CÂU CHUYỆN NÀY LÀ CỦA CHÚNG MÌNH Highlands Coffee®"
