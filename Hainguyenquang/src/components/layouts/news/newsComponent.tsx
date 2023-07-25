@@ -1,6 +1,21 @@
 import { Col, Image } from "antd";
+import { api } from "../../../API/axios";
+import { useEffect, useState } from "react";
 
-const News = () => {
+const News:any = () => {
+
+  const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const response = await api.get("/postsNews");
+    setData(response.data);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return data.map((newData: any, index: any) => {
   return (
     
     <Col
@@ -15,21 +30,23 @@ const News = () => {
           <a href="#">
             <Image
               // style={{ maxWidth: "100%" }}
-              src="https://www.highlandscoffee.com.vn/vnt_upload/news/05_2023/GRANITA/thumbs/470_crop_HCO-7702-GRANITA-TEA-SOCIAL-WEB-NEWS-470X314_1.jpg"
+              src={newData.src}
             />
           </a>
         </div>
         <div>
           <h3>
-            <a href="#">MỚI! TRÀ TUYẾT HIGHLANDS COFFEE</a>
+            <a href="#">{newData.content}</a>
           </h3>
         </div>
         <div>
-          <span>17/05/2023, 12:09</span>
+          <span>{newData.date}</span>
         </div>
       </div>
     </Col>
   );
+});
+
 };
 
 export default News;

@@ -1,10 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { Col, Drawer, Layout, Row, Image, Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
-import Sider from "antd/es/layout/Sider";
-import { link } from "fs";
-import path from "path";
-import HeaderMenu from "../headerMenu/headermenu";
 import { useState } from "react";
 import "../style.scss";
 
@@ -44,15 +40,15 @@ const Header = () => {
           mode={"inline"}
           items={[
             {
-              label: <a href="fb.com/quanghai1409">Home</a>,
+              label: <a href="home">HOME</a>,
               key: "home",
             },
             {
-              label: "ContactUs",
+              label: <a href="slide">CONTENT</a>,
               key: "ContactUs",
             },
             {
-              label: "AboutUs",
+              label: <a href="news">NEWS</a>,
               key: "AboutUs",
             },
             {
@@ -75,14 +71,21 @@ const Header = () => {
 };
 
 const AppMenu = () => {
+  const siderStyle: any = {
+    textAlign: "center",
+    lineHeight: "120px",
+    color: "#fff",
+    backgroundColor: "#3ba0e9",
+  };
   return (
-    <Layout>
+    <Layout className="wrapper">
       <Row
         style={{
           backgroundColor: "#b22830",
           // borderTop: "solid 10px #53382c",
           minHeight: "120px",
           textAlign: "center",
+          padding: "0 8px",
         }}
       >
         <Col
@@ -114,29 +117,72 @@ const AppMenu = () => {
             <Menu
               className="testMenuCSS"
               mode={"horizontal"}
+              style={{ padding: "0" }}
               items={[
                 {
-                  label: <a href="fb.com/quanghai1409">Home</a>,
+                  style: {
+                    padding: "0",
+                  },
+                  label: (
+                    <a className="headerLink" href="home">
+                      HOME
+                    </a>
+                  ),
                   key: "home",
                 },
                 {
-                  label: "ContactUs",
+                  style: {
+                    padding: "0",
+                  },
+                  label: (
+                    <a className="headerLink" href="slide">
+                      CONTENT
+                    </a>
+                  ),
                   key: "ContactUs",
                 },
                 {
-                  label: "AboutUs",
+                  style: {
+                    padding: "0",
+                  },
+                  label: (
+                    <a className="headerLink" href="news">
+                      NEWS
+                    </a>
+                  ),
                   key: "AboutUs",
                 },
                 {
-                  label: "WE",
+                  style: {
+                    padding: "0",
+                  },
+                  label: (
+                    <a className="headerLink" href="news">
+                      NEWS
+                    </a>
+                  ),
                   key: "We",
                 },
                 {
-                  label: "fb",
+                  style: {
+                    padding: "0",
+                  },
+                  label: (
+                    <a className="headerLink" href="news">
+                      NEWS
+                    </a>
+                  ),
                   key: "fb",
                 },
                 {
-                  label: "gmail",
+                  style: {
+                    padding: "0",
+                  },
+                  label: (
+                    <a className="headerLink" href="news">
+                      NEWS
+                    </a>
+                  ),
                   key: "gmail",
                 },
               ]}

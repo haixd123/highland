@@ -5,6 +5,8 @@ const startCountAction = (value: number, isIncre: boolean) => (dispatch: AppDisp
   // xu ly du lieu dau vao
   // dieu kien (condition)
   // call api 
+  // const dispatch = useDispatch()
+
   if (isIncre) {
     console.log('check action increment');
     return dispatch({
@@ -50,19 +52,14 @@ const DECRE_COUNT = (value: number) => ({
   value
 })
 
-// const initState = 0;
-// function reducer(state = initState, action:any) {
-//   switch (action.type) {
-//     case 'increment':
-//       return state + action.value;
-//     case 'decrement':
-//       return state - 1;
-//     default: 
-//       return state;
-//   }
-// }
+const choose_item = (value:any) => ({
+  type: 'choose',
+  value
+})
+
 
 export {
+  choose_item,
   INCREA_COUNT,
   DECRE_COUNT,
   startCountAction,

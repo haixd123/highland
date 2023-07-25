@@ -1,9 +1,3 @@
-.seeMoreContent {
-  margin: 20px 0;
-  box-sizing: border-box;
-  text-align: center;
-}
-
 .seeMoreLink {
   background-color: transparent;
   color: #b22830;
@@ -14,4 +8,48 @@
   text-transform: uppercase;
   padding: 7px 63px;
   border-radius: 5px;
+  text-decoration: none;
+}
+
+.seeMoreLink:hover {
+  background-color: #b22830;
+  color: #fff;
+}
+
+.ContentSeemoreLink1 {
+  background-color: transparent;
+  color: #b22830;
+  font-size: 16px;
+  line-height: 24px;
+  border: solid 1px #b22830;
+  text-transform: uppercase;
+  padding: 7px 63px;
+  border-radius: 5px;
+}
+
+.ContentSeemoreLink1:hover {
+  background-color: #b22830;
+  color: #fff;
+}
+
+.seeMoreContent {
+  margin: 30px 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.ContentSeemoreLink {
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  border: solid 1px #fff;
+  text-transform: uppercase;
+  padding: 7px 63px;
+  border-radius: 5px;
+}
+
+.ContentSeemoreLink:hover {
+  background-color: #fff;
+  color: #b22830;
 }

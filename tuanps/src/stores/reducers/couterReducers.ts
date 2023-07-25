@@ -1,12 +1,12 @@
 const initialState = { value: 0 }
 
-function counterReducer(state = initialState, action: any) {
+function counterReducer(state:any = initialState, action: any) {
   switch (action.type) {
     case 'increment': {
-      return { ...state, value: action.state }
+      return { ...state, value: state + action.value }
     }
     case 'decrement':
-      return { ...state, value: action.state }
+      return { ...state, value: state - action.value }
     default:
       return state
   }
@@ -28,7 +28,22 @@ const productReducer = (state = productState, action: any) => {
       return state;
   }
 }
+
+
+const initState = 0;
+function reducer(state = initState, action:any) {
+  switch (action.type) {
+    case 'increment':
+      return state ? state + action.value : state;
+    case 'decrement':
+      return state - action.value;
+    default: 
+      return state;
+  
+  }
+}
 export {
+  reducer,
   counterReducer,
   productReducer
 };

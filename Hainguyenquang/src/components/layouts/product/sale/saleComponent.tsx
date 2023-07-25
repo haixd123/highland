@@ -1,7 +1,24 @@
 import { Row, Col, Button, Space } from "antd"
 import '../../style.scss'
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { api } from "../../../../API/axios";
 
-const Sale = () => {
+const Sale:any = (props:any) => {
+    const [data, setData] = useState([]);
+
+  const fetchData = async () => {
+    const response = await api.get("/postsVouchers");
+    if (response.status === 200) {
+      setData(response.data);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [data]);
+
+  return data.map((newData: any, index: any) => {
     return(
             <Col
             className="colSale"
@@ -16,17 +33,18 @@ const Sale = () => {
                     <div>
                         <span><b>Voucher</b></span>
                         <br /> 
-                        <span>Voucher giảm 20K cho đơn hàng từ 340K. Lưu/Nhập mã tại mục Thanh Toán nhé!</span>
+                        <span>{newData.desc}</span>
                     </div>
                     <div
                     className="slaceContentFooter">
-                        <p>KM20K</p>
+                        <p>{newData.sale}</p>
                         <Button style={{backgroundColor: '#b5313a', color: '#fff'}}>Lưu</Button>
                     </div>
                 </div>
             </Col>
         
     )
+})
 }
 
 export default Sale

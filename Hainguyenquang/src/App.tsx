@@ -1,16 +1,16 @@
 import './App.css';
 import React from 'react';
-import HomePage from '../src/home/home'
+import HomePage from './pages/admin/user'
 // import { useFormik } from 'formik';
 // import Slide from './components/layouts/slide/slide';
-import Header from './components/layouts/header/header'
-import Footer from './components/layouts/footer/footer'
-import News from './components/layouts/news/news';
+import Header from './components/layouts/header/headerComponent'
+import Footer from './components/layouts/footer/footerComponent'
+import News from './components/layouts/news/newsComponent';
 import { Col, Layout } from 'antd';
-import SeeMore from './components/layouts/seeMore/seemore';
-import SlideProduct from './components/layouts/product/slide/slide';
-import Sale from './components/layouts/product/sale/sale';
-import Product from './components/layouts/product/product/product';
+import SeeMore from './components/layouts/seeMore/seemoreComponent';
+import SlideProduct from './components/layouts/product/slide/slideproductComponent';
+import Sale from './components/layouts/product/sale/saleComponent';
+import Product from './components/layouts/product/product/productComponent';
 // import BasicExample from './components/testmenu'
 import BrowerRouter from './routes';
 import Context from './context';

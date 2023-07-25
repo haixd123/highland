@@ -2,16 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import HomePage from './home/home';
+import HomePage from './pages/admin/user';
+import { Provider } from 'react-redux'
 import reportWebVitals from './reportWebVitals';
+import store from './store';
+
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
+    <Provider store={store}>
     <App />
     {/* <HomePage /> */}
+    </Provider>
   </React.StrictMode>
 );
 

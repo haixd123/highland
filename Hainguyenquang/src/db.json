@@ -1,0 +1,392 @@
+{
+  "postsUser": [
+    {
+      "id": 1,
+      "username": "Fyna0209",
+      "password": "typicode",
+      "fullname": "Nguyen Quang Hai",
+      "first_name": "Hai",
+      "last_name": "Nguyen Quang",
+      "address": "Ha Noi",
+      "telephone": "033456789",
+      "email": "hai@gmail.com",
+      "action": "123"
+    },
+    {
+      "id": 2,
+      "username": "Nam",
+      "password": "typicode",
+      "fullname": "Tran Tri Cao",
+      "first_name": "Cao",
+      "last_name": "Tran Tri",
+      "address": "Ha Nam",
+      "telephone": "0845785412",
+      "email": "caoca@gmail.com",
+      "action": "456"
+    },
+    {
+      "id": 3,
+      "username": "ha123456",
+      "password": "typicode",
+      "fullname": "Nguyen Van Ha",
+      "first_name": "Ha",
+      "last_name": "Nguyen Van",
+      "address": "Lao Cai",
+      "telephone": "0987548421",
+      "email": "hahaha@gmail.com",
+      "action": "789"
+    },
+    {
+      "id": 4,
+      "username": "Tanxd2222",
+      "password": "typicode",
+      "fullname": "Pham Nhat Tan",
+      "first_name": "Tan",
+      "last_name": "Pham Nhat",
+      "address": "Ho Chi Minh",
+      "telephone": "0754821542",
+      "email": "DauPhongtantan@gmail.com",
+      "action": "258"
+    },
+    {
+      "id": 5,
+      "username": "ZOE2212",
+      "password": "typicode",
+      "fullname": "Vu Tran Mai Anh",
+      "first_name": "Mai Anh",
+      "last_name": "Vu Tran",
+      "address": "Thai Nguyen",
+      "telephone": "065215874",
+      "email": "MaiAnh@gmail.com",
+      "action": "369"
+    },
+    {
+      "username": "Phuongnguyen4.0",
+      "fullname": "Phạm Nguyễn Phương Nguyên",
+      "email": "Phuongnguyen@gmail.com",
+      "telephone": "0584754841",
+      "address": "Ca Mau",
+      "id": 0.5285623752937327
+    }
+  ],
+  "postsProduct": [
+    {
+      "id": 1,
+      "name": "Cafe cốt dừa",
+      "desc": "đồ uống tươi mát",
+      "SKU": "Fy001",
+      "category": "tea coffe",
+      "price": "300000",
+      "discount": 30,
+      "remaining": "100",
+      "sale": "0.03",
+      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/thumbnailtiktok-2.jpg?v=1686797889000"
+    },
+    {
+      "id": 2,
+      "name": "aaaaaaaaa",
+      "desc": "đồ uống tươi mát",
+      "SKU": "Fy001",
+      "category": "tea coffe",
+      "price": "20000",
+      "discount": 30,
+      "remaining": "100",
+      "sale": "0.03",
+      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/ctm-t7-p1-s.jpg?v=1689004873000"
+    },
+    {
+      "id": 3,
+      "name": "bbbbbbbbbbb",
+      "desc": "đồ uống tươi mát",
+      "SKU": "Fy001",
+      "category": "tea coffe",
+      "price": "4444444",
+      "discount": 30,
+      "remaining": "100",
+      "sale": "0.03",
+      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/ctm-june2023-b.png?v=1689321446000"
+    },
+    {
+      "id": 4,
+      "name": "ccccccccccccccc",
+      "desc": "đồ uống tươi mát",
+      "SKU": "Fy001",
+      "price": "56789",
+      "category": "Tea",
+      "discount": 30,
+      "remaining": "100"
+    },
+    {
+      "name": "cafe ca cao",
+      "desc": "Ngọt, ấm thích hợp cho thời tiết se lạnh",
+      "SKU": "FY002",
+      "price": "250000",
+      "category": "Coffee",
+      "discount": 30,
+      "remaining": "59",
+      "id": 8
+    },
+    {
+      "id": 10,
+      "name": "q",
+      "desc": "q",
+      "SKU": "q",
+      "price": "q",
+      "category": "Tea",
+      "discount": "q",
+      "remaining": "q"
+    }
+  ],
+  "postsCategory": [
+    {
+      "id": 1,
+      "category": "tea"
+    },
+    {
+      "id": 2,
+      "category": "coffee"
+    }
+  ],
+  "postsNews": [
+    {
+      "id": 1,
+      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_4/thumbs/470_crop_Highlands_Coffee_tang_qua_trung_thu_3.jpg",
+      "content": "ĐÊM TRĂNG DIỆU KỲ CÙNG HIGHLANDS COFFEE",
+      "date": "08/02/1999",
+      "comment": "32355",
+      "like": "354652"
+    },
+    {
+      "id": 2,
+      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_3/thumbs/470_crop_Highlands_Coffee_giup_do_mai_am_2.jpg",
+      "content": "MANG CHÚT YÊU THƯƠNG MÁT LÀNH ĐẾN MIỀN NINH THUẬN NHIỀU NẮNG GIÓ",
+      "date": "09/04/2007",
+      "comment": "32355",
+      "like": "354652"
+    },
+    {
+      "id": 3,
+      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/thumbs/470_crop_Highlands_Coffee_hien_mau_nhan_dao_2.jpg",
+      "content": "HIẾN MÁU NHÂN ĐẠO THƯỜNG NIÊN – TỰ HÀO DÒNG MÁU VIỆT",
+      "date": "10/5/2001",
+      "comment": "32355",
+      "like": "354652"
+    },
+    {
+      "id": 4,
+      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/thumbs/470_crop_Highlands_Coffee_trung_thu_2.jpg",
+      "content": "TRAO TẶNG BÁNH – TRỌN THƯƠNG YÊU",
+      "date": "15/01/2000",
+      "comment": "32355",
+      "like": "354652"
+    },
+    {
+      "id": 5,
+      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/09_2019/thumbs/470_crop_Picture1.png",
+      "content": "HIGHLANDS COFFEE CÙNG Ý TƯỞNG LỒNG ĐÈN XANH” THẮP SÁNG TRUNG THU XANH” CHO HƠN",
+      "date": "30/06/2015",
+      "comment": "32355",
+      "like": "354652"
+    },
+    {
+      "id": 6,
+      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/05_2018/thumbs/470_crop_IMG_0479.jpg",
+      "content": "TRUNG THU YÊU THƯƠNG - LỚP HỌC CHO EM 2017",
+      "date": "20/08/2010",
+      "comment": "32355",
+      "like": "354652"
+    }
+  ],
+  "postsVouchers": [
+    {
+      "id": 1,
+      "desc": "Voucher 20K áp cho đơn hàng từ 340K",
+      "sale": "KM20K",
+      "tgian hiệu lực": "Từ 02/02/2023-05/02/2023",
+      "Lượt sử dụng": "3535"
+    },
+    {
+      "id": 2,
+      "desc": "Voucher 30K áp cho đơn hàng từ 10K",
+      "sale": "KM50K"
+    }
+  ],
+  "poststContent": [
+    {
+      "id": 1,
+      "title": "NGUỒN GỐC",
+      "style": 1,
+      "contentHeader": "CÂU CHUYỆN NÀY LÀ CỦA CHÚNG MÌNH",
+      "content": "Highlands Coffee® được thành lập vào năm 1999, bắt nguồn từ tình yêu dành cho đất Việt cùng với cà phê và cộng đồng nơi đây. Ngay từ những ngày đầu tiên, mục tiêu của chúng mình là có thể phục vụ và góp phần phát triển cộng đồng bằng cách siết chặt thêm sự kết nối và sự gắn bó giữa người với người.",
+      "srcImg": "https://www.highlandscoffee.com.vn/vnt_upload/about/ABOUT-CAREER3.jpg",
+      "backGroundColor": 1,
+      "seeMoreContent": 1
+    },
+    {
+      "id": 2,
+      "title": "DỊCH VỤ",
+      "style": 2,
+
+      "contentHeader": "DỊCH VỤ NÀY LÀ CỦA CHÚNG MÌNH",
+      "content": "Highlands Coffee® là không gian của chúng mình nên mọi thứ ở đây đều vì sự thoải mái của chúng mình. Đừng giữ trong lòng, hãy chia sẻ với chúng mình điều bạn mong muốn để cùng nhau giúp Highlands Coffee® trở nên tuyệt vời hơn.",
+      "srcImg": "https://www.highlandscoffee.com.vn/vnt_upload/about/Highlands_4577_R3_-_Copy.jpg",
+      "backGroundColor": 2,
+      "seeMoreContent": 2
+    },
+    {
+      "id": 3,
+      "title": "NGHỀ NGHIỆP",
+      "style": 3,
+
+      "contentHeader": "CƠ HỘI NÀY LÀ CỦA CHÚNG MÌNH",
+      "content": "Là điểm hội tụ của cộng đồng, Highlands Coffee® luôn tìm kiếm những thành viên mới với mong muốn không ngừng hoàn thiện một không gian dành cho tất cả mọi người. Chúng mình luôn chào đón bạn trở thành một phần của Highlands Coffee® để cùng nhau siết chặt thêm những kết nối và sự gắn bó giữa người với người.",
+      "srcImg": "https://www.highlandscoffee.com.vn/vnt_upload/about/Highlands_5557_R3_-_Copy.jpg",
+      "backGroundColor": 3,
+      "seeMoreContent": 2
+    }
+  ],
+  "postsPostNews" : [
+    {
+      "id" : 1,
+      "content": "
+      <div id="vnt-news">
+      <div class="wrapper">
+          <div class="mod-content row">
+              <div id="vnt-main" class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                  
+  
+  <div class="newsTitle"><h1>ĐÊM TRĂNG DIỆU KỲ CÙNG HIGHLANDS COFFEE</h1></div>
+  <div class="newsDate"><span>Thứ bảy, 10/09/2022, 19:44 GMT+7</span></div>
+  <div class="the-content desc">
+      <div align="justify"><p>“Trung thu là Tết đoàn viên</p>
+  
+  <p>Gia đình gắn kết, bình yên sum vầy”</p>
+  
+  <p>Không để cho các bé có hoàn cảnh kém may mắn phải chịu thiệt thòi trong ngày Tết trẻ thơ này, ngày 8-9/9/2022 vừa qua, Highlands Coffee đã đến thăm hỏi, tặng quà, vui chơi với các em tại Mái ấm Thiện Duyên (Củ Chi – HCM), các bệnh nhi đang điều trị ở BV Việt Đức (Hà Nội) &amp; Viện Huyết học - Truyền máu Trung ương, cùng nhau tạo nên một “ĐÊM TRĂNG DIỆU KỲ”.</p>
+  
+  <div style="text-align: center;"><img alt="post_4_1" data-ck-zoom="yes" src="https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_4/post_4_1.png" style="width: 900px; height: 615px;"></div>
+  
+  <p>Mái ấm Thiện Duyên đang cưu mang và chăm sóc 40 bạn nhỏ không nơi nương tựa, 90 bạn có sức khoẻ bị ảnh hưởng bởi chất độc màu da cam. “ĐÊM TRĂNG DIỆU KỲ” tại mái ấm đã phủ ngập tiếng cười trẻ thơ khi các bé được thoả thích vui chơi tại các gian hàng do những chị Hằng chú Cuội áo đỏ Highlands tận tâm chuẩn bị như: tô màu, ném bóng vào ly, thi trang trí mâm cỗ, phá cỗ, rước đèn… cùng một buổi văn nghệ vui tươi, đầm ấm, thực sự vẹn tròn.</p>
+  
+  <div style="text-align: center;">
+  <div><img alt="post_4_3" data-ck-zoom="yes" src="https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_4/post_4_3.png" style="width: 900px; height: 379px;"></div>
+  </div>
+  
+  <p>Còn ở đầu cầu Hà Nội, Bệnh viện Việt Đức và Viện Huyết học - Truyền máu trung ương – nơi các bạn nhỏ đang dũng cảm chiến đấu mỗi ngày, nơi bệnh viện là nhà, các y tá bác sĩ là bạn tâm giao, biệt đội Highlands Coffee cũng đã bất ngờ xuất hiện trong tạo hình chị Hằng Nga, bạn Thỏ Trắng, vừa pha chế cho các bé những ly trà sen vàng thơm ngon vừa trao tặng rất nhiều món quà thật đẹp.</p>
+  
+  <p>Mùa Trung thu năm nay không chỉ ấm áp hơn trong lòng những cô cậu nhỏ này, mà còn thắp lên những cảm xúc rất lạ trong tim những thành viên Highlands Coffee sánh vai biệt đội “ĐÊM TRĂNG DIỆU KỲ” này, tiếp thêm động lực dốc sức cho cộng đồng.</p>
+  
+  <p>Hẹn gặp lại các bạn ở mùa Trung thu năm sau nữa nhé!</p></div>
+      
+      
+  </div>
+  
+  <div class="myTools">
+      <div class="share">
+          <ul>
+              <li><a title="Chia sẻ qua Facebook." href="https://www.facebook.com/sharer.php?u=https://www.highlandscoffee.com.vn/vn/dem-trang-dieu-ky-cung-highlands-coffee.html" rel="nofollow" target="_blank"><img src="https://www.highlandscoffee.com.vn/skins/default/images/icon_facebook_share.png"></a></li><li><a title="Chia sẻ qua Google Plus." href="https://plus.google.com/share?url=https://www.highlandscoffee.com.vn/vn/dem-trang-dieu-ky-cung-highlands-coffee.html" rel="nofollow" target="_blank"><img src="https://www.highlandscoffee.com.vn/skins/default/images/icon_google_share.png"></a></li><li><iframe src="https://www.facebook.com/plugins/like.php?href=https://www.highlandscoffee.com.vn/vn/dem-trang-dieu-ky-cung-highlands-coffee.html&amp;width=70&amp;height=28&amp;layout=button&amp;action=like&amp;size=large&amp;show_faces=false&amp;share=false&amp;appId=" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowtransparency="true" width="70" height="28"></iframe></li><li><div id="___plusone_0" style="position: absolute; width: 450px; left: -10000px;"><iframe ng-non-bindable="" frameborder="0" hspace="0" marginheight="0" marginwidth="0" scrolling="no" style="position:absolute;top:-10000px;width:450px;margin:0px;border-style:none" tabindex="0" vspace="0" width="100%" id="I0_1689938644767" name="I0_1689938644767" src="https://apis.google.com/u/0/se/0/_/+1/fastbutton?usegapi=1&amp;size=medium&amp;origin=https%3A%2F%2Fwww.highlandscoffee.com.vn&amp;url=https%3A%2F%2Fwww.highlandscoffee.com.vn%2Fvn%2Fdem-trang-dieu-ky-cung-highlands-coffee.html&amp;gsrc=3p&amp;ic=1&amp;jsh=m%3B%2F_%2Fscs%2Fabc-static%2F_%2Fjs%2Fk%3Dgapi.lb.vi.5k414AwgDA4.O%2Fd%3D1%2Frs%3DAHpOoo9VFBE2G90y15rC3089DvZDB_6c0Q%2Fm%3D__features__#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh&amp;id=I0_1689938644767&amp;_gfid=I0_1689938644767&amp;parent=https%3A%2F%2Fwww.highlandscoffee.com.vn&amp;pfname=&amp;rpctoken=53138163" data-gapiattached="true"></iframe></div><g:plusone href="https://www.highlandscoffee.com.vn/vn/dem-trang-dieu-ky-cung-highlands-coffee.html" size="medium" data-gapiscan="true" data-onload="true" data-gapistub="true"></g:plusone></li>
+              <li><div class="zalo-share-button" data-href="https://www.highlandscoffee.com.vn/vn/dem-trang-dieu-ky-cung-highlands-coffee.html" data-oaid="579745863508352884" data-layout="2" data-color="white" data-customize="true">Chia sẻ zalo</div>
+            <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+          </li>
+          </ul>
+          <div class="clear"></div>
+      </div>
+      <div class="print hidden-sm hidden-xs">
+          <ul>
+              <li><a onclick="print()" href="javascript:void(0)" class="fa-print">In bài viết</a></li>
+          </ul>
+          <div class="clear"></div>
+      </div>
+      <div class="clear"></div>
+  </div>
+  <div class="facebook-comment" style="padding-top:10px;"><div class="fb-comments" data-href="https://www.highlandscoffee.com.vn/vn/dem-trang-dieu-ky-cung-highlands-coffee.html" data-width="100%" data-num-posts="5" data-colorscheme="light"></div><div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=";  fjs.parentNode.insertBefore(js, fjs);}(document, "script", "facebook-jssdk"));</script></div>
+  
+  
+  
+  
+  <div class="newsOther">
+      <div class="title"><h2>Các tin khác</h2></div>
+      <div class="content">
+          <ul>
+              <li><a href="https://www.highlandscoffee.com.vn/vn/mang-chut-yeu-thuong-mat-lanh-den-mien-ninh-thuan-nhieu-nang-gio.html">MANG CHÚT YÊU THƯƠNG MÁT LÀNH ĐẾN MIỀN NINH THUẬN NHIỀU NẮNG GIÓ <span>(21/08/2022, 19:36)</span></a></li>
+              
+              <li><a href="https://www.highlandscoffee.com.vn/vn/hien-mau-nhan-dao-thuong-nien-tu-hao-dong-mau-viet.html">HIẾN MÁU NHÂN ĐẠO THƯỜNG NIÊN – TỰ HÀO DÒNG MÁU VIỆT <span>(27/08/2022, 19:23)</span></a></li>
+              
+              <li><a href="https://www.highlandscoffee.com.vn/vn/trao-tang-banh-tron-thuong-yeu.html">TRAO TẶNG BÁNH – TRỌN THƯƠNG YÊU <span>(08/08/2022, 14:21)</span></a></li>
+              
+              <li><a href="https://www.highlandscoffee.com.vn/vn/highlands-coffee-cung-y-tuong-long-den-xanh-thap-sang-trung-thu-xanh-cho-hon-700-em-nho.html">HIGHLANDS COFFEE CÙNG Ý TƯỞNG “LỒNG ĐÈN XANH” THẮP SÁNG "TRUNG THU XANH” CHO HƠN 700 EM NHỎ <span>(13/09/2019, 15:59)</span></a></li>
+              
+              <li><a href="https://www.highlandscoffee.com.vn/vn/trung-thu-yeu-thuong-lop-hoc-cho-em-2017.html">TRUNG THU YÊU THƯƠNG - LỚP HỌC CHO EM 2017 <span>(09/10/2017, 21:39)</span></a></li>
+          </ul>
+      </div>
+  </div>
+  
+  
+  
+  
+  
+              </div>
+              <div id="vnt-sidebar" class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                   <div class="mnfixed_wrap" style="position: relative; height: 0px;"><div class="mnfixed_self" style="width: 100px; z-index: 101;"><div class="lateNews">
+                                     <div class="title"><h2>Tin xem nhiều</h2></div>
+                                     <div class="content">
+                                             <div class="newsL">
+          <div class="img" "="">
+            <div class="wrap">
+              <a href="https://www.highlandscoffee.com.vn/vn/trung-thu-yeu-thuong-lop-hoc-cho-em-2017.html"><img src="https://www.highlandscoffee.com.vn/vnt_upload/news/05_2018/thumbs/120_crop_IMG_0479.jpg" alt="TRUNG THU YÊU THƯƠNG - LỚP HỌC CHO EM 2017"></a>
+            </div>
+          </div>
+          <div class="caption">
+            <div class="tend"><h3><a href="https://www.highlandscoffee.com.vn/vn/trung-thu-yeu-thuong-lop-hoc-cho-em-2017.html">TRUNG THU YÊU THƯƠNG - LỚP HỌC CHO EM 2017</a></h3></div>
+            <div class="date"><span>09/10/2017, 21:39</span></div>
+          </div>				 
+        </div><div class="newsL">
+          <div class="img" "="">
+            <div class="wrap">
+              <a href="https://www.highlandscoffee.com.vn/vn/highlands-coffee-cung-y-tuong-long-den-xanh-thap-sang-trung-thu-xanh-cho-hon-700-em-nho.html"><img src="https://www.highlandscoffee.com.vn/vnt_upload/news/09_2019/thumbs/120_crop_Picture1.png" alt="HIGHLANDS COFFEE CÙNG Ý TƯỞNG “LỒNG ĐÈN XANH” THẮP SÁNG &quot;TRUNG THU XANH” CHO HƠN 700 EM NHỎ"></a>
+            </div>
+          </div>
+          <div class="caption">
+            <div class="tend"><h3><a href="https://www.highlandscoffee.com.vn/vn/highlands-coffee-cung-y-tuong-long-den-xanh-thap-sang-trung-thu-xanh-cho-hon-700-em-nho.html">HIGHLANDS COFFEE CÙNG Ý TƯỞNG “LỒNG ĐÈN XANH” THẮP SÁNG "TRUNG THU XANH” CHO HƠN 700 EM NHỎ</a></h3></div>
+            <div class="date"><span>13/09/2019, 15:59</span></div>
+          </div>				 
+        </div><div class="newsL">
+          <div class="img" "="">
+            <div class="wrap">
+              <a href="https://www.highlandscoffee.com.vn/vn/dem-trang-dieu-ky-cung-highlands-coffee.html"><img src="https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_4/thumbs/120_crop_Highlands_Coffee_tang_qua_trung_thu_3.jpg" alt="ĐÊM TRĂNG DIỆU KỲ CÙNG HIGHLANDS COFFEE"></a>
+            </div>
+          </div>
+          <div class="caption">
+            <div class="tend"><h3><a href="https://www.highlandscoffee.com.vn/vn/dem-trang-dieu-ky-cung-highlands-coffee.html">ĐÊM TRĂNG DIỆU KỲ CÙNG HIGHLANDS COFFEE</a></h3></div>
+            <div class="date"><span>10/09/2022, 19:44</span></div>
+          </div>				 
+        </div><div class="newsL">
+          <div class="img" "="">
+            <div class="wrap">
+              <a href="https://www.highlandscoffee.com.vn/vn/hien-mau-nhan-dao-thuong-nien-tu-hao-dong-mau-viet.html"><img src="https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/thumbs/120_crop_Highlands_Coffee_hien_mau_nhan_dao_2.jpg" alt="HIẾN MÁU NHÂN ĐẠO THƯỜNG NIÊN – TỰ HÀO DÒNG MÁU VIỆT"></a>
+            </div>
+          </div>
+          <div class="caption">
+            <div class="tend"><h3><a href="https://www.highlandscoffee.com.vn/vn/hien-mau-nhan-dao-thuong-nien-tu-hao-dong-mau-viet.html">HIẾN MÁU NHÂN ĐẠO THƯỜNG NIÊN – TỰ HÀO DÒNG MÁU VIỆT</a></h3></div>
+            <div class="date"><span>27/08/2022, 19:23</span></div>
+          </div>				 
+        </div><div class="newsL">
+          <div class="img" "="">
+            <div class="wrap">
+              <a href="https://www.highlandscoffee.com.vn/vn/mang-chut-yeu-thuong-mat-lanh-den-mien-ninh-thuan-nhieu-nang-gio.html"><img src="https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_3/thumbs/120_crop_Highlands_Coffee_giup_do_mai_am_2.jpg" alt="MANG CHÚT YÊU THƯƠNG MÁT LÀNH ĐẾN MIỀN NINH THUẬN NHIỀU NẮNG GIÓ"></a>
+            </div>
+          </div>
+          <div class="caption">
+            <div class="tend"><h3><a href="https://www.highlandscoffee.com.vn/vn/mang-chut-yeu-thuong-mat-lanh-den-mien-ninh-thuan-nhieu-nang-gio.html">MANG CHÚT YÊU THƯƠNG MÁT LÀNH ĐẾN MIỀN NINH THUẬN NHIỀU NẮNG GIÓ</a></h3></div>
+            <div class="date"><span>21/08/2022, 19:36</span></div>
+          </div>				 
+        </div>
+                                     </div>
+                                 </div></div></div>
+              </div>
+          </div>
+      </div>
+  </div> "
+    }
+  ]
+}

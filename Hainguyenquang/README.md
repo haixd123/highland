@@ -48,25 +48,37 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 
 
-Thừa phần lề bên phải
-New: sửa lại thời gian đăng, dùng Date(hoặc read từ DB)
-
 
 Học redux -- xong
 làm db bằng json -- xong
-
-CSS animation
-Call api with Json
-
+Call api with Json -- xong
 admin:
 -product--xong
 -category--xong
 -filter--xong
-
 search -- xong
-
 còn lại:
-call Json api with redux
-CSS animation
-Css - admin
-wrapper??
+call Json api with redux -- xong
+admin: làm bảng admin/voucher -- xong
+CSS animation -- xong
+Sửa category từ input thành thẻ cascader của ant -- xong
+
+json-server --watch db.json
+
+
+
+New: sửa lại thời gian đăng, dùng Date(hoặc read từ DB)
+
+search after 5s call api again(dùng thẻ AutoComplete của antdesign)
+hiện thị ảnh: http://localhost:8888/getPhoto/${value} Lấy ở đâu?
+
+
+
+form login-logout
+gạch ngang phần giá cũ ở HomePage -- xong
+xử lý trùng khi thêm sản phẩm
+chưa làm login logout
+//! làm news theo CKeditor
+
+
+
