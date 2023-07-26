@@ -1,5 +1,6 @@
 import axios from "axios";
 import { AppDispatch } from ".."
+import { postAPI } from "../../api";
 
 const startCountAction = (value: number, isIncre: boolean) => (dispatch: AppDispatch) => {
   // xu ly du lieu dau vao
@@ -40,6 +41,45 @@ const getProduct = () => async (dispatch: AppDispatch) => {
   });
 }
 
+const getListProduct = () => async (dispatch: AppDispatch) => {
+  dispatch({
+    type: 'SHOW_LOADING'
+  });
+  const response = await axios.get('http://localhost:8888/product')
+  if (response.status) {
+    dispatch({
+      type: 'SAVE_PRODUCTS',
+      products: response.data.data || []
+    })
+  } else {
+    dispatch({
+      type: 'HIDE_LOADING'
+    });
+  }
+}
+
+const createProduct = (body: any) => async (dispatch: AppDispatch) => {
+  dispatch({
+    type: 'SHOW_LOADING'
+  });
+  const response = await postAPI({
+    path: 'http://localhost:8888/product',
+    body
+  });
+  if (response.status) {
+    if (response.data.data === 'SUCCESS') {
+      if (response.data)
+      dispatch({
+        type: 'SAVE_LIST_PRODUCTS',
+        product: response.data.data || []
+      })      
+    }
+  }
+  dispatch({
+    type: 'HIDE_LOADING'
+  });
+}
+
 const INCREA_COUNT = (value: number) => ({
   type: 'increment',
   state: value
@@ -54,5 +94,7 @@ export {
   INCREA_COUNT,
   DECRE_COUNT,
   startCountAction,
-  getProduct
+  getProduct,
+  getListProduct,
+  createProduct
 }

@@ -16,8 +16,17 @@ const AdminComponent = () => {
   const { Formik } = formik;
   const location = useLocation();
   const param = useParams();
+
+  console.log('param: ', param);
+  
+  const { productId } = param;
   const navigate = useNavigate();
-  console.log('props: ', navigate);
+
+  // useEffect(() => {
+  //   if (productID === null) {
+  //     navigate('/home')
+  //   }
+  // }, [navigate, param, productID])
 
   const schema = yup.object().shape({
     Username: yup.string().required(),
