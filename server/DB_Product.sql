@@ -33,15 +33,16 @@ CREATE TABLE Product(
 DROP TABLE IF EXISTS `Account`;
 CREATE TABLE `Account`(
     AccountID            SMALLINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    Email                VARCHAR(50) NOT NULL UNIQUE KEY,
+    Email                VARCHAR(50) UNIQUE KEY,
     Username             VARCHAR(50) NOT NULL UNIQUE KEY,
-	FullName             VARCHAR(50) NOT NULL,
+	FullName             VARCHAR(50),
 	AvatarImageName      VARCHAR(50) UNIQUE KEY,
-	Mobile               VARCHAR(50) UNIQUE KEY NOT NULL,
-	Address              VARCHAR(50) UNIQUE KEY NOT NULL,
+	Mobile               VARCHAR(50) UNIQUE KEY ,
+	Address              VARCHAR(50) UNIQUE KEY,
     CreateDate           DATETIME DEFAULT NOW(),
     `Password`           VARCHAR(100) NOT NULL,
 	`Status`             TINYINT UNSIGNED DEFAULT 0  -- 0: Not Active, 1: Active
+    RefreshToken    VARCHAR(50),
 );
                   
 /*============================== INSERT DATABASE =======================================*/

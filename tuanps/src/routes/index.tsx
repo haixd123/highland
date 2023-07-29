@@ -18,7 +18,7 @@ const BrowerRouter = () => {
     <BrowserRouter>
       <Routes>
         {/* admin */}
-        <Route path='/admin/detail' element={<AdminPage />} />
+        <Route path='/admin' element={<AdminPage />} />
     {/* ex: /admin/detail/iphone14-256GB */}
     {/* ex: /admin/detail/123 => productId gán = 123 */}
     

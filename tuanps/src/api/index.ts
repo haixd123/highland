@@ -1,19 +1,47 @@
-import axios from 'axios';
-import { ENV_BE } from '../constants';
+import axios, { AxiosError } from 'axios';
+import { ACCESS_TOKEN, ENV_BE, REFRESH_TOKEN } from '../constants';
 
-axios.defaults.headers.common['Authorization'] = 'token';
+// const getToken = localStorage.getItem(ACCESS_TOKEN);
+
+// axios.defaults.headers.common['Authorization'] = getToken;
 axios.defaults.baseURL = ENV_BE;
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 
-export const getAPI = ({ path, params, query }: { path: string; params: string, query: string }) => {
-  return axios.get(`${path}/${query}`, {
-    params,
+export const getAPI = async ({ path, params, query }: { path: string; params?: string, query?: string }) => {
+  const getToken = localStorage.getItem(ACCESS_TOKEN);
+  try {
+    const response = await axios.get(`${path}`, {
+      params,
+      headers: {
+        "Authorization": `Bearer ${getToken}`
+      }
+    });
+    return response;
+  } catch (error: any) {
+    // check token expired - kiem tra token het han => refresh lai acccess new.
+    // if (error && error.response && error.response.status === 401) {
+    //   const refreshToken = localStorage.getItem(REFRESH_TOKEN);
+    //   const refreshTokenResponse = await postAPI({
+    //     path: 'auth/refresh-token',
+    //     body: {
+    //       refreshToken,
+    //     }
+    //   });
+    //   localStorage.setItem(ACCESS_TOKEN, refreshTokenResponse.data.accessToken);
+    //   return refreshTokenResponse;
+    // }
+    return error;
   }
-  );
 }
+
 // POST
 export const postAPI = ({ path, body }: { path: string, body: any }) => {
-  return axios.post(path, body)
+  const getToken = localStorage.getItem(ACCESS_TOKEN);
+  return axios.post(path, body, {
+    headers: {
+      "Authorization": `Bearer ${getToken}`
+    }
+  });
 }
 
 export const putAPI = () => {
