@@ -4,6 +4,15 @@ import type { ColumnsType, TableProps } from "antd/es/table";
 import { api } from "../../API/axios";
 import Sider from "antd/es/layout/Sider";
 import { Content, Footer, Header } from "antd/es/layout/layout";
+import {
+  postAPI1,
+  getAPI,
+  putAPI1,
+  deleteAPI1,
+} from "../../store/actions/actionReducers";
+import store from "../../store";
+
+import { useSelector } from "react-redux";
 
 enum STATUS {
   EDIT,
@@ -96,11 +105,15 @@ const UserAdmin = () => {
 };
 
 export const TableUser = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [newData, setNewData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const [searchResult, setSearchResult] = useState([]);
+
+  const dataRedux: any = useSelector((state) => state);
+  const data = dataRedux?.productListReducer?.products || [];
+  const isLoading = dataRedux.productListReducer.isLoading || false;
 
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
   // const [accountID, setAccountID] = useState()
@@ -178,9 +191,6 @@ export const TableUser = () => {
     console.log("params", pagination, filters, sorter, extra);
   };
 
-
-  const [a,setA] = useState([])
-
   const fetchData = async () => {
     //Cach 1: Call bang FETCH
     // const response = await fetch("http://localhost:8888/account", {method: 'GET'});
@@ -190,34 +200,52 @@ export const TableUser = () => {
     // }
 
     // Cach 2: Call bang Axios
-    const response = await api.get("/postsUser");
-    if (response.status === 200) {
-      console.log("response: ", response.data);
-      setData(response.data);
-    }
+    // const response = await api.get("/postsUser");
+    // if (response.status === 200) {
+    //   console.log("response: ", response.data);
+    //   setData(response.data);
+    // }
+    store.dispatch(getAPI("postsUser"));
   };
 
-//   const test:any = data.map((data1: any) => {
-//     return data1.username + ','
-//   });
-// console.log('a: ', test);
+  const handleDelete = async (record: any) => {
+    store.dispatch(deleteAPI1("postsUser", record.id));
+    // const newTable = record.filter((record: any) => {
+    //   console.log('record: ', record);
 
-  
+    //   return record !== record.AccountID
+    // })
+    // setData(newTable)
+  };
+
+  //   const test:any = data.map((data1: any) => {
+  //     return data1.username + ','
+  //   });
+  // console.log('a: ', test);
 
   const onFinish = async (values: any) => {
-    const newValue = {
+    const valuePost = {
       ...values,
       id: values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
+      username: values.username,
+      fullname: values.fullname,
+      address: values.address,
+      telephone: values.telephone,
+      email: values.email,
+    };
+    const valuePut = {
+      ...values,
+      id: values.id, // có thể dùng timestamp để hiển thị giá trị.
+      username: values.username,
+      fullname: values.fullname,
+      address: values.address,
+      telephone: values.telephone,
+      email: values.email,
     };
     if (status === STATUS.CREATE) {
-        const response = await api.post("/postsUser", newValue);
-        if (response.status === 201) {
-          // B1: alert
-          // B2: goi lai ham fetchData()
-          fetchData();
-          form.resetFields();
-          setIsModalOpen(false);
-        }
+      store.dispatch(postAPI1("postsUser", valuePost));
+      form.resetFields();
+      setIsModalOpen(false);
     } else {
       //       const AccountID = newValue.AccountID
       //       const Username = newValue.Username
@@ -237,24 +265,10 @@ export const TableUser = () => {
       // setData(values.map((miniValues: any) => {
       //   return miniValues.AccountID === AccountID ? {...response.data} : miniValues
       // }))
-      const response2 = await api.put(`/postsUser/${values.id}`, values);
-      if (response2.status === 200) {
-      }
-      fetchData();
+      store.dispatch(putAPI1("postsUser", values.id, valuePut));
       form.resetFields();
       setIsModalOpen(false);
     }
-  };
-
-  const handleDelete = async (record: any) => {
-    await api.delete(`/postsUser/${record.id}`);
-    fetchData();
-    // const newTable = record.filter((record: any) => {
-    //   console.log('record: ', record);
-
-    //   return record !== record.AccountID
-    // })
-    // setData(newTable)
   };
 
   const openCreate = () => {
@@ -288,10 +302,13 @@ export const TableUser = () => {
     form.resetFields();
   };
 
+
   // fetchData();
   useEffect(() => {
     fetchData();
+    
   }, []);
+
 
   //!Test search
   const [show, setShow] = useState(false);

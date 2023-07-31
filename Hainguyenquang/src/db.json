@@ -80,7 +80,8 @@
       "discount": 30,
       "remaining": "100",
       "sale": "0.03",
-      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/thumbnailtiktok-2.jpg?v=1686797889000"
+      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/thumbnailtiktok-2.jpg?v=1686797889000",
+      "quantity": 1
     },
     {
       "id": 2,
@@ -92,7 +93,8 @@
       "discount": 30,
       "remaining": "100",
       "sale": "0.03",
-      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/ctm-t7-p1-s.jpg?v=1689004873000"
+      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/ctm-t7-p1-s.jpg?v=1689004873000",
+      "quantity": 1
     },
     {
       "id": 3,
@@ -104,7 +106,8 @@
       "discount": 30,
       "remaining": "100",
       "sale": "0.03",
-      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/ctm-june2023-b.png?v=1689321446000"
+      "srcImage": "https://bizweb.dktcdn.net/thumb/large/100/465/740/products/ctm-june2023-b.png?v=1689321446000",
+      "quantity": 1
     },
     {
       "id": 4,
@@ -114,7 +117,8 @@
       "price": "56789",
       "category": "Tea",
       "discount": 30,
-      "remaining": "100"
+      "remaining": "100",
+      "quantity": 1
     },
     {
       "name": "cafe ca cao",
@@ -124,17 +128,8 @@
       "category": "Coffee",
       "discount": 30,
       "remaining": "59",
-      "id": 8
-    },
-    {
-      "id": 10,
-      "name": "q",
-      "desc": "q",
-      "SKU": "q",
-      "price": "q",
-      "category": "Tea",
-      "discount": "q",
-      "remaining": "q"
+      "id": 8,
+      "quantity": 1
     }
   ],
   "postsCategory": [
@@ -226,7 +221,6 @@
       "id": 2,
       "title": "DỊCH VỤ",
       "style": 2,
-
       "contentHeader": "DỊCH VỤ NÀY LÀ CỦA CHÚNG MÌNH",
       "content": "Highlands Coffee® là không gian của chúng mình nên mọi thứ ở đây đều vì sự thoải mái của chúng mình. Đừng giữ trong lòng, hãy chia sẻ với chúng mình điều bạn mong muốn để cùng nhau giúp Highlands Coffee® trở nên tuyệt vời hơn.",
       "srcImg": "https://www.highlandscoffee.com.vn/vnt_upload/about/Highlands_4577_R3_-_Copy.jpg",
@@ -237,7 +231,6 @@
       "id": 3,
       "title": "NGHỀ NGHIỆP",
       "style": 3,
-
       "contentHeader": "CƠ HỘI NÀY LÀ CỦA CHÚNG MÌNH",
       "content": "Là điểm hội tụ của cộng đồng, Highlands Coffee® luôn tìm kiếm những thành viên mới với mong muốn không ngừng hoàn thiện một không gian dành cho tất cả mọi người. Chúng mình luôn chào đón bạn trở thành một phần của Highlands Coffee® để cùng nhau siết chặt thêm những kết nối và sự gắn bó giữa người với người.",
       "srcImg": "https://www.highlandscoffee.com.vn/vnt_upload/about/Highlands_5557_R3_-_Copy.jpg",

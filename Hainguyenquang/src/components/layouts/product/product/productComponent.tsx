@@ -4,7 +4,7 @@ import { Rate } from "antd";
 import "../../style.scss";
 import { api } from "../../../../API/axios";
 import {
-  choose_item,
+  addToCart,
   INCREA_COUNT,
   DECRE_COUNT,
 } from "../../../../store/actions/actionReducers";
@@ -17,30 +17,44 @@ export const App: React.FC = () => <Rate />;
 const Product: any = () => {
   const [data, setData] = useState([]);
   const dataRedux: any = useSelector((state) => state);
-  const dataCart = dataRedux?.choose_itemReducer?.cart || [];
+  const dataCart = dataRedux?.addToCartReducer?.cart || [];
   const dataItem = dataRedux?.counterReducer?.state || [];
   const [inputItem, setInputItem] = useState(1);
+  const [openMenu, setOpenMenu] = useState(false);
+  const [dataStorage, setDateStorage]:any = useState([])
 
   const fetchData = async () => {
     const response = await api.get("/postsProduct");
     setData(response.data);
     console.log("response: ", response.data);
+    setDateStorage(localStorage.getItem("cartItems") )
   };
+  // const test1:any = localStorage.getItem("cartItems")
+  // let name:any = ''
+  // test1.map((dataStorage:any) => {
+  // console.log('dataStorage', dataStorage)
+  // return dataStorage
+  // }
+  // )
 
+  console.log('data: ', data);
   useEffect(() => {
     fetchData();
   }, []);
 
   // Xử lý sản phẩm bán chạy, cafe Range, cafe uống liền tại đây
   // Tạo thêm 1 export function nữa hoặc file tsx mới
-  const [openMenu, setOpenMenu] = useState(false);
+
+
+  
+  
 
   return data.map((newData: any, index: any) => {
     const sum =
       (parseFloat(newData.discount) / 1000) * parseFloat(newData.price);
 
     const handleAddCart = () => {
-      store.dispatch(choose_item(newData));
+      store.dispatch(addToCart(newData));
       setOpenMenu(true);
     };
 
@@ -79,7 +93,7 @@ const Product: any = () => {
             setOpenMenu(false);
           }}
         >
-          {dataCart.map((itemCart: any) => {
+          {data.map((itemCart: any) => {
             return (
               <div style={{ display: "flex", marginBottom: "20px" }}>
                 <Col

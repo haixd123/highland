@@ -16,7 +16,7 @@ const Sale:any = (props:any) => {
 
   useEffect(() => {
     fetchData();
-  }, [data]);
+  }, []);
 
   return data.map((newData: any, index: any) => {
     return(

@@ -78,6 +78,7 @@ form login-logout
 gạch ngang phần giá cũ ở HomePage -- xong
 xử lý trùng khi thêm sản phẩm
 chưa làm login logout
+chưa load lại khi sửa và xóa sản phẩm
 //! làm news theo CKeditor
 
 

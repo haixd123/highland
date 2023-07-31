@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import { api } from "../../API/axios";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
+import store from '../../store';
+import { postAPI1, getAPI, putAPI1, deleteAPI1 } from "../../store/actions/actionReducers";
+import { useSelector } from "react-redux";
+
 
 enum STATUS {
   EDIT,
@@ -101,12 +105,16 @@ const NewsAdmin = () => {
 };
 
 export const TableProduct = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [newData, setNewData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
   const [show, setShow] = useState(false);
+
+  const dataRedux: any = useSelector(state => state)
+  const data = dataRedux?.productListReducer?.products || [];
+  const isLoading = dataRedux.productListReducer.isLoading || false;
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -118,36 +126,33 @@ export const TableProduct = () => {
   };
 
   const fetchData = async () => {
-    const response = await api.get("/postsNews");
-    if (response.status === 200) {
-      setData(response.data);
-    }
+    store.dispatch(getAPI('postsNews'))
   };
 
   const handleDelete = async (record: any) => {
-    await api.delete(`/postsNews/${record.id}`);
-    fetchData();
+    store.dispatch(deleteAPI1('postsNews', record.id))
   };
 
   const onFinish = async (values: any) => {
-    const newValue = {
+    const valuePost = {
       ...values,
-      id: values.id + 1,
+      id: values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
+      src: values.src,
+      content: values.content,
     };
+    const valuePut = {
+      ...values,
+      id: values.id, // có thể dùng timestamp để hiển thị giá trị.
+      src: values.src,
+      content: values.content,
+    };
+    
     if (status === STATUS.CREATE) {
-      const response = await api.post("/postsNews", newValue);
-
-      if (response.status === 201) {
-        fetchData();
+      store.dispatch(postAPI1('postsNews', valuePost));
         form.resetFields();
         setIsModalOpen(false);
-      }
     } else {
-      const response2 = await api.put(`/postsNews/${values.id}`, values);
-      if (response2.status === 2001) {
-        console.log("response2", response2.status);
-      }
-      fetchData();
+      store.dispatch(putAPI1('postsNews', values.id, valuePut));
       form.resetFields();
       setIsModalOpen(false);
     }

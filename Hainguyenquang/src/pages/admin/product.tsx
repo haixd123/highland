@@ -5,6 +5,10 @@ import { api } from "../../API/axios";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import { Option } from "antd/es/mentions";
+import { postAPI1, getAPI, putAPI1, deleteAPI1 } from "../../store/actions/actionReducers";
+import store from '../../store';
+import { useSelector } from "react-redux";
+
 
 enum STATUS {
   EDIT,
@@ -100,12 +104,21 @@ const ProductAdmin = () => {
 };
 
 export const TableProduct = () => {
-  const [data, setData] = useState([]);
+  // const [data, setData] = useState([]);
   const [newData, setNewData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
   const [show, setShow] = useState(false);
+  const dataRedux: any = useSelector(state => state)
+  
+  
+  // const dispatch = useDispatch();
+  const data = dataRedux?.productListReducer?.products || [];
+  const isLoading = dataRedux.productListReducer.isLoading || false;
+
+  console.log('data: ', data);
+
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -114,58 +127,64 @@ export const TableProduct = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
     form.resetFields();
-
   };
 
   const fetchData = async () => {
-    const response = await api.get("/postsProduct");
-    if (response.status === 200) {
-      setData(response.data);
-    }
+    
+    // const response = await api.get("/postsProduct");
+    // if (response.status === 200) {
+    //   setData(response.data);
+    // }
+    store.dispatch(getAPI('postsProduct'))
   };
 
   const handleDelete = async (record: any) => {
-    await api.delete(`/postsProduct/${record.id}`);
-    fetchData();
+    // await api.delete(`/postsProduct/${record.id}`);
+    // fetchData();
+    store.dispatch(deleteAPI1('postsProduct', record.id))
+    // console.log('record.id: ', record.id);
+    
+
   };
 
-
   const onFinish = async (values: any) => {
-    const newValue = {
+    const valuePost = {
       ...values,
-      id: values.id + 1 // có thể dùng timestamp để hiển thị giá trị.
+      id: values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
+      name: values.name,
+      desc: values.desc,
+      SKU: values.SKU,
+      category: values.category,
+      price: values.price,
+      discount: values.discount,
+      remaining: values.remaining,
     };
-    
-    
-  //   let testDataName:any = [];
-  //   data.filter((data1:any) => { if(data1) {
-  //     console.log('testDataName: ', testDataName);
-  //     testDataName += data1.name;
-      
-  //   }
-  //   return testDataName;
-    
-  // })
-    
-    if (status === STATUS.CREATE) { 
-      // if(!newValue.name) {
-      const response = await api.post("/postsProduct", newValue);
 
-      if (response.status === 201) {
-        fetchData();
-        form.resetFields();
-        setIsModalOpen(false);
-      }
-    // }
-      // else {
-      //   alert('không được nhập trùng')
-      // }
+    const valuePut = {
+      ...values,
+      id: values.id, // có thể dùng timestamp để hiển thị giá trị.
+      name: values.name,
+      desc: values.desc,
+      SKU: values.SKU,
+      category: values.category,
+      price: values.price,
+      discount: values.discount,
+      remaining: values.remaining,
+    };
+
+    if (status === STATUS.CREATE) {
+      store.dispatch(postAPI1('postsProduct', valuePost));
+      // const response = await api.post("/postsProduct", newValue);
+      form.resetFields();
+      setIsModalOpen(false);
     } else {
-      const response2 = await api.put(`/postsProduct/${values.id}`, values);
-      if (response2.status === 2001) {
-        console.log("response2", response2.status);
-      }
-      fetchData();
+      store.dispatch(putAPI1('postsProduct', values.id, valuePut));
+
+      // const response2 = await api.put(`/postsProduct/${values.id}`, values);
+      // if (response2.status === 2001) {
+      //   console.log("response2", response2.status);
+      // }
+      // fetchData();
       form.resetFields();
       setIsModalOpen(false);
     }
@@ -174,6 +193,8 @@ export const TableProduct = () => {
   const openCreate = () => {
     setIsModalOpen(true);
     setStatus(STATUS.CREATE);
+    form.resetFields();
+
   };
 
   const handleEdit = async (record: any) => {
@@ -187,15 +208,19 @@ export const TableProduct = () => {
     fetchData();
   }, []);
 
-  const onChange: TableProps<DataType>['onChange'] = (pagination, filters, sorter, extra) => {
-    console.log('params', pagination, filters, sorter, extra);
+  const onChange: TableProps<DataType>["onChange"] = (
+    pagination,
+    filters,
+    sorter,
+    extra
+  ) => {
+    console.log("params", pagination, filters, sorter, extra);
   };
-
 
   const columns: ColumnsType<DataType> = [
     {
       title: "ID",
-      dataIndex: 'id',
+      dataIndex: "id",
       key: "id",
     },
     {
@@ -233,7 +258,7 @@ export const TableProduct = () => {
           value: "Coffee",
         },
       ],
-      onFilter: (value: any, record:any) => record.category.startsWith(value),
+      onFilter: (value: any, record: any) => record.category.startsWith(value),
       filterSearch: true,
     },
     {
@@ -271,14 +296,13 @@ export const TableProduct = () => {
     console.log(`selected ${value}`);
   };
 
-
   const onGenderChange = (value: string) => {
     switch (value) {
-      case 'Tea':
-        form.setFieldsValue({Category: 'Tea'});
+      case "Tea":
+        form.setFieldsValue({ Category: "Tea" });
         break;
-      case 'Coffee':
-        form.setFieldsValue({Category: 'Coffee' });
+      case "Coffee":
+        form.setFieldsValue({ Category: "Coffee" });
         break;
       default:
     }
@@ -293,9 +317,8 @@ export const TableProduct = () => {
   };
 
   const onFill = () => {
-    form.setFieldsValue({ note: 'Hello world!', gender: 'male' });
+    form.setFieldsValue({ note: "Hello world!", gender: "male" });
   };
-
 
   return (
     <>
@@ -320,8 +343,24 @@ export const TableProduct = () => {
           }
         }}
       />
-      {show && <Table dataSource={newData} onChange={onChange} columns={columns} bordered />}
-      {!show && <Table dataSource={data} onChange={onChange} columns={columns} bordered />}
+      {show && (
+        <Table
+          dataSource={newData}
+          onChange={onChange}
+          columns={columns}
+          loading={isLoading}
+          bordered
+        />
+      )}
+      {!show && (
+        <Table
+          dataSource={data}
+          onChange={onChange}
+          loading={isLoading}
+          columns={columns}
+          bordered
+        />
+      )}
       <Modal
         title={
           status === STATUS.CREATE
@@ -364,7 +403,9 @@ export const TableProduct = () => {
             style={{ marginBottom: "4px" }}
             label="Description"
             name="desc"
-            rules={[{ required: true, message: "Please input your Description!" }]}
+            rules={[
+              { required: true, message: "Please input your Description!" },
+            ]}
           >
             <Input />
           </Form.Item>
@@ -386,16 +427,20 @@ export const TableProduct = () => {
           >
             <Input />
           </Form.Item>
-           <Form.Item name="category" label="Category" rules={[{ required: true }]}>
-        <Select
-          placeholder="Chọn giới tính"
-          onChange={onGenderChange}
-          allowClear
-        >
-          <Option value="Tea">Tea</Option>
-          <Option value="Coffee">Coffee</Option>
-        </Select>
-      </Form.Item>
+          <Form.Item
+            name="category"
+            label="Category"
+            rules={[{ required: true }]}
+          >
+            <Select
+              placeholder="Phân loại"
+              onChange={onGenderChange}
+              allowClear
+            >
+              <Option value="Tea">Tea</Option>
+              <Option value="Coffee">Coffee</Option>
+            </Select>
+          </Form.Item>
           {/* <Form.Item
             style={{ marginBottom: "4px" }}
             label="Category"
@@ -421,7 +466,7 @@ export const TableProduct = () => {
             <Input />
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 0, span: 16 }}>
-            <Button style={{ marginRight: 8 }} type="primary" htmlType="submit">
+            <Button style={{ marginRight: 8 }} loading={isLoading} type="primary" htmlType="submit">
               Submit
             </Button>
             <Button>Reset</Button>
