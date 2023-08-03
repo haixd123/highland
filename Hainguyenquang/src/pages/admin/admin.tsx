@@ -1,9 +1,21 @@
-import React from "react";
-import { Layout } from "antd";
+import { Button, Layout } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import { TableUser } from "./user";
 import { TableProduct } from "./product";
+import { useNavigate } from "react-router";
+import React, { useState } from 'react';
+import {
+  UserOutlined,
+  ShoppingOutlined,
+  DashboardOutlined,
+  HomeOutlined,
+  ReadOutlined
+} from '@ant-design/icons';
+import { Menu } from 'antd';
+import AdminSider from "../../components/layouts/adminSider/adminSider";
+
+
 
 
 const AdminPage = () => {
@@ -15,14 +27,6 @@ const AdminPage = () => {
     lineHeight: "64px",
     backgroundColor: "#7dbcea",
   };
-
-  // const contentStyle: React.CSSProperties = {
-  //   textAlign: "center",
-  //   minHeight: 120,
-  //   lineHeight: "120px",
-  //   color: "#fff",
-  //   backgroundColor: "#108ee9",
-  // };
 
   const siderStyle: React.CSSProperties = {
     textAlign: "center",
@@ -37,43 +41,21 @@ const AdminPage = () => {
     backgroundColor: "#7dbcea",
   };
 
+  const navigate = useNavigate();
+  const [collapsed, setCollapsed] = useState(false);
+
+  const toggleCollapsed = () => {
+    setCollapsed(!collapsed);
+  };
+
   return (
     <Layout>
       <Header style={headerStyle}>
         Admin
       </Header>
-      <Layout hasSider style={{position: 'relative'}}>
-        <Sider
-
-          style={siderStyle}
-        >
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="home">
-              Home
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="admin">
-              Admin
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="admin/user">
-              User
-            </a>
-          </div>
-          {/* <HeaderMenu /> */}
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="admin/product">
-              Product
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="admin/news">
-              News
-            </a>
-          </div>
-          {/* <HeaderMenu /> */}
+      <Layout hasSider style={{ position: 'relative' }}>
+        <Sider style={siderStyle}>
+          <AdminSider />
         </Sider>
         <Content>
           <TableUser />

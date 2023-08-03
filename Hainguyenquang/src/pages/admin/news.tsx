@@ -1,12 +1,13 @@
 import { Button, Form, Input, Layout, Modal, Space } from "antd";
 import Table, { ColumnsType, TableProps } from "antd/es/table";
 import { useEffect, useState } from "react";
-import { api } from "../../API/axios";
+import { api } from "../../api";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import store from '../../store';
 import { postAPI1, getAPI, putAPI1, deleteAPI1 } from "../../store/actions/actionReducers";
 import { useSelector } from "react-redux";
+import AdminSider from "../../components/layouts/adminSider/adminSider";
 
 
 enum STATUS {
@@ -59,44 +60,13 @@ const NewsAdmin = () => {
 
   return (
     <Layout>
-      <Header style={headerStyle}>Product</Header>
+      <Header style={headerStyle}>News</Header>
       <Layout hasSider>
-        <Sider
-          style={
-            // { height: "100%", backgroundColor: "#fff" }
-            siderStyle
-          }
-        >
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="../home">
-              Home
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="../admin">
-              Admin
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="user">
-              User
-            </a>
-          </div>
-          {/* <HeaderMenu /> */}
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="product">
-              Product
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="news">
-              News
-            </a>
-          </div>
-          {/* <HeaderMenu /> */}
+        <Sider style={siderStyle}>
+          <AdminSider />
         </Sider>
         <Content>
-          <TableProduct />
+          <TableNews />
         </Content>
       </Layout>
       <Footer style={footerStyle}>Footer</Footer>
@@ -104,13 +74,12 @@ const NewsAdmin = () => {
   );
 };
 
-export const TableProduct = () => {
+export const TableNews = () => {
   // const [data, setData] = useState([]);
   const [newData, setNewData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [form] = Form.useForm();
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
-  const [show, setShow] = useState(false);
 
   const dataRedux: any = useSelector(state => state)
   const data = dataRedux?.productListReducer?.products || [];
@@ -146,11 +115,11 @@ export const TableProduct = () => {
       src: values.src,
       content: values.content,
     };
-    
+
     if (status === STATUS.CREATE) {
       store.dispatch(postAPI1('postsNews', valuePost));
-        form.resetFields();
-        setIsModalOpen(false);
+      form.resetFields();
+      setIsModalOpen(false);
     } else {
       store.dispatch(putAPI1('postsNews', values.id, valuePut));
       form.resetFields();
@@ -243,35 +212,19 @@ export const TableProduct = () => {
         onSearch={(value, event) => {
           console.log("value: ", value);
           console.log("event: ", event);
-
           const newData = data.filter(
             (record: any) => record?.id === parseInt(value)
           );
           setNewData(newData);
-          if (!show) {
-            console.log("show: ", show);
-
-            setShow(!show);
-            console.log("show: ", show);
-          }
         }}
       />
-      {show && (
-        <Table
-          dataSource={newData}
-          onChange={onChange}
-          columns={columns}
-          bordered
-        />
-      )}
-      {!show && (
-        <Table
-          dataSource={data}
-          onChange={onChange}
-          columns={columns}
-          bordered
-        />
-      )}
+
+      <Table
+        dataSource={newData.length <= 0 ? data : newData}
+        onChange={onChange}
+        columns={columns}
+        bordered
+      />
       <Modal
         title={
           status === STATUS.CREATE

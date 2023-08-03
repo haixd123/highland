@@ -6,6 +6,7 @@ import * as formik from 'formik';
 import * as yup from 'yup';
 import FormControlInput from "../../components/forms/Input";
 import { useLocation, useParams, useNavigate } from "react-router-dom";
+import { getAPI } from "../../api";
 
 enum STATUS {
   EDIT,
@@ -16,8 +17,17 @@ const AdminComponent = () => {
   const { Formik } = formik;
   const location = useLocation();
   const param = useParams();
+
+  console.log('param: ', param);
+  
+  const { productId } = param;
   const navigate = useNavigate();
-  console.log('props: ', navigate);
+
+  // useEffect(() => {
+  //   if (productID === null) {
+  //     navigate('/home')
+  //   }
+  // }, [navigate, param, productID])
 
   const schema = yup.object().shape({
     Username: yup.string().required(),
@@ -39,7 +49,9 @@ const AdminComponent = () => {
     // }
 
     // Cach 2: Call bang Axios
-    const response = await axios.get('http://localhost:8888/account');
+    const response = await getAPI({
+      path: '/account'
+    });
     if (response.status === 200) {
       setData(response.data.data);
     }
@@ -52,7 +64,6 @@ const AdminComponent = () => {
   }
 
   const handleEdit = (record: any) => {
-    console.log('record', record);
     setValueForm(record)
     setStatus(STATUS.EDIT);
     setShow(true)
@@ -68,9 +79,7 @@ const AdminComponent = () => {
   }
 
   const handleSubmitForm = (value: any) => {
-
     console.log('value: ', value);
-
   }
 
   const renderControlForm = ({ handleSubmit, handleChange, values, touched, errors }: any) => (

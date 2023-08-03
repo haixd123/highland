@@ -1,15 +1,15 @@
 import Header from "../../components/layouts/header/headerComponent";
 import Footer from "../../components/layouts/footer/footerComponent";
-import Slide from "../../components/layouts/content/contentComponent";
+import Content from "../../components/layouts/content/contentComponent";
 
-const SlidePage = () => {
+const ContentPage = () => {
   return (
     <>
       <Header />
-      <Slide />
+      <Content />
       <Footer />
     </>
   );
 };
 
-export default SlidePage;
+export default ContentPage;

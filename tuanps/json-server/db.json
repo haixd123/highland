@@ -31,5 +31,12 @@
   ],
   "profile": {
     "name": "typicode"
+  },
+  "accounts": {
+    "username": "",
+    "password": "",
+    "refresh_token": "",
+    "fullname": "",
+    "address": ""
   }
 }

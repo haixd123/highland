@@ -115,7 +115,7 @@ const addToCartReducerTest = (state: any = initialState, action: any) => {
 // };
 
 interface IProduct {
-  // "ProductId": String;
+  // "id": String;
   // "ProductName": String;
   // "ProductPrice": String;
   // "ProductInfo": String;
@@ -153,6 +153,23 @@ const productListReducer = (
         isLoading: false,
         products: lstProduct,
       };
+    }
+    case "SAVE_LIST_PRODUCTS1": {
+      let lstProduct = state.products;
+
+      if (action.product) {
+        // lstProduct = action.product;
+        lstProduct = [...lstProduct, action.product ]
+        console.log('return 1');
+
+       
+      }
+      console.log('return 2');
+
+      return {
+        ...state,
+        products: lstProduct
+      }
     }
 
     default:

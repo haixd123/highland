@@ -6,7 +6,7 @@ const { Header } = Layout;
 
 const items1: MenuProps['items'] = ['Home', 'Admin', 'Blog'].map((key) => ({
     key,
-    label: <NavLink to={'/admin'} className={'test-abc'}>{key}</NavLink>,
+    label: <NavLink to={`/${key}`} className={'test-abc'}>{key}</NavLink>,
   }));
 
 const HeaderComponent: React.FC = () => {

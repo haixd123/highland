@@ -1,6 +1,6 @@
 import axios from "axios";
 import { AppDispatch } from "..";
-import { postAPI, putAPI, deleteAPI } from "../../API/axios";
+import { postAPI, putAPI, deleteAPI } from "../../api";
 
 const startCountAction =
   (value: number, isIncre: boolean) => (dispatch: AppDispatch) => {
@@ -49,6 +49,7 @@ const getAPI = (record: string) => async (dispatch: AppDispatch) => {
     type: "SHOW_LOADING",
   });
   const response = await axios.get(`http://localhost:3000/${record}`);
+  // await axios.get('http://localhost:8888/getPhoto/uploadfile');
   if (response.status) {
     dispatch({
       type: "SAVE_PRODUCTS",
@@ -70,6 +71,12 @@ const postAPI1 =
       path: `http://localhost:3000/${record}`,
       body,
     });
+    console.log('body.name: ', body);
+    
+    // await postAPI({
+    //   path: 'http://localhost:8888/getPhoto/uploadfile',
+    //   body: body.srcImage,
+    // });
 
     dispatch({
       type: "SAVE_LIST_PRODUCTS",
@@ -91,9 +98,10 @@ const putAPI1 =
       path: `http://localhost:3000/${record}/${id}`,
       body,
     });
+    
 
     dispatch({
-      type: "SAVE_LIST_PRODUCTS",
+      type: "SAVE_LIST_PRODUCTS1",
       product: response.data || [],
     });
 

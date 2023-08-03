@@ -1,13 +1,17 @@
 const bodyParser = require("body-parser");
 const express = require("express");
-const mysql = require("mysql");
 const app = express();
 const port = process.env.PORT || 8888;
 const cors = require("cors");
 const multer = require('multer')
 const path = require('path')
-const fs = require("fs");
+const deleteAllFilesInDir = require("./utils/deleteFile");
+const { db } = require('./db');
+const router = require("./auth/auth.routes");
+const dotenv = require('dotenv');
+const authMiddleware = require('./auth/auth.middlewares');
 
+const con = db();
 // SET STORAGE
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -19,24 +23,15 @@ var storage = multer.diskStorage({
 })
 
 const upload = multer({ storage })
+dotenv.config();
 
-app.use(cors());
-// connect mysql
-const con = mysql.createConnection({
-  host: "127.0.0.1",
-  port: 3306,
-  user: "root",
-  password: "password",
-  database: "productmanagement",
-});
-
-con.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected!!!");
-});
-
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
+
+// const checkIsAuth = auth.isAuth();
+
+// app.use("/product", checkIsAuth)
 
 // PRODUCT
 app
@@ -284,7 +279,7 @@ app
 // Account
 app
   .route("/account")
-  .get(function (req, res) {
+  .get(authMiddleware.isAuth, function (req, res) {
     let sql = "SELECT * FROM Account";
     con.query(sql, (err, response) => {
       if (err) {
@@ -373,29 +368,21 @@ app.post('/uploadfile', upload.single('myFile'), function (req, res, next) {
   res.send(file)
 });
 
-app.get('/getPhoto/:imageId', function (req, res, next) {
+app.get('/getPhoto/:imageId', function (req, res) {
   const { imageId } = req.params;
   res.sendFile(__dirname + `/images/${imageId}`);
-})
-
-async function deleteAllFilesInDir(dirPath) {
-  try {
-    const files = fs.readdir(dirPath);
-
-    const deleteFilePromises = files.map(file =>
-      fs.unlink(path.join(dirPath, file)),
-    );
-
-    await Promise.all(deleteFilePromises);
-  } catch (err) {
-    console.log(err);
-  }
-}
-
-app.delete('/remove-all-images', async function (req, res, next) {
-  const directory = "/images";
-  await deleteAllFilesInDir(__dirname + directory);  
 });
+
+app.delete('/remove-all-images', async function () {
+  const directory = "/images";
+  await deleteAllFilesInDir(__dirname + directory);
+});
+
+app.use('/auth', router);
+
+app.get('/profile', authMiddleware.isAuth, async (req, res) => {
+  res.send(req.user);
+})
 
 app.listen(port);
 console.log("Server started at http://localhost:" + port);

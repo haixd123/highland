@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Layout, Modal, Space, Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
-import { api } from "../../API/axios";
+import { api } from "../../api";
 import Sider from "antd/es/layout/Sider";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import {
@@ -13,6 +13,7 @@ import {
 import store from "../../store";
 
 import { useSelector } from "react-redux";
+import AdminSider from "../../components/layouts/adminSider/adminSider";
 
 enum STATUS {
   EDIT,
@@ -61,39 +62,8 @@ const UserAdmin = () => {
     <Layout>
       <Header style={headerStyle}>User</Header>
       <Layout hasSider>
-        <Sider
-          style={
-            // { height: "100%", backgroundColor: "#fff" }
-            siderStyle
-          }
-        >
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="../home">
-              Home
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="../admin">
-              Admin
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="user">
-              User
-            </a>
-          </div>
-          {/* <HeaderMenu /> */}
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="product">
-              Product
-            </a>
-          </div>
-          <div style={{ margin: "15px auto" }}>
-            <a style={{ color: "#fff" }} href="news">
-              News
-            </a>
-          </div>
-          {/* <HeaderMenu /> */}
+        <Sider style={siderStyle}>
+          <AdminSider />
         </Sider>
         <Content>
           <TableUser />
@@ -210,64 +180,42 @@ export const TableUser = () => {
 
   const handleDelete = async (record: any) => {
     store.dispatch(deleteAPI1("postsUser", record.id));
-    // const newTable = record.filter((record: any) => {
-    //   console.log('record: ', record);
 
-    //   return record !== record.AccountID
-    // })
-    // setData(newTable)
   };
 
-  //   const test:any = data.map((data1: any) => {
-  //     return data1.username + ','
-  //   });
-  // console.log('a: ', test);
 
   const onFinish = async (values: any) => {
-    const valuePost = {
+    const newValue = {
       ...values,
-      id: values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
+      id: values.id ? values.id : values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
       username: values.username,
       fullname: values.fullname,
       address: values.address,
       telephone: values.telephone,
       email: values.email,
     };
-    const valuePut = {
-      ...values,
-      id: values.id, // có thể dùng timestamp để hiển thị giá trị.
-      username: values.username,
-      fullname: values.fullname,
-      address: values.address,
-      telephone: values.telephone,
-      email: values.email,
-    };
+    const handleUserName = data.find((item: any) => (item.username === values.username))
+    const handleTelephone = data.find((item: any) => (item.telephone === values.telephone))
     if (status === STATUS.CREATE) {
-      store.dispatch(postAPI1("postsUser", valuePost));
-      form.resetFields();
-      setIsModalOpen(false);
+      if (!handleUserName && !handleTelephone) {
+        store.dispatch(postAPI1("postsUser", newValue));
+        form.resetFields();
+        setIsModalOpen(false);
+      }
+      else {
+        alert('tên đăng nhập hoặc số điện thoại đã bị trùng')
+      }
     } else {
-      //       const AccountID = newValue.AccountID
-      //       const Username = newValue.Username
-      //       const FullName = newValue.FullName
-      //       const Address = newValue.Address
-      //       const newAdmin = {
-      //         ...newValue,
-      //         AccountID,
-      //         Username,
-      //         FullName,
-      // Address
-      //       }
-      // const response = await axios.put(`http://localhost:8888/account/${values.AccountID}`, newAdmin);
-      // const {AccountID, Username, FullName, Address} = response.data
-      // console.log('values: ', values);
+      if ((handleUserName && handleTelephone) || (!handleUserName && !handleTelephone)) {
+        store.dispatch(putAPI1("postsUser", values.id, newValue));
+        form.resetFields();
+        setIsModalOpen(false);
 
-      // setData(values.map((miniValues: any) => {
-      //   return miniValues.AccountID === AccountID ? {...response.data} : miniValues
-      // }))
-      store.dispatch(putAPI1("postsUser", values.id, valuePut));
-      form.resetFields();
-      setIsModalOpen(false);
+      }
+      else {
+        alert('tên đăng nhập hoặc số điện thoại đã bị trùng')
+
+      }
     }
   };
 
@@ -280,15 +228,10 @@ export const TableUser = () => {
     setStatus(STATUS.EDIT);
     form.setFieldsValue(record);
     setIsModalOpen(true);
-    // const response =  await axios.get(`http://localhost:8888/account/${record.AccountID}`);
-    // if(response.status === 200) {
-    //   console.log('respon.get success');
-    // }
-
     console.log("EDIT");
   };
 
-  const handleReset = () => {};
+  const handleReset = () => { };
 
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
@@ -306,14 +249,14 @@ export const TableUser = () => {
   // fetchData();
   useEffect(() => {
     fetchData();
-    
+
   }, []);
 
 
   //!Test search
   const [show, setShow] = useState(false);
   const [value, setValue] = useState("");
-  const handleSearch = (e: any) => {};
+  const handleSearch = (e: any) => { };
 
   return (
     <>
@@ -330,44 +273,15 @@ export const TableUser = () => {
             (record: any) => record?.id === parseInt(value)
           );
           setNewData(newData);
-          if (!show) {
-            console.log("show: ", show);
-
-            setShow(!show);
-            console.log("show: ", show);
-          }
-
-          // if (value == "") {
-          //   setShow(show);
-          //   console.log("show: ", show);
-          // }
-
-          // data.map((newData:any) => {
-          //   if(value == newData.AccountID) {
-          //     console.log('newData.AccountID: ', newData);
-          //     console.log('data: ', data);
-          //     setNewData(newData)
-          //     setShow(!show)
-          //     }
-          //   })
         }}
       />
-      {show && (
-        <Table
-          dataSource={newData}
-          onChange={onChange}
-          columns={columns}
-          bordered
-        />
-      )}
-      {!show && (
-        <Table
-          dataSource={data}
-          onChange={onChange}
-          columns={columns}
-          bordered
-        />
-      )}
+
+      <Table
+        dataSource={newData.length <= 0 ? data : newData}
+        onChange={onChange}
+        columns={columns}
+        bordered
+      />
       {/* <ProductPage /> */}
       <Modal
         title={

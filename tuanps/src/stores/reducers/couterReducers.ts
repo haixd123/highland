@@ -1,3 +1,4 @@
+
 const initialState = { value: 0 }
 
 function counterReducer(state:any = initialState, action: any) {
@@ -11,9 +12,20 @@ function counterReducer(state:any = initialState, action: any) {
       return state
   }
 }
-const productState = { products: [], isLoading: false };
 
-const productReducer = (state = productState, action: any) => {
+interface IProduct {
+  "ProductId": String;
+  "ProductName": String;
+  "ProductPrice": String;
+  "ProductInfo": String;
+  "ProductDetail": String;
+  "RatingStar": null;
+  "ProductImageName": String;
+  "ManufacturerId": 1;
+  "CategoryId": 1;
+}
+
+const productReducer = (state: { loading: boolean, products: IProduct[]} = {loading: false, products: []}, action: { products: IProduct[], product: IProduct, type: string;}) => {
   switch (action.type) {
     case 'SHOW_LOADING': {
       return { ...state, isLoading: true }
@@ -23,6 +35,17 @@ const productReducer = (state = productState, action: any) => {
     }
     case 'SAVE_PRODUCTS': {
       return { ...state, isLoading: false, products: action.products || [] }
+    }
+    case 'SAVE_LIST_PRODUCTS': {
+      let lstProduct = state.products;
+      if (action.product) {
+        lstProduct = [...lstProduct, action.product]
+      }
+      return { 
+        ...state,
+        isLoading: false, 
+        products: lstProduct
+      }
     }
     default:
       return state;

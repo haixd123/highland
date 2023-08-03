@@ -2,7 +2,7 @@ import { Row, Col, Button, Space } from "antd"
 import '../../style.scss'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { api } from "../../../../API/axios";
+import { api } from "../../../../api";
 
 const Sale:any = (props:any) => {
     const [data, setData] = useState([]);

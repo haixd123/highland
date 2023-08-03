@@ -3,19 +3,22 @@ import { Col, Drawer, Layout, Row, Image, Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import "../style.scss";
+import { useNavigate } from "react-router";
 
 const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
+  const navigate = useNavigate();
+
   return (
     <Layout>
       <div
         className="headerMenu"
-        // style={{display: 'flex', alignItems: 'center', backgroundColor:'#b22830', padding: '0 15px'}}
+      // style={{display: 'flex', alignItems: 'center', backgroundColor:'#b22830', padding: '0 15px'}}
       >
         <AppMenu />
         <div
           className="menuIcon"
-          //  style={{fontSize: '30px', color: '#fff'}}
+        //  style={{fontSize: '30px', color: '#fff'}}
         >
           <MenuOutlined
             onClick={() => {
@@ -38,9 +41,10 @@ const Header = () => {
         <Menu
           style={{}}
           mode={"inline"}
+          onClick={(info) => { navigate(`/${info.key}`) }}
           items={[
             {
-              label: <a href="home">HOME</a>,
+              label: 'Home',
               key: "home",
             },
             {
@@ -188,23 +192,7 @@ const AppMenu = () => {
               ]}
             ></Menu>
           </div>
-          {/* <ul style={{display: 'flex', margin: '0'}}>
-                        <li style={{listStyle: 'none'}}>
-                            <a style={{ display: 'block', fontSize: '16px', lineHeight: '25px', fontWeight: '700', color: '#ffffff', padding: '10px 17px' }} href="#">
-                                <span>THỰC ĐƠN</span>
-                            </a>
-                        </li>
-                        <li style={{listStyle: 'none'}}>
-                            <a style={{ display: 'block', fontSize: '16px', lineHeight: '25px', fontWeight: '700', color: '#ffffff', padding: '10px 17px' }} href="#">
-                                <span>VỀ CHÚNG TÔI</span>
-                            </a>
-                        </li>
-                        <li style={{listStyle: 'none'}}>
-                            <a style={{ display: 'block', fontSize: '16px', lineHeight: '25px', fontWeight: '700', color: '#ffffff', padding: '10px 17px' }} href="#">
-                                <span>TIN TỨC</span>
-                            </a>
-                        </li>
-                    </ul> */}
+
         </Col>
         <Col
           lg={{ span: 0, order: 2 }}

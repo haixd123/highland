@@ -86,3 +86,5 @@ yarn.*
 
 # aws local
 template.yaml
+
+images

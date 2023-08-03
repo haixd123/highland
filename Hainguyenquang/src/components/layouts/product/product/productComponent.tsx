@@ -2,7 +2,7 @@ import { Col, Image, Button, Drawer, Menu, InputNumber, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { Rate } from "antd";
 import "../../style.scss";
-import { api } from "../../../../API/axios";
+import { api } from "../../../../api";
 import {
   addToCart,
   INCREA_COUNT,

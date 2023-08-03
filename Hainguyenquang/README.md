@@ -63,23 +63,27 @@ admin: làm bảng admin/voucher -- xong
 CSS animation -- xong
 Sửa category từ input thành thẻ cascader của ant -- xong
 
+gạch ngang phần giá cũ ở HomePage -- xong
+
+
+làm login-logout - xong
+xử lý ảnh của admin - xong
+logout: - xóa local storage push lại về login -- xong
+làm lại giao diện login,register -- xong
+làm lại search cho admin - xong
+
+làm sidebar cho admin -- xong
+
+
+
 json-server --watch db.json
 
 
 
-New: sửa lại thời gian đăng, dùng Date(hoặc read từ DB)
-
 search after 5s call api again(dùng thẻ AutoComplete của antdesign)
-hiện thị ảnh: http://localhost:8888/getPhoto/${value} Lấy ở đâu?
 
-
-
-form login-logout
-gạch ngang phần giá cũ ở HomePage -- xong
-xử lý trùng khi thêm sản phẩm
-chưa làm login logout
-chưa load lại khi sửa và xóa sản phẩm
 //! làm news theo CKeditor
-
-
-
+Xử lý trùng fail
+chưa get đc ảnh từ database
+Chưa bọc đc authen
+chưa load lại khi sửa và xóa sản phẩm

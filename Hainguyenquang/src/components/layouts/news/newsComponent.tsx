@@ -1,5 +1,5 @@
 import { Col, Image } from "antd";
-import { api } from "../../../API/axios";
+import { api } from "../../../api";
 import { useEffect, useState } from "react";
 
 const News:any = () => {

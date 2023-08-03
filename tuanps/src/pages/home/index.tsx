@@ -3,6 +3,7 @@ import { Button, Form, Image, Input, Modal, Space, Table, Upload } from "antd";
 import { InboxOutlined, UploadOutlined } from "@ant-design/icons";
 import type { ColumnsType } from "antd/es/table";
 import Layouts from "../../components/layouts/admin";
+<<<<<<< HEAD
 import { styled } from "styled-components";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -15,6 +16,16 @@ import {
 import store from "../../stores";
 import { ENV_BE } from "../../constants";
 import { counterReducer } from "../../stores/reducers/couterReducers";
+=======
+import { styled } from 'styled-components';
+import axios from 'axios';
+import { useSelector } from 'react-redux'
+import { getProduct, startCountAction } from '../../stores/actions/actionReducers';
+import store from '../../stores';
+import { ENV_BE } from '../../constants';
+import { getAPI } from '../../api';
+import Authentication from '../../components/authentication';
+>>>>>>> 46e61fb6bb2ade12207d2eaa101793426fab854d
 
 enum STATUS {
   EDIT,
@@ -67,6 +78,8 @@ const HomePage = () => {
   };
 
   const onFinish = async (values: any) => {
+    console.log('values: ', values);
+
     const newValue = {
       ...values,
       AccountID: Math.floor(Math.random() * 10000), // có thể dùng timestamp để hiển thị giá trị.
@@ -97,20 +110,28 @@ const HomePage = () => {
     console.log("Failed:", errorInfo);
   };
 
-  const handleEditRow = (record: any) => {
-    setStatus(STATUS.EDIT);
-    console.log("record: ", record);
+  // const handleEditRow = (record: any) => {
+  //   setStatus(STATUS.EDIT);
+  //   form.setFieldsValue(record);
+  //   setIsModalOpen(true);
+  // }
 
+  const handleEditRow = useCallback((record: any) => {
+    setStatus(STATUS.EDIT);
     form.setFieldsValue(record);
     setIsModalOpen(true);
-  };
+  }, [])
 
   useEffect(() => {
     fetchData();
   }, []);
 
   const normFile = async (e: any) => {
+<<<<<<< HEAD
     console.log("event: ", e);
+=======
+    console.log('event: ', e);
+>>>>>>> 46e61fb6bb2ade12207d2eaa101793426fab854d
 
     if (Array.isArray(e)) {
       return e;
@@ -158,15 +179,20 @@ const HomePage = () => {
       render: (_, record) => (
         <Space size={"large"}>
           <Button onClick={() => handleEditRow(record)}>Edit</Button>
+<<<<<<< HEAD
           <Button type="primary" danger>
             Delete
           </Button>
+=======
+          <Button type="primary" onClick={() => getAPI({ path: '/account', query: '?a=1&b=2', params: '/123' })} danger>Delete</Button>
+>>>>>>> 46e61fb6bb2ade12207d2eaa101793426fab854d
         </Space>
       ),
     },
   ];
 
   return (
+<<<<<<< HEAD
     <Layouts>
       <StyledButton type="primary" onClick={openCreate}>
         Thêm người dùng
@@ -272,6 +298,86 @@ const HomePage = () => {
     </Layouts>
   );
 };
+=======
+    <Authentication>
+      <Layouts>
+        <StyledButton type='primary' onClick={openCreate}>
+          Thêm người dùng
+        </StyledButton>
+        <Table columns={columns} dataSource={data} bordered loading={isLoading} />
+        <Modal title={status === STATUS.CREATE ? 'Thêm người dùng mới' : 'Cập nhật người dùng'} open={isModalOpen} okText='Confirm'
+          footer={[
+            <Button key="back" type='primary' onClick={handleCancel} danger>
+              Cancel
+            </Button>,
+          ]} onOk={handleOk} onCancel={handleCancel}>
+          <Form
+            form={form}
+            name="basic"
+            labelCol={{ span: 24 }}
+            wrapperCol={{ span: 24 }}
+            // initialValues={{ AccountID: 1 }}
+            onFinish={onFinish}
+            onFinishFailed={onFinishFailed}
+            autoComplete="off"
+          >
+            {
+              !(status === STATUS.CREATE) && (
+                <Form.Item
+                  label="AccountID"
+                  name="AccountID"
+                  rules={[{ required: true, message: 'Please input your account ID!' }]}
+                >
+                  <Input disabled={true} />
+                </Form.Item>
+              )
+            }
+            <Form.Item
+              label="UserName"
+              name="Username"
+              rules={[{ required: true, message: 'Please input your username!' }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="FullName"
+              name="FullName"
+              rules={[
+                { required: true, message: 'Please input your full name!' },
+                { max: 20, message: 'Please input your full name!' },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              label="Address"
+              name="Address"
+              rules={[{ required: true, message: 'Please input your Address!' }]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="AvatarImageName"
+              label="Upload"
+              valuePropName="myFile"
+              getValueFromEvent={normFile}
+            >
+              <Upload name="myFile" action={`${ENV_BE}/uploadfile`} listType="picture">
+                <Button icon={<UploadOutlined />}>Click to upload</Button>
+              </Upload>
+            </Form.Item>
+            <Form.Item wrapperCol={{ span: 16 }}>
+              <Button style={{ marginRight: 8 }} type="primary" htmlType='submit'>Submit</Button>
+              <Button onClick={() => form.resetFields()}>Reset</Button>
+            </Form.Item>
+          </Form>
+        </Modal>
+      </Layouts>
+    </Authentication>
+  )
+}
+
+>>>>>>> 46e61fb6bb2ade12207d2eaa101793426fab854d
 
 const StyledButton = styled(Button)`
   margin-bottom: 24px;
