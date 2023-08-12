@@ -1,8 +1,8 @@
-import Header from "../../components/layouts/header/headerComponent";
-import Footer from "../../components/layouts/footer/footerComponent";
-import News from "../../components/layouts/news/newsComponent";
+import Header from "../../components/layouts/home/header/headerComponent";
+import Footer from "../../components/layouts/home/footer/footerComponent";
+import News from "../../components/layouts/home/news/newsComponent";
 import { Col } from "antd";
-import SeeMore from "../../components/layouts/seeMore/seemoreComponent";
+import SeeMore from "../../components/layouts/home/seeMore/seemoreComponent";
 
 const NewsPage = () => {
   return (
@@ -17,7 +17,8 @@ const NewsPage = () => {
         </div>
         <News />
       </Col>
-      <SeeMore />
+      //! ấn seemore
+      {/* <SeeMore /> */}
       <Footer />
     </>
   );

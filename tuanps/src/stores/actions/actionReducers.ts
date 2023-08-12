@@ -80,12 +80,12 @@ const createProduct = (body: any) => async (dispatch: AppDispatch) => {
   });
 }
 
-const INCREA_COUNT = (value: number) => ({
+const INCREA_CART = (value: number) => ({
   type: 'increment',
   value
 })
 
-const DECRE_COUNT = (value: number) => ({
+const DECRE_CART = (value: number) => ({
   type: 'decrement',
   value
 })
@@ -103,8 +103,8 @@ const DECRE_COUNT = (value: number) => ({
 // }
 
 export {
-  INCREA_COUNT,
-  DECRE_COUNT,
+  INCREA_CART,
+  DECRE_CART,
   startCountAction,
   getProduct,
   getListProduct,

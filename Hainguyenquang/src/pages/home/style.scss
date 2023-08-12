@@ -1,0 +1,86 @@
+.homepageContent {
+    width: 100%;
+    text-align: center;
+    margin: 35px 0 0
+}
+
+.homepageCol {
+    display: flex;
+    flex-wrap: wrap
+}
+
+.buyproductInfo {
+    width: 90%;
+}
+
+.buyproductInfoLabel {
+    font-size: 17px;
+    font-weight: 500;
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.buyproductProduct {
+    position: relative;
+    padding-top: 100px;
+    background-color: #f6f6f6;
+    padding-right: 90px;
+    padding-left: 25px;
+}
+
+.buyproductQuantity1 {
+    display: flex;
+    justify-content: left;
+}
+
+.buyproductQuantity {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    top: 0;
+    border-bottom: 1px solid #000;
+    width: 332px;
+    background-color: #f6f6f6;
+    z-index: 10;
+}
+
+
+
+.buyproductInput {
+    padding: 8px;
+    margin-bottom: 20px;
+}
+
+.buyproductRadio {
+    margin: 5px 0;
+}
+
+.buyproductInputSale {
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-between;
+}
+
+.buyproductInputSale1 {
+    padding: 6px 8px;
+    width: 70%;
+    
+}
+
+.buyproductTotal {
+    border-top: 1px solid #000;
+    padding: 15px 0;
+    margin-top: 30px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buyproductButton {
+    background-color: #a73c3f;
+    color: #fff;
+    height: 35.6px;
+    margin-left: 8px;
+}

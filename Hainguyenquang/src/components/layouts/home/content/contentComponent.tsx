@@ -1,8 +1,8 @@
 import { Image, Col, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import SeeMore from "../seeMore/seemoreComponent";
-import "../style.scss";
-import { api } from "../../../api";
+import "../../style.scss";
+import { api } from "../../../../api";
 
 const Slide: any = (props: any) => {
   // title:any, content:any

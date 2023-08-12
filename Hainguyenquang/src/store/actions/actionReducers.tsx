@@ -2,31 +2,6 @@ import axios from "axios";
 import { AppDispatch } from "..";
 import { postAPI, putAPI, deleteAPI } from "../../api";
 
-const startCountAction =
-  (value: number, isIncre: boolean) => (dispatch: AppDispatch) => {
-    // xu ly du lieu dau vao
-    // dieu kien (condition)
-    // call api
-    // const dispatch = useDispatch()
-
-    if (isIncre) {
-      console.log("check action increment");
-      return dispatch({
-        type: "increment",
-        state: value + 1,
-      });
-    }
-    console.log("check action decrement");
-    return dispatch({
-      type: "decrement",
-      state: value - 1,
-    });
-
-    // call api
-    // check status tra ve cua api
-    // su dung dispatch de push vao trong reducer
-  };
-
 const getProduct = () => async (dispatch: AppDispatch) => {
   dispatch({
     type: "SHOW_LOADING",
@@ -67,12 +42,13 @@ const postAPI1 =
     dispatch({
       type: "SHOW_LOADING",
     });
+
     const response = await postAPI({
       path: `http://localhost:3000/${record}`,
       body,
     });
     console.log('body.name: ', body);
-    
+
     // await postAPI({
     //   path: 'http://localhost:8888/getPhoto/uploadfile',
     //   body: body.srcImage,
@@ -98,10 +74,9 @@ const putAPI1 =
       path: `http://localhost:3000/${record}/${id}`,
       body,
     });
-    
 
     dispatch({
-      type: "SAVE_LIST_PRODUCTS1",
+      type: "EDIT",
       product: response.data || [],
     });
 
@@ -110,29 +85,37 @@ const putAPI1 =
     });
   };
 
-const deleteAPI1 =
-  (record: string, id: any) => async (dispatch: AppDispatch) => {
-    dispatch({
-      type: "SHOW_LOADING",
-    });
-    console.log("record: ", record);
+const deleteAPI1 = (record: string, id: any) => async (dispatch: AppDispatch) => {
+  dispatch({
+    type: "SHOW_LOADING",
+  });
 
-    await deleteAPI({
-      path: `http://localhost:3000/${record}/${id}`,
-    });
+  await deleteAPI({
+    path: `http://localhost:3000/${record}/${id}`,
+  });
 
-    dispatch({
-      type: "HIDE_LOADING",
-    });
-  };
+  dispatch({
+    type: "DELETE_LIST",
+    product: id || [],
+  });
 
-const INCREA_COUNT = (value: number) => ({
+  dispatch({
+    type: "HIDE_LOADING",
+  });
+};
+
+const INCREA_CART = (value: number) => ({
   type: "increment",
   value,
 });
 
-const DECRE_COUNT = (value: number) => ({
+const DECRE_CART = (value: number) => ({
   type: "decrement",
+  value,
+});
+
+const REMOVE_CART = (value: number) => ({
+  type: "remove",
   value,
 });
 
@@ -143,12 +126,12 @@ const addToCart = (value: any) => ({
 
 export {
   deleteAPI1,
+  REMOVE_CART,
   putAPI1,
   getAPI,
   postAPI1,
   addToCart,
-  INCREA_COUNT,
-  DECRE_COUNT,
-  startCountAction,
+  INCREA_CART,
+  DECRE_CART,
   getProduct,
 };

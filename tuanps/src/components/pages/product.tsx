@@ -38,7 +38,7 @@ const ProductPage = () => {
   const data = dataRedux?.productReducer?.products || [];
   const isLoading = dataRedux.productReducer.isLoading || false;
 
-  console.log('data: ', data);
+  // console.log('data: ', data);
   
 
   // call API get list product add redux

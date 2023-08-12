@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Checkbox, Form, Image, Input, Layout } from 'antd';
-import { postAPI } from '../../api';
+import { getAPILogin, postAPI } from '../../api';
 import { useNavigate } from 'react-router-dom';
 import { ACCESS_TOKEN, REFRESH_TOKEN } from '../../constands';
-import Footer from '../../components/layouts/footer/footerComponent';
-
+import Footer from '../../components/layouts/home/footer/footerComponent';
+import Admin from '../admin';
 
 const onFinishFailed = (errorInfo: any) => {
   console.log('Failed:', errorInfo);
@@ -23,6 +23,7 @@ const Login: React.FC = () => {
       }
 
     });
+
     console.log('postData: ', postData)
 
     if (postData.status === 200) { // trang thai API 
@@ -41,7 +42,7 @@ const Login: React.FC = () => {
 
   return (
     <div>
-      <div style={{ backgroundColor: "#b22830", minHeight: "120px",display: 'flex', alignItems: 'center' }}>
+      <div style={{ backgroundColor: "#b22830", minHeight: "120px", display: 'flex', alignItems: 'center' }}>
         <div style={{ maxWidth: "110px", marginLeft: '138px' }}>
           <a>
             <Image
@@ -89,7 +90,7 @@ const Login: React.FC = () => {
 
             <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
               <Button type="primary" htmlType="submit">
-                Submit
+                Đăng nhập
               </Button>
             </Form.Item>
           </Form>

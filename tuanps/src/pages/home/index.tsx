@@ -8,8 +8,8 @@ import { styled } from "styled-components";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import {
-  DECRE_COUNT,
-  INCREA_COUNT,
+  DECRE_CART,
+  INCREA_CART,
   getProduct,
   startCountAction,
 } from "../../stores/actions/actionReducers";
@@ -199,14 +199,14 @@ const HomePage = () => {
       </StyledButton>
       <Button
         onClick={() => {
-          store.dispatch(INCREA_COUNT(3));
+          store.dispatch(INCREA_CART(3));
         }}
       >
         increment
       </Button>
       <Button
         onClick={() => {
-          store.dispatch(DECRE_COUNT(2));
+          store.dispatch(DECRE_CART(2));
         }}
       >
         Decrement

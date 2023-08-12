@@ -1,6 +1,6 @@
-import Header from "../../components/layouts/header/headerComponent";
-import Footer from "../../components/layouts/footer/footerComponent";
-import Content from "../../components/layouts/content/contentComponent";
+import Header from "../../components/layouts/home/header/headerComponent";
+import Footer from "../../components/layouts/home/footer/footerComponent";
+import Content from "../../components/layouts/home/content/contentComponent";
 
 const ContentPage = () => {
   return (

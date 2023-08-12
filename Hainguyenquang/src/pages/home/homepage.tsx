@@ -1,68 +1,50 @@
-import Header from "../../components/layouts/header/headerComponent";
-import Footer from "../../components/layouts/footer/footerComponent";
-import Slide from "../../components/layouts/product/slide/slideproductComponent";
-import Product from "../../components/layouts/product/product/productComponent";
-import Sale from "../../components/layouts/product/sale/saleComponent";
+import Header from "../../components/layouts/home/header/headerComponent";
+import Footer from "../../components/layouts/home/footer/footerComponent";
+import Product from "../../components/layouts/home/product/product/productComponent";
+import Slide from "../../components/layouts/home/product/slide/slideproductComponent";
+import Sale from "../../components/layouts/home/product/sale/saleComponent";
 import { Col, Drawer, Layout } from "antd";
-import React, { useEffect, useState } from "react";
+import "./style.scss"
 import "../../App.css";
-import { useDispatch, useSelector } from "react-redux";
-import store from "../../store";
-import Sider from "antd/es/layout/Sider";
+import HotProduct from "../../components/layouts/home/product/product/hotProduct";
 
 const HomePage: any = () => {
-//   const [data, setData] = useState([]);
-//   const dataRedux: any = useSelector((state) => state);
-//   const [openMenu, setOpenMenu] = useState(false);
+  //   const [data, setData] = useState([]);
+  //   const dataRedux: any = useSelector((state) => state);
+  //   const [openMenu, setOpenMenu] = useState(false);
 
 
-// console.log('dataRedux: ', dataRedux);
-// const dataCart = dataRedux?.choose_itemReducer?.cart || [];
-// console.log('dataCart: ', dataCart);
+  // console.log('dataRedux: ', dataRedux);
+  // const dataCart = dataRedux?.choose_itemReducer?.cart || [];
+  // console.log('dataCart: ', dataCart);
 
 
   return (
     <Layout
-    // className="wrapper"
     >
-      {/* <Drawer
-        closable={false}
-        placement="right"
-        title="Two-level Drawer"
-        width={320}
-        open={openMenu}
-        onClose={() => {
-          setOpenMenu(false);
-        }}
-      >
-        <div
-      >
-        {dataCart.map((itemCart:any) => {
-          return (
-            <div>{itemCart.name}</div>
-          )
-        })}
-      </div>
-      </Drawer> */}
-      
+  
       <Header />
-      {/* <SlideProduct /> */}
       <Slide />
-
       <Col
-        className="wrapper"
-        style={{ display: "flex", flexWrap: "wrap", width: "100%" }}
+        className="wrapper homepageCol"
+        style={{ width: "100%" }}
       >
-        <div style={{ width: "100%", textAlign: "center", margin: "35px 0 0" }}>
-          <a className="HomePage-sportTitles">Ưu đãi của bạn</a>
+        <div className="homepageContent">
+          <span className="HomePage-sportTitles">Ưu đãi của bạn</span>
         </div>
         <Sale />
       </Col>
-      <Col className="wrapper" style={{ display: "flex", flexWrap: "wrap" }}>
-        <div style={{ width: "100%", textAlign: "center", margin: "35px 0 0" }}>
-          <a className="HomePage-sportTitles">Sản phẩm bán chạy</a>
+      <Col className="wrapper homepageCol">
+        <div className="homepageContent">
+          <span className="HomePage-sportTitles">Tất cả sản phẩm</span>
         </div>
         <Product />
+      </Col>
+      <Col className="wrapper homepageCol">
+        <div className="homepageContent">
+          <span className="HomePage-sportTitles">Sản phẩm bán chạy</span>
+        </div>
+        <HotProduct />
       </Col>
       <Footer />
     </Layout>

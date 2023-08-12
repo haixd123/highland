@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, Input, Layout, Modal, Space, Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
-import { api } from "../../api";
+import { api } from "../../../api";
 import Sider from "antd/es/layout/Sider";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import {
@@ -9,11 +9,16 @@ import {
   getAPI,
   putAPI1,
   deleteAPI1,
-} from "../../store/actions/actionReducers";
-import store from "../../store";
+} from "../../../store/actions/actionReducers";
+import store from "../../../store";
 
 import { useSelector } from "react-redux";
-import AdminSider from "../../components/layouts/adminSider/adminSider";
+import AdminSider from "../../../components/layouts/admin/adminSider/adminSider";
+import { useNavigate } from "react-router";
+import '../style1.scss'
+import { UserOutlined } from '@ant-design/icons';
+import AdminHeader from "../../../components/layouts/admin/adminHeader/adminHeader";
+
 
 enum STATUS {
   EDIT,
@@ -28,44 +33,46 @@ interface DataType {
 }
 
 const UserAdmin = () => {
+  const navigate = useNavigate();
+
   const headerStyle: React.CSSProperties = {
     textAlign: "center",
     color: "#fff",
     height: 64,
     paddingInline: 50,
     lineHeight: "64px",
-    backgroundColor: "#7dbcea",
+    backgroundColor: "#b22830",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'end'
   };
 
   const contentStyle: React.CSSProperties = {
-    textAlign: "center",
-    minHeight: 120,
-    lineHeight: "120px",
-    color: "#fff",
-    backgroundColor: "#108ee9",
-  };
+    marginLeft: '25px',
+    marginTop: '25px'
+  }
 
   const siderStyle: React.CSSProperties = {
     textAlign: "center",
     lineHeight: "120px",
     color: "#fff",
-    backgroundColor: "#3ba0e9",
+    backgroundColor: "#fff",
   };
 
   const footerStyle: React.CSSProperties = {
     textAlign: "center",
     color: "#fff",
-    backgroundColor: "#7dbcea",
+    backgroundColor: "#53382c",
   };
 
   return (
     <Layout>
-      <Header style={headerStyle}>User</Header>
+      <AdminHeader title='User' />
       <Layout hasSider>
         <Sider style={siderStyle}>
           <AdminSider />
         </Sider>
-        <Content>
+        <Content style={contentStyle}>
           <TableUser />
         </Content>
       </Layout>
@@ -265,6 +272,7 @@ export const TableUser = () => {
       </Button>
 
       <Input.Search
+        className="inputSearch"
         onSearch={(value, event) => {
           console.log("value: ", value);
           console.log("event: ", event);

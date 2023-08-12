@@ -69,22 +69,6 @@
       "id": 0.5285623752937327
     },
     {
-      "username": "a",
-      "fullname": "a",
-      "email": "a",
-      "telephone": "a",
-      "address": "a",
-      "id": 6
-    },
-    {
-      "username": "b",
-      "fullname": "b",
-      "email": "b",
-      "telephone": "b",
-      "address": "b",
-      "id": 7
-    },
-    {
       "username": "c",
       "fullname": "c",
       "email": "b",
@@ -95,70 +79,122 @@
   ],
   "postsProduct": [
     {
+      "id": 1,
       "name": "Cafe cốt dừa",
       "desc": "đồ uống tươi mát",
       "SKU": "Fy001",
-      "price": "300000",
+      "price": "₫319,000",
       "category": "tea coffe",
-      "discount": 30,
-      "remaining": "100",
-      "srcImage": "myFile-1690977218645.jpg",
-      "id": 1
+      "discount": "19",
+      "remaining": 65,
+      "srcImage": "myFile-1691321794435.jpg",
+      "quantity": 1
     },
     {
       "id": 2,
       "name": "Cafe ca cao",
       "desc": "Vị ngọt nhẹ kèm đắng của ca cao",
       "SKU": "Fy002",
-      "price": "20000",
+      "price": "₫25,000",
       "category": "tea coffe",
-      "discount": 30,
-      "remaining": "100",
-      "srcImage": "myFile-1690977420654.jpg"
+      "discount": "25",
+      "remaining": 70,
+      "srcImage": "myFile-1690977420654.jpg",
+      "quantity": 1
     },
     {
       "id": 3,
-      "name": "Cafe nâu",
-      "desc": "Dành cho người hay buồn ngủ",
+      "name": "Cafe nâu test",
+      "desc": "Dành cho người thích ngọt",
       "SKU": "Fy003",
-      "price": "4444444",
+      "price": "₫39,900",
       "category": "tea coffe",
-      "discount": 30,
-      "remaining": "100",
-      "srcImage": "myFile-1690977453953.jpg"
+      "discount": "41",
+      "remaining": 89,
+      "srcImage": "myFile-1691321821437.jpg",
+      "quantity": 1
     },
     {
       "id": 4,
       "name": "Cafe đen",
       "desc": "đồ uống tươi mát",
       "SKU": "Fy004",
-      "price": "56789",
+      "price": "₫59,900",
       "category": "Tea",
-      "discount": 30,
-      "remaining": "100",
-      "srcImage": "myFile-1690977465594.png"
+      "discount": "39",
+      "remaining": 45,
+      "srcImage": "myFile-1691321828420.jpg",
+      "quantity": 1
     },
     {
       "id": 5,
-      "name": "hhh",
-      "desc": "a",
-      "SKU": "hhh",
-      "price": "a",
-      "category": "Tea",
-      "discount": "a",
-      "remaining": "a",
-      "srcImage": "myFile-1690979348626.jpg"
+      "name": "Espresso",
+      "desc": "Vị cà phê nguyên bản",
+      "SKU": "Fy005",
+      "price": "₫30,000",
+      "category": "Coffee",
+      "discount": "20",
+      "remaining": 50,
+      "srcImage": "myFile-1691321894468.jpg",
+      "quantity": 1
     },
     {
       "id": 6,
-      "name": "ad",
-      "desc": "kkkkk",
-      "SKU": "ad",
-      "price": "b",
+      "name": "Macchiato",
+      "desc": "hương vị thơm ngon và đầy mê hoặc",
+      "SKU": "Fy006",
+      "price": "₫59,900",
+      "category": "Coffee",
+      "discount": "40",
+      "remaining": 15,
+      "srcImage": "myFile-1691321914489.jpg",
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "name": "Latte",
+      "desc": "Trà sữa thanh mat, ngọt nhẹ",
+      "SKU": "Fy007",
+      "price": "₫19,000",
+      "category": "Tea",
+      "discount": "11",
+      "remaining": 1540,
+      "srcImage": "myFile-1691321940663.jpg",
+      "quantity": 1
+    },
+    {
+      "id": 8,
+      "name": "Trà đào cam sả",
+      "desc": "Vị ngọt từ cam và vị thơm từ sả",
+      "SKU": "Fy008",
+      "price": "₫35,000",
+      "category": "Tea",
+      "discount": "2",
+      "remaining": 98,
+      "srcImage": "myFile-1691321983440.jpg",
+      "quantity": 1
+    },
+    {
+      "id": 9,
+      "name": "kkkkk",
+      "desc": "lllllllll",
+      "SKU": "kkkkkkkkkkk",
+      "price": "₫NaN",
+      "category": "Tea",
+      "discount": "a",
+      "remaining": "a",
+      "quantity": 1
+    },
+    {
+      "id": 10,
+      "name": "test",
+      "desc": "asssssssss",
+      "SKU": "sssssss",
+      "price": "₫NaN",
       "category": "Tea",
       "discount": "b",
       "remaining": "b",
-      "srcImage": "myFile-1690979056354.jpg"
+      "quantity": 1
     }
   ],
   "postsCategory": [
@@ -174,51 +210,51 @@
   "postsNews": [
     {
       "id": 1,
-      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_4/thumbs/470_crop_Highlands_Coffee_tang_qua_trung_thu_3.jpg",
       "content": "ĐÊM TRĂNG DIỆU KỲ CÙNG HIGHLANDS COFFEE",
-      "date": "08/02/1999",
       "comment": "32355",
-      "like": "354652"
+      "like": "354652",
+      "date": "08/02/1999",
+      "srcImage": "myFile-1691680729098.jpg"
     },
     {
       "id": 2,
-      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_3/thumbs/470_crop_Highlands_Coffee_giup_do_mai_am_2.jpg",
       "content": "MANG CHÚT YÊU THƯƠNG MÁT LÀNH ĐẾN MIỀN NINH THUẬN NHIỀU NẮNG GIÓ",
+      "comment": "32355",
+      "like": "354652",
+      "date": "09/04/2007",
+      "srcImage": "myFile-1691680743025.jpg"
+    },
+    {
+      "id": 3,
+      "content": "HIẾN MÁU NHÂN ĐẠO THƯỜNG NIÊN – TỰ HÀO DÒNG MÁU VIỆT",
+      "srcImage": "myFile-1691335518706.png",
       "date": "09/04/2007",
       "comment": "32355",
       "like": "354652"
     },
     {
-      "id": 3,
-      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/thumbs/470_crop_Highlands_Coffee_hien_mau_nhan_dao_2.jpg",
-      "content": "HIẾN MÁU NHÂN ĐẠO THƯỜNG NIÊN – TỰ HÀO DÒNG MÁU VIỆT",
-      "date": "10/5/2001",
-      "comment": "32355",
-      "like": "354652"
-    },
-    {
       "id": 4,
-      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/thumbs/470_crop_Highlands_Coffee_trung_thu_2.jpg",
       "content": "TRAO TẶNG BÁNH – TRỌN THƯƠNG YÊU",
-      "date": "15/01/2000",
+      "srcImage": "myFile-1691335448383.jpg",
+      "date": "09/04/2007",
       "comment": "32355",
       "like": "354652"
     },
     {
       "id": 5,
-      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/09_2019/thumbs/470_crop_Picture1.png",
       "content": "HIGHLANDS COFFEE CÙNG Ý TƯỞNG LỒNG ĐÈN XANH” THẮP SÁNG TRUNG THU XANH” CHO HƠN",
-      "date": "30/06/2015",
       "comment": "32355",
-      "like": "354652"
+      "like": "354652",
+      "date": "09/04/2007",
+      "srcImage": "myFile-1691335745737.jpg"
     },
     {
       "id": 6,
-      "src": "https://www.highlandscoffee.com.vn/vnt_upload/news/05_2018/thumbs/470_crop_IMG_0479.jpg",
       "content": "TRUNG THU YÊU THƯƠNG - LỚP HỌC CHO EM 2017",
-      "date": "20/08/2010",
       "comment": "32355",
-      "like": "354652"
+      "like": "354652",
+      "date": "2023-08-06T15:38:55.427Z",
+      "srcImage": "myFile-1691335562733.jpg"
     }
   ],
   "postsVouchers": [
@@ -265,6 +301,17 @@
       "srcImg": "https://www.highlandscoffee.com.vn/vnt_upload/about/Highlands_5557_R3_-_Copy.jpg",
       "backGroundColor": 3,
       "seeMoreContent": 2
+    }
+  ],
+  "postsDataNews": [
+    {
+      "id": 1,
+      "title": "aaaaaaaaaaaaa"
+    },
+    {
+      "<p>“Trung thu là Tết đoàn viên</p><p>Gia đình gắn kết, bình yên sum vầy”</p><p>Không để cho các bé có hoàn cảnh kém may mắn phải chịu thiệt thòi trong ngày Tết trẻ thơ này, ngày 8-9/9/2022 vừa qua, Highlands Coffee đã đến thăm hỏi, tặng quà, vui chơi với các em tại Mái ấm Thiện Duyên (Củ Chi – HCM), các bệnh nhi đang điều trị ở BV Việt Đức (Hà Nội) ": "",
+      "amp; Viện Huyết học - Truyền máu Trung ương, cùng nhau tạo nên một “ĐÊM TRĂNG DIỆU KỲ”.</p><p><img src": "\"https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_4/post_4_1.png\" alt=\"post_4_1\"></p><p>Mái ấm Thiện Duyên đang cưu mang và chăm sóc 40 bạn nhỏ không nơi nương tựa, 90 bạn có sức khoẻ bị ảnh hưởng bởi chất độc màu da cam. “ĐÊM TRĂNG DIỆU KỲ” tại mái ấm đã phủ ngập tiếng cười trẻ thơ khi các bé được thoả thích vui chơi tại các gian hàng do những chị Hằng chú Cuội áo đỏ Highlands tận tâm chuẩn bị như: tô màu, ném bóng vào ly, thi trang trí mâm cỗ, phá cỗ, rước đèn… cùng một buổi văn nghệ vui tươi, đầm ấm, thực sự vẹn tròn.</p><p><img src=\"https://www.highlandscoffee.com.vn/vnt_upload/news/11_2022/CSR/Bai_4/post_4_3.png\" alt=\"post_4_3\"></p><p>Còn ở đầu cầu Hà Nội, Bệnh viện Việt Đức và Viện Huyết học - Truyền máu trung ương – nơi các bạn nhỏ đang dũng cảm chiến đấu mỗi ngày, nơi bệnh viện là nhà, các y tá bác sĩ là bạn tâm giao, biệt đội Highlands Coffee cũng đã bất ngờ xuất hiện trong tạo hình chị Hằng Nga, bạn Thỏ Trắng, vừa pha chế cho các bé những ly trà sen vàng thơm ngon vừa trao tặng rất nhiều món quà thật đẹp.</p><p>Mùa Trung thu năm nay không chỉ ấm áp hơn trong lòng những cô cậu nhỏ này, mà còn thắp lên những cảm xúc rất lạ trong tim những thành viên Highlands Coffee sánh vai biệt đội “ĐÊM TRĂNG DIỆU KỲ” này, tiếp thêm động lực dốc sức cho cộng đồng.</p><p>Hẹn gặp lại các bạn ở mùa Trung thu năm sau nữa nhé!</p>",
+      "id": 2
     }
   ]
 }

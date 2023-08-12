@@ -1,8 +1,8 @@
 import { Row, Col, Button, Space } from "antd"
-import '../../style.scss'
+import '../../../style.scss'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { api } from "../../../../api";
+import { api } from "../../../../../api";
 
 const Sale:any = (props:any) => {
     const [data, setData] = useState([]);
@@ -21,11 +21,12 @@ const Sale:any = (props:any) => {
   return data.map((newData: any, index: any) => {
     return(
             <Col
+            style={{textAlign: 'center'}}
             className="colSale"
             lg={{ span: 6 }}
             md={{ span: 6 }}
             sm={{ span: 12 }}
-            xs={{ span: 12 }}
+            xs={{ span: 24 }}
             >
                 <div 
                 className="saleContent"

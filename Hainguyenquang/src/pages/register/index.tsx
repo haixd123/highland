@@ -3,8 +3,10 @@ import { Button, Form, Image, Input, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { ENV_BE } from '../../constands';
 import { useNavigate } from 'react-router-dom';
-import { postAPILogin } from '../../api';
-import Footer from '../../components/layouts/footer/footerComponent';
+import { postAPI, postAPILogin } from '../../api';
+import Footer from '../../components/layouts/home/footer/footerComponent';
+import store from "../../store";
+
 
 const layout = {
   labelCol: { span: 8 },
@@ -28,6 +30,8 @@ const Register: React.FC = () => {
   const navigate = useNavigate();
 
   const onFinish = async (values: { Username: string, Password: string }) => {
+    console.log('values: ', values);
+
     // Luồng:
     // - Đăng ký xong
     // - push về trang login
@@ -39,9 +43,17 @@ const Register: React.FC = () => {
         password: values.Password,
       }
     });
+    const test:any = {
+      ...values
+    }
     console.log('postData: ', postData);
 
     if (postData.status === 200) { // trang thai API 
+      // store.dispatch(postAPI('postsUser', values))
+
+
+      console.log('test: ', test);
+
       if (postData.data.status === 'success') { // data thang BE tra ve co ok?
         alert("Đăng ký thành công!!!")
         navigate('/login');

@@ -72,18 +72,46 @@ logout: - xóa local storage push lại về login -- xong
 làm lại giao diện login,register -- xong
 làm lại search cho admin - xong
 
+chưa get đc ảnh từ database -- xong
 làm sidebar cho admin -- xong
+add cart -- xong
+chưa load lại khi sửa và xóa sản phẩm -- xong
+set ảnh thành default nếu ảnh lỗi ở product -- xong
+làm lại giao diện home(thêm giỏ hàng + User) -- xong
+
+
+Chưa bọc đc authen -- xong
+set rate cho product -- xong
+Hiển thị ảnh trong phần edit(modal) -- xong
+làm trang error -- xong
+convert sang VND -- xong
+remove hoặc giảm hết product thì card sẽ tự đóng -- xong
+Làm thêm số sản phẩm đang có trong giỏ hàng(hiển thị đè lên icon product) -- xong
+Chưa làm lớp giả làm cầu nối cho user -- xong
+
+
+
+
+reponsive trang home bị lỗi -- xong
+Làm trang thanh toán -- xong
+
+
+-- Bọc admin đúng chưa
+-- làm news theo CKeditor
+-- search admin: thiếu phần: search k đầy đủ thông tin cũng hiện(đang làm dở search admin product) -- xong
+-- hiển thị quá nhiều drawer -- xong
+-- Header => chuyển trang sẽ đổi tên header
 
 
 
 json-server --watch db.json
 
+-- Chưa làm lại search cho user và content
 
 
-search after 5s call api again(dùng thẻ AutoComplete của antdesign)
+-- Xử lý trùng fail -- xong nhưng bị alert nhiều lần
 
-//! làm news theo CKeditor
-Xử lý trùng fail
-chưa get đc ảnh từ database
-Chưa bọc đc authen
-chưa load lại khi sửa và xóa sản phẩm
+
+
+Chưa đồng nhất user đăng nhập và user admin/user
+Chưa xử lý input nhập số cho addcart

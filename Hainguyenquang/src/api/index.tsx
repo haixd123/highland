@@ -22,6 +22,8 @@ export const getAPILogin = async ({ path, params, query }: { path: string; param
         "Authorization": `Bearer ${getToken}`
       }
     });
+    console.log('response: ', response);
+    
     return response;
   } catch (error: any) {
     // check token expired - kiem tra token het han => refresh lai acccess new.

@@ -6,7 +6,7 @@ import {
   MailOutlined,
 } from "@ant-design/icons";
 import { Col, Row } from "antd";
-import "../style.scss";
+import "../../style.scss";
 
 const Footer = () => {
   return (

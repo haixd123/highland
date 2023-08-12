@@ -1,15 +1,18 @@
-import { Button, Form, Image, Input, Layout, Modal, Select, Space, Upload } from "antd";
+import { Button, Empty, Form, Image, Input, Layout, Modal, Select, Space, Upload } from "antd";
 import Table, { ColumnsType, TableProps } from "antd/es/table";
 import { useEffect, useState } from "react";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import Sider from "antd/es/layout/Sider";
 import { Option } from "antd/es/mentions";
-import { postAPI1, getAPI, putAPI1, deleteAPI1 } from "../../store/actions/actionReducers";
-import store from '../../store';
-import { UploadOutlined } from '@ant-design/icons';
+import { postAPI1, getAPI, putAPI1, deleteAPI1 } from "../../../store/actions/actionReducers";
+import store from "../../../store";
+import { UploadOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector } from "react-redux";
-import AdminSider from "../../components/layouts/adminSider/adminSider";
-import Admin from "./admin";
+import AdminSider from "../../../components/layouts/admin/adminSider/adminSider";
+import { useNavigate } from "react-router";
+import '../style1.scss'
+import AdminHeader from "../../../components/layouts/admin/adminHeader/adminHeader";
+
 
 enum STATUS {
   EDIT,
@@ -25,36 +28,47 @@ interface DataType {
 }
 
 const ProductAdmin = () => {
+  const navigate = useNavigate();
+
   const headerStyle: React.CSSProperties = {
     textAlign: "center",
     color: "#fff",
     height: 64,
     paddingInline: 50,
     lineHeight: "64px",
-    backgroundColor: "#7dbcea",
+    backgroundColor: "#b22830",
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'end'
   };
 
   const siderStyle: React.CSSProperties = {
     textAlign: "center",
     lineHeight: "120px",
     color: "#fff",
-    backgroundColor: "#3ba0e9",
+    backgroundColor: "#fff",
   };
+
+  const contentStyle: React.CSSProperties = {
+    marginLeft: '25px',
+    marginTop: '25px'
+  }
 
   const footerStyle: React.CSSProperties = {
     textAlign: "center",
     color: "#fff",
-    backgroundColor: "#7dbcea",
+    backgroundColor: "#53382c",
   };
 
   return (
     <Layout>
-      <Header style={headerStyle}>Product</Header>
+      <AdminHeader title='Product' />
+
       <Layout hasSider>
         <Sider style={siderStyle}>
           <AdminSider />
         </Sider>
-        <Content>
+        <Content style={contentStyle}>
           <TableProduct />
         </Content>
       </Layout>
@@ -75,8 +89,110 @@ export const TableProduct = () => {
   const [form] = Form.useForm();
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
   const [show, setShow] = useState(false);
+  const [idImage, setIdImage] = useState(0)
   const [openModal2, setOpenModal2] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
+  const [newData1, setNewData1] = useState<any>([])
+
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'VND',
+  });
+
+  const onFinish = async (values: any) => {
+    console.log('newData: ', newData1);
+
+    const srcImage = await values?.srcImage;
+    console.log('srcImage: ', srcImage);
+    values.srcImage = srcImage?.filename || values.srcImage;
+    const newValue = {
+      ...values,
+      id: values.id ? values.id : values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
+      name: values.name,
+      desc: values.desc,
+      SKU: values.SKU,
+      category: values.category,
+      price: formatter.format(values.price),
+      discount: values.discount,
+      remaining: values.remaining,
+      srcImage: values.srcImage,
+      quantity: 1
+    };
+
+
+    const handleName = data.find((item: any) => (item.name === newValue.name))
+    const handleSKU = data.find((item: any) => (item.SKU === newValue.SKU))
+    console.log('handleName: ', handleName);
+    console.log('handleSKU: ', handleSKU);
+
+    // if (status === STATUS.CREATE) {
+
+    //   if (!handleName && !handleSKU) {
+    //     store.dispatch(postAPI1('postsProduct', newValue));
+    //     form.resetFields();
+    //     setIsModalOpen(false);
+    //   } else {
+    //     alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
+    //   }
+    // } else {
+    //   const test = data.filter((record: any) => {
+    //     if (record.id === newValue.id) {
+    //       //! Nếu trùng tên và trùng phân loại
+    //       if ((record.name === newValue.name) && (record.SKU === newValue.SKU)) {
+    //         console.log('pass1')
+
+    //         store.dispatch(putAPI1('postsProduct', values.id, newValue));
+    //         form.resetFields();
+    //         setIsModalOpen(false);
+    //         //! không trùng tên và phân loại
+    //       } else {
+    //         //! không trùng trên hoặc k trùng phân loại hoặc k trùng cả 2
+    //         //! test lại
+    //         if (!handleName || !handleSKU || (!handleName && !handleSKU)) {
+    //           console.log('pass2')
+    //           store.dispatch(putAPI1('postsProduct', values.id, newValue));
+    //           form.resetFields();
+    //           setIsModalOpen(false);
+    //         } else {
+    //           console.log('lose1')
+    //           alert('Tên hoặc Phân loại sản phẩm đã bị trùng')
+    //           return record
+    //         }
+    //       }
+    //     } else {
+    //       console.log('lose2')
+    //       alert('Tên hoặc Phân loại sản phẩm đã bị trùng')
+    //       return record
+    //     }
+    //   })
+
+    //   // else if(!handleName && !handleSKU) {
+    //   //   store.dispatch(putAPI1('postsProduct', values.id, newValue));
+    //   //   form.resetFields();
+    //   //   setIsModalOpen(false);
+    //   // }
+    //   // else {
+    //   //   // setOpenModal2(true);
+    //   //   alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
+    //   // }
+    //   // const response2 = await api.put(`/postsProduct/${values.id}`, values);
+    //   // if (response2.status === 2001) {
+    //   //   console.log("response2", response2.status);
+    //   // }
+    //   // fetchData();
+    // }
+    const a = newData1.filter((el: any) => el.name === newValue.name).length;
+    const b = newData1.filter((el: any) => el.SKU === newValue.SKU).length
+
+
+    if (a > 0 || b > 0) {
+      alert('tồn tại')
+    } else {
+      
+    }
+
+
+  };
 
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -135,60 +251,9 @@ export const TableProduct = () => {
 
   }, []);
 
-  const onFinish = async (values: any) => {
-    const srcImage = await values?.srcImage;
-    console.log('srcImage: ', srcImage);
-    values.srcImage = srcImage?.filename || values.srcImage;
-    const newValue = {
-      ...values,
-      id: values.id ? values.id : values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
-      name: values.name,
-      desc: values.desc,
-      SKU: values.SKU,
-      category: values.category,
-      price: values.price,
-      discount: values.discount,
-      remaining: values.remaining,
-      srcImage: values.srcImage
-    };
 
-    const handleName = data.find((item: any) => (item.name === values.name))
-    const handleSKU = data.find((item: any) => (item.SKU === values.SKU))
-    console.log('handleName: ', handleName);
-    console.log('handleSKU: ', handleSKU);
 
-    if (status === STATUS.CREATE) {
-      if (!handleName && !handleSKU) {
-        store.dispatch(postAPI1('postsProduct', newValue));
-        form.resetFields();
-        setIsModalOpen(false);
-      } else {
-        alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
-
-      }
-
-    } else {
-      if ((handleName && handleSKU) || (!handleName && !handleSKU)) {
-        store.dispatch(putAPI1('postsProduct', values.id, newValue));
-        form.resetFields();
-        setIsModalOpen(false);
-      }
-      // else if(!handleName && !handleSKU) {
-      //   store.dispatch(putAPI1('postsProduct', values.id, newValue));
-      //   form.resetFields();
-      //   setIsModalOpen(false);
-      // }
-      else {
-        // setOpenModal2(true);
-        alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
-      }
-      // const response2 = await api.put(`/postsProduct/${values.id}`, values);
-      // if (response2.status === 2001) {
-      //   console.log("response2", response2.status);
-      // }
-      // fetchData();
-    }
-  };
+  
 
   const openCreate = () => {
     setIsModalOpen(true);
@@ -197,16 +262,15 @@ export const TableProduct = () => {
 
   };
 
-
   const handleEdit = async (record: any) => {
     setStatus(STATUS.EDIT);
     form.setFieldsValue(record);
     setIsModalOpen(true);
     console.log("EDIT");
+    setIdImage(record.id)
+    setNewData1(data.filter((el: any) => el.id !== record.id))
   };
-
-
-
+  
   const onChange: TableProps<DataType>["onChange"] = (
     pagination,
     filters,
@@ -317,46 +381,49 @@ export const TableProduct = () => {
   ];
 
 
-
   return (
     <>
       <Button type="primary" onClick={openCreate}>
         Thêm người dùng mới
       </Button>
 
-      <Input.Search
-        onSearch={(value, event) => {
+      <Input
+        className="inputSearch"
 
+        onChange={(value: any) => {
+          const searchData = data.filter(
+            (record: any) => {
+              // const test = record?.SKU.split('')
+              // test.filter((newSKU:any) => { 
+              //   console.log('test: ', test);
 
-          const newData = data.filter(
-            (record: any) => record?.id === parseInt(value)
+              //   return newSKU == value.target.value
+              // })
+              return record?.id === parseInt(value.target.value) || record?.SKU.toUpperCase().includes(value.target.value.toUpperCase())
+            }
           );
-          setNewData(newData);
-
-          // if (!show) {
-          //   console.log("show: ", show);
-
-          //   setShow(!show);
-          //   console.log("show: ", show);
-          // }
-        }}
-      />
-      {/* {show && (
-        <Table
-          dataSource={data}
-          onChange={onChange}
-          columns={columns}
-          loading={isLoading}
-          bordered+
-        />
-      )} */}
-      <Table
-        dataSource={newData.length <= 0 ? data : newData}
+          if (searchData.length) {
+            setShow(false)
+            setNewData(searchData);
+          }
+          else {
+            if (!value.target.value) {
+              setShow(false)
+              setNewData(data)
+            }
+            else {
+              setShow(true)
+            }
+          }
+        }} />
+      {!show && <Table
+        dataSource={newData.length === 0 ? data : newData}
         onChange={onChange}
         loading={isLoading}
         columns={columns}
         bordered
-      />
+      />}
+      {show && <Empty />}
       <Modal
         title={
           status === STATUS.CREATE
@@ -373,6 +440,7 @@ export const TableProduct = () => {
         ]}
       >
         <Form
+
           form={form}
           name="basic"
           labelCol={{ span: 24 }}
@@ -468,6 +536,11 @@ export const TableProduct = () => {
             getValueFromEvent={normFile}
           >
             <Upload name="myFile" action={'http://localhost:8888/uploadfile'} listType="picture">
+              {!(status === STATUS.CREATE) && data.map((record: any) => {
+                if (record.id === idImage) {
+                  return <Image placeholder={true} preview={false} style={{ height: '300px', width: '300px', margin: '0 50px 15px 0 ' }} src={`http://localhost:8888/getPhoto/${record.srcImage}`} />
+                }
+              })}
               <Button icon={<UploadOutlined />}>Click to upload</Button>
             </Upload>
           </Form.Item>

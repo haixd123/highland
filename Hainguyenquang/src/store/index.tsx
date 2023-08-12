@@ -1,18 +1,15 @@
 // redux saga or redux thunk
 import { configureStore } from '@reduxjs/toolkit'
 import logger from 'redux-logger';
-import { counterReducer,  addToCartReducer, addToCartReducerTest, productListReducer } from './reducers/couterReducers';
+import { addToCartReducer, productListReducer } from './reducers/couterReducers';
 import thunk from 'redux-thunk';
 import { combineReducers } from 'redux';
 
 const store = configureStore({
     reducer: combineReducers({
-        counterReducer,
-        // productReducer,
-        // addToCartReducer,
-        addToCartReducerTest,
         productListReducer,
-        
+        addToCartReducer
+
     }),
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger, thunk),
     devTools: true,

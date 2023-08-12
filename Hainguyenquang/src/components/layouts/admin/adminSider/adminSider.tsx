@@ -38,7 +38,6 @@ const AdminSider = () => {
                 ]}
             >
             </Menu>
-            <Button style={{ width: '100%', color: 'red', marginTop: '10px' }} onClick={() => { navigate('/login'); localStorage.removeItem('access-token'); localStorage.removeItem('refresh-token') }}>Logout</Button>
         </div>
     )
 }
