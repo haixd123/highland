@@ -69,12 +69,12 @@
       "id": 0.5285623752937327
     },
     {
-      "username": "c",
-      "fullname": "c",
-      "email": "b",
-      "telephone": "c",
-      "address": "c",
-      "id": 8
+      "id": 8,
+      "username": "e",
+      "fullname": "e",
+      "email": "ee",
+      "telephone": "ce",
+      "address": "c"
     }
   ],
   "postsProduct": [
@@ -104,10 +104,10 @@
     },
     {
       "id": 3,
-      "name": "Cafe nâu test",
+      "name": "Cafe nâu",
       "desc": "Dành cho người thích ngọt",
       "SKU": "Fy003",
-      "price": "₫39,900",
+      "price": "₫NaN",
       "category": "tea coffe",
       "discount": "41",
       "remaining": 89,

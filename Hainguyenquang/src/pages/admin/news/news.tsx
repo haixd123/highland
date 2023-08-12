@@ -1,4 +1,4 @@
-import { Button, Form, Image, Input, Layout, Modal, Space, Upload } from "antd";
+import { Button, Empty, Form, Image, Input, Layout, Modal, Space, Upload } from "antd";
 import Table, { ColumnsType, TableProps } from "antd/es/table";
 import { useEffect, useState } from "react";
 import { api } from "../../../api";
@@ -89,6 +89,7 @@ export const TableNews = () => {
   const [form] = Form.useForm();
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
   const [idImage, setIdImage] = useState(0)
+  const [show, setShow] = useState(false);
 
   const dataRedux: any = useSelector(state => state)
   const data = dataRedux?.productListReducer?.products || [];
@@ -239,24 +240,38 @@ export const TableNews = () => {
         Thêm người dùng mới
       </Button>
 
-      <Input.Search
+      <Input
         className="inputSearch"
-        onSearch={(value, event) => {
-          console.log("value: ", value);
-          console.log("event: ", event);
-          const newData = data.filter(
-            (record: any) => record?.id === parseInt(value)
-          );
-          setNewData(newData);
-        }}
-      />
 
-      <Table
-        dataSource={newData.length <= 0 ? data : newData}
+        onChange={(value: any) => {
+          const searchData = data.filter(
+            (record: any) => {
+              return record?.id === parseInt(value.target.value) || record?.content.toUpperCase().includes(value.target.value.toUpperCase())
+            }
+          );
+          if (searchData.length > 0) {
+            setShow(false)
+            setNewData(searchData);
+          }
+          else {
+            if (!value.target.value) {
+              setShow(false)
+              setNewData(data)
+            }
+            else {
+              setShow(true)
+            }
+          }
+        }} />
+      {!show && <Table
+        dataSource={newData.length === 0 ? data : newData}
         onChange={onChange}
+        loading={isLoading}
         columns={columns}
         bordered
-      />
+      />}
+      {show && <Empty />}
+
       <Modal
         title={
           status === STATUS.CREATE

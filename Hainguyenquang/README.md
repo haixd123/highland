@@ -94,10 +94,10 @@ Chưa làm lớp giả làm cầu nối cho user -- xong
 
 reponsive trang home bị lỗi -- xong
 Làm trang thanh toán -- xong
+-- Xử lý trùng fail -- xong
 
 
--- Bọc admin đúng chưa
--- làm news theo CKeditor
+
 -- search admin: thiếu phần: search k đầy đủ thông tin cũng hiện(đang làm dở search admin product) -- xong
 -- hiển thị quá nhiều drawer -- xong
 -- Header => chuyển trang sẽ đổi tên header
@@ -109,9 +109,12 @@ json-server --watch db.json
 -- Chưa làm lại search cho user và content
 
 
--- Xử lý trùng fail -- xong nhưng bị alert nhiều lần
 
 
 
 Chưa đồng nhất user đăng nhập và user admin/user
 Chưa xử lý input nhập số cho addcart
+-- Bọc admin đúng chưa
+-- làm news theo CKeditor
+
+chưa xử lý trùng khi edit cho admin/news và admin/user

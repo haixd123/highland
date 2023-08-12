@@ -1,8 +1,5 @@
-// import { useEffect, useState } from "react";
-
 import { useState } from "react";
 
-// import { api } from "../../API/axios";
 const productState = { products: [], isLoading: false };
 const choose_itemState = { cart: [] };
 const cartItemsJSON = localStorage.getItem("cartItems");
@@ -57,6 +54,8 @@ const addToCartReducer = (state: any = initialState, action: any) => {
 
       newList = lstProduct.map((record: any) => {
         if (record.id === action.value.id) {
+          // console.log('record: ', record);
+          // console.log('quantity: ', record.quantity);
           if (record.quantity > 1) {
             console.log('record.quantity > 1: ', record.quantity);
 
@@ -65,6 +64,13 @@ const addToCartReducer = (state: any = initialState, action: any) => {
               quantity: record.quantity - 1
             }
           }
+          // else {
+          //   if (record.quantity === 0) {
+          //     console.log('record.quantity < 1: ', record.quantity);
+          //     newList = removeCartItem
+          //   }
+          // }
+
         }
         console.log('record: ', record);
         return record
@@ -117,7 +123,6 @@ const addToCartReducer = (state: any = initialState, action: any) => {
   }
 };
 
-
 interface IProduct {
   "id": String;
   "name": String;
@@ -164,6 +169,7 @@ const productListReducer = (
         if ((record.id === action.product.id)) {
           return action.product
         }
+        return record
       })
 
       return {
@@ -190,4 +196,7 @@ const productListReducer = (
 export {
   productListReducer,
   addToCartReducer,
+  // counterReducer,
+  // productReducer,
+  // counterReducerTest,
 };

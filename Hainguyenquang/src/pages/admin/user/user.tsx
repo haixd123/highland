@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Form, Input, Layout, Modal, Space, Table } from "antd";
+import { Button, Empty, Form, Input, Layout, Modal, Space, Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { api } from "../../../api";
 import Sider from "antd/es/layout/Sider";
@@ -221,7 +221,6 @@ export const TableUser = () => {
       }
       else {
         alert('tên đăng nhập hoặc số điện thoại đã bị trùng')
-
       }
     }
   };
@@ -271,26 +270,40 @@ export const TableUser = () => {
         Thêm người dùng mới
       </Button>
 
-      <Input.Search
+      <Input
         className="inputSearch"
-        onSearch={(value, event) => {
-          console.log("value: ", value);
-          console.log("event: ", event);
 
-          const newData = data.filter(
-            (record: any) => record?.id === parseInt(value)
+        onChange={(value: any) => {
+          const searchData = data.filter(
+            (record: any) => {
+              return record?.id === parseInt(value.target.value) 
+              || record?.username.toUpperCase().includes(value.target.value.toUpperCase())
+              || record?.telephone.includes(value.target.value)
+            }
           );
-          setNewData(newData);
-        }}
-      />
-
-      <Table
-        dataSource={newData.length <= 0 ? data : newData}
+          if (searchData.length > 0) {
+            setShow(false)
+            setNewData(searchData);
+          }
+          else {
+            if (!value.target.value) {
+              setShow(false)
+              setNewData(data)
+            }
+            else {
+              setShow(true)
+            }
+          }
+        }} />
+      {!show && <Table
+        dataSource={newData.length === 0 ? data : newData}
         onChange={onChange}
+        loading={isLoading}
         columns={columns}
         bordered
-      />
-      {/* <ProductPage /> */}
+      />}
+      {show && <Empty />}
+
       <Modal
         title={
           status === STATUS.CREATE

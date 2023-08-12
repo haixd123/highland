@@ -100,10 +100,7 @@ export const TableProduct = () => {
   });
 
   const onFinish = async (values: any) => {
-    console.log('newData: ', newData1);
-
     const srcImage = await values?.srcImage;
-    console.log('srcImage: ', srcImage);
     values.srcImage = srcImage?.filename || values.srcImage;
     const newValue = {
       ...values,
@@ -125,71 +122,31 @@ export const TableProduct = () => {
     console.log('handleName: ', handleName);
     console.log('handleSKU: ', handleSKU);
 
-    // if (status === STATUS.CREATE) {
+    if (status === STATUS.CREATE) {
 
-    //   if (!handleName && !handleSKU) {
-    //     store.dispatch(postAPI1('postsProduct', newValue));
-    //     form.resetFields();
-    //     setIsModalOpen(false);
-    //   } else {
-    //     alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
-    //   }
-    // } else {
-    //   const test = data.filter((record: any) => {
-    //     if (record.id === newValue.id) {
-    //       //! Nếu trùng tên và trùng phân loại
-    //       if ((record.name === newValue.name) && (record.SKU === newValue.SKU)) {
-    //         console.log('pass1')
-
-    //         store.dispatch(putAPI1('postsProduct', values.id, newValue));
-    //         form.resetFields();
-    //         setIsModalOpen(false);
-    //         //! không trùng tên và phân loại
-    //       } else {
-    //         //! không trùng trên hoặc k trùng phân loại hoặc k trùng cả 2
-    //         //! test lại
-    //         if (!handleName || !handleSKU || (!handleName && !handleSKU)) {
-    //           console.log('pass2')
-    //           store.dispatch(putAPI1('postsProduct', values.id, newValue));
-    //           form.resetFields();
-    //           setIsModalOpen(false);
-    //         } else {
-    //           console.log('lose1')
-    //           alert('Tên hoặc Phân loại sản phẩm đã bị trùng')
-    //           return record
-    //         }
-    //       }
-    //     } else {
-    //       console.log('lose2')
-    //       alert('Tên hoặc Phân loại sản phẩm đã bị trùng')
-    //       return record
-    //     }
-    //   })
-
-    //   // else if(!handleName && !handleSKU) {
-    //   //   store.dispatch(putAPI1('postsProduct', values.id, newValue));
-    //   //   form.resetFields();
-    //   //   setIsModalOpen(false);
-    //   // }
-    //   // else {
-    //   //   // setOpenModal2(true);
-    //   //   alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
-    //   // }
-    //   // const response2 = await api.put(`/postsProduct/${values.id}`, values);
-    //   // if (response2.status === 2001) {
-    //   //   console.log("response2", response2.status);
-    //   // }
-    //   // fetchData();
-    // }
-    const a = newData1.filter((el: any) => el.name === newValue.name).length;
-    const b = newData1.filter((el: any) => el.SKU === newValue.SKU).length
-
-
-    if (a > 0 || b > 0) {
-      alert('tồn tại')
+      if (!handleName && !handleSKU) {
+        store.dispatch(postAPI1('postsProduct', newValue));
+        form.resetFields();
+        setIsModalOpen(false);
+      } else {
+        alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
+      }
     } else {
-      
+
+      const a = newData1.filter((el: any) => el.name === newValue.name).length;
+      const b = newData1.filter((el: any) => el.SKU === newValue.SKU).length
+
+
+      if (a > 0 || b > 0) {
+        alert('tồn tại')
+      } else {
+        console.log('values.id: ', values.id);
+        store.dispatch(putAPI1('postsProduct', values.id, newValue));
+        form.resetFields();
+        setIsModalOpen(false);
+      }
     }
+
 
 
   };
@@ -253,7 +210,7 @@ export const TableProduct = () => {
 
 
 
-  
+
 
   const openCreate = () => {
     setIsModalOpen(true);
@@ -267,10 +224,12 @@ export const TableProduct = () => {
     form.setFieldsValue(record);
     setIsModalOpen(true);
     console.log("EDIT");
+    console.log('record.id: ', record.id);
+    
     setIdImage(record.id)
     setNewData1(data.filter((el: any) => el.id !== record.id))
   };
-  
+
   const onChange: TableProps<DataType>["onChange"] = (
     pagination,
     filters,
@@ -402,7 +361,7 @@ export const TableProduct = () => {
               return record?.id === parseInt(value.target.value) || record?.SKU.toUpperCase().includes(value.target.value.toUpperCase())
             }
           );
-          if (searchData.length) {
+          if (searchData.length > 0) {
             setShow(false)
             setNewData(searchData);
           }
