@@ -19,7 +19,7 @@ const AdminSider = () => {
                 defaultOpenKeys={['dashboard']}
                 items={[
                     {
-                        label: 'Home', key: '', icon: <HomeOutlined />,
+                        label: 'Home', key: '1', icon: <HomeOutlined />,
                         children: [
                             { label: 'Product', key: 'home', icon: <ShoppingOutlined /> },
                             { label: 'Content', key: 'content', icon: <SoundOutlined /> },
@@ -27,7 +27,7 @@ const AdminSider = () => {
                         ]
                     },
                     {
-                        label: 'Admin', key: '', icon: <DashboardOutlined />,
+                        label: 'Admin', key: '2', icon: <DashboardOutlined />,
                         children: [
                             { label: 'Product', key: 'admin/product', icon: <ShoppingOutlined /> },
                             { label: 'User', key: 'admin/user', icon: <IdcardOutlined /> },

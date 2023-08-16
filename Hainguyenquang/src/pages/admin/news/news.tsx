@@ -9,7 +9,7 @@ import { postAPI1, getAPI, putAPI1, deleteAPI1 } from "../../../store/actions/ac
 import { useSelector } from "react-redux";
 import AdminSider from "../../../components/layouts/admin/adminSider/adminSider";
 import { UploadOutlined, UserOutlined } from '@ant-design/icons';
-import '../style1.scss'
+import '../adminstyle.scss'
 import { useNavigate } from "react-router";
 import AdminHeader from "../../../components/layouts/admin/adminHeader/adminHeader";
 
@@ -69,7 +69,7 @@ const NewsAdmin = () => {
   return (
     <Layout>
       <AdminHeader title='News' />
-      <Layout hasSider>
+      <Layout className="adminLayout" hasSider>
         <Sider style={siderStyle}>
           <AdminSider />
         </Sider>
@@ -90,10 +90,13 @@ export const TableNews = () => {
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
   const [idImage, setIdImage] = useState(0)
   const [show, setShow] = useState(false);
-
+  const [newDataEdit, setNewDataEdit] = useState<any>([])
   const dataRedux: any = useSelector(state => state)
   const data = dataRedux?.productListReducer?.products || [];
   const isLoading = dataRedux.productListReducer.isLoading || false;
+  const [like, setLike] = useState('')
+  const [comment, setComment] = useState('')
+  const [date, setDate] = useState('')
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -112,6 +115,20 @@ export const TableNews = () => {
     store.dispatch(deleteAPI1('postsNews', record.id))
   };
 
+  const handleEdit = async (record: any) => {
+    setStatus(STATUS.EDIT);
+    form.setFieldsValue(record);
+    setIsModalOpen(true);
+    console.log("EDIT");
+    setIdImage(record.id)
+    setNewDataEdit(data.filter((el: any) => el.id !== record.id))
+    setLike(record.like)
+    setComment(record.comment)
+    setDate(record.date)
+    // console.log('record.like: ', record.like);
+
+  };
+
   const normFile = async (e: any) => {
     console.log('event: ', e);
 
@@ -120,7 +137,7 @@ export const TableNews = () => {
     }
     return e?.file?.response;
   };
-  const date = new Date()
+  // const date = new Date()
 
   const onFinish = async (values: any) => {
     const srcImage = await values?.srcImage;
@@ -128,21 +145,28 @@ export const TableNews = () => {
     values.srcImage = srcImage?.filename || values.srcImage;
     const newValue = {
       ...values,
-      id: values.id ? values.id : values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
+      id: values.id ? values.id : values.id + 1,
+      comment: values.comment ? comment : '', // có thể dùng timestamp để hiển thị giá trị.
+      like: values.like ? like : '', // có thể dùng timestamp để hiển thị giá trị.
+      date: values.date ? date : '', // có thể dùng timestamp để hiển thị giá trị.
       srcImage: values.srcImage,
-
     };
-    console.log('newValue: ', newValue);
-
 
     if (status === STATUS.CREATE) {
       store.dispatch(postAPI1('postsNews', newValue));
       form.resetFields();
       setIsModalOpen(false);
     } else {
-      store.dispatch(putAPI1('postsNews', values.id, newValue));
-      form.resetFields();
-      setIsModalOpen(false);
+      const a = newDataEdit.filter((el: any) => el.id === newValue.id).length;
+      const b = newDataEdit.filter((el: any) => el.content === newValue.content).length
+      if (a > 0 || b > 0) {
+        alert('tồn tại')
+      } else {
+        console.log('values.id: ', values.id);
+        store.dispatch(putAPI1('postsNews', values.id, newValue));
+        form.resetFields();
+        setIsModalOpen(false);
+      }
     }
   };
 
@@ -150,13 +174,7 @@ export const TableNews = () => {
     setIsModalOpen(true);
     setStatus(STATUS.CREATE);
   };
-  const handleEdit = async (record: any) => {
-    setStatus(STATUS.EDIT);
-    form.setFieldsValue(record);
-    setIsModalOpen(true);
-    console.log("EDIT");
-    setIdImage(record.id)
-  };
+
 
   useEffect(() => {
     fetchData();
@@ -310,32 +328,27 @@ export const TableNews = () => {
           >
             <Input />
           </Form.Item>
-          <Form.Item
+          {false && <Form.Item
             style={{ marginBottom: "4px" }}
             label="comment"
             name="comment"
-            rules={[{ required: true, message: "Please input your username!" }]}
           >
             <Input disabled={true} />
-          </Form.Item>
-          <Form.Item
-
+          </Form.Item>}
+          {false && <Form.Item
             style={{ marginBottom: "4px" }}
             label="like"
             name="like"
-            rules={[{ required: true, message: "Please input your username!" }]}
           >
             <Input disabled={true} />
-          </Form.Item>
-          <Form.Item
-
+          </Form.Item>}
+          {false && <Form.Item
             style={{ marginBottom: "4px" }}
             label="date"
             name="date"
-            rules={[{ required: true, message: "Please input your username!" }]}
           >
             <Input disabled={true} />
-          </Form.Item>
+          </Form.Item>}
           <Form.Item
             name="srcImage"
             label="Upload"
@@ -345,8 +358,9 @@ export const TableNews = () => {
             <Upload name="myFile" action={'http://localhost:8888/uploadfile'} listType="picture">
               {!(status === STATUS.CREATE) && data.map((record: any) => {
                 if (record.id === idImage) {
-                  return <Image placeholder={true} preview={false} style={{ margin: '0 50px 15px 0 ' }} src={`http://localhost:8888/getPhoto/${record.srcImage}`} />
+                  return <Image key={record.id} placeholder={true} preview={false} style={{ margin: '0 50px 15px 0 ' }} src={`http://localhost:8888/getPhoto/${record.srcImage}`} />
                 }
+                return record
               })}
               <Button icon={<UploadOutlined />}>Click to upload</Button>
             </Upload>

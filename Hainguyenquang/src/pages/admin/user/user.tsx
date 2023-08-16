@@ -15,7 +15,7 @@ import store from "../../../store";
 import { useSelector } from "react-redux";
 import AdminSider from "../../../components/layouts/admin/adminSider/adminSider";
 import { useNavigate } from "react-router";
-import '../style1.scss'
+import '../adminstyle.scss'
 import { UserOutlined } from '@ant-design/icons';
 import AdminHeader from "../../../components/layouts/admin/adminHeader/adminHeader";
 
@@ -68,7 +68,7 @@ const UserAdmin = () => {
   return (
     <Layout>
       <AdminHeader title='User' />
-      <Layout hasSider>
+      <Layout className="adminLayout" hasSider>
         <Sider style={siderStyle}>
           <AdminSider />
         </Sider>
@@ -91,9 +91,133 @@ export const TableUser = () => {
   const dataRedux: any = useSelector((state) => state);
   const data = dataRedux?.productListReducer?.products || [];
   const isLoading = dataRedux.productListReducer.isLoading || false;
-
+  const [newDataEdit, setNewDataEdit] = useState<any>([])
   const [status, setStatus] = useState<STATUS>(STATUS.CREATE);
+  const [show, setShow] = useState(false);
+  // const [filterAddress, setFilterAddress] = useState([])
   // const [accountID, setAccountID] = useState()
+
+
+
+  // data.filter((record: any) => {
+  //   console.log('record.address: ', {
+  //     text: `${record.address}`,
+  //     value: `${record.address}`,
+  //   });
+
+  //   return setFilterAddress(record.address)
+  // })
+
+  const onChange: TableProps<DataType>["onChange"] = (
+    pagination,
+    filters,
+    sorter,
+    extra
+  ) => {
+    console.log("params", pagination, filters, sorter, extra);
+  };
+
+  const fetchData = async () => {
+    //Cach 1: Call bang FETCH
+    // const response = await fetch("http://localhost:8888/account", {method: 'GET'});
+    // const jsonData = await response.json();
+    // if (jsonData.status === 'success') {
+    //   setData(jsonData.data)
+    // }
+
+    // Cach 2: Call bang Axios
+    // const response = await api.get("/postsUser");
+    // if (response.status === 200) {
+    //   console.log("response: ", response.data);
+    //   setData(response.data);
+    // }
+    store.dispatch(getAPI("postsUser"));
+  };
+
+  const handleDelete = async (record: any) => {
+    store.dispatch(deleteAPI1("postsUser", record.id));
+  };
+
+
+  const onFinish = async (values: any) => {
+    const newValue = {
+      ...values,
+      id: values.id ? values.id : values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
+      username: values.username,
+      fullname: values.fullname,
+      address: values.address,
+      telephone: values.telephone,
+      email: values.email,
+    };
+    const handleUserName = data.find((item: any) => (item.username === values.username))
+    const handleTelephone = data.find((item: any) => (item.telephone === values.telephone))
+
+    if (status === STATUS.CREATE) {
+      if (!handleUserName && !handleTelephone) {
+        store.dispatch(postAPI1("postsUser", newValue));
+        form.resetFields();
+        setIsModalOpen(false);
+      }
+      else {
+        alert('tên đăng nhập hoặc số điện thoại đã bị trùng')
+      }
+    } else {
+      const a = newDataEdit.filter((el: any) => el.username === newValue.username).length;
+      const b = newDataEdit.filter((el: any) => el.telephone === newValue.telephone).length
+
+      if (a > 0 || b > 0) {
+        alert('tồn tại')
+      } else {
+        console.log('values.id: ', values.id);
+        store.dispatch(putAPI1('postsUser', values.id, newValue));
+        form.resetFields();
+        setIsModalOpen(false);
+      }
+    }
+  };
+
+  const openCreate = () => {
+    setIsModalOpen(true);
+    setStatus(STATUS.CREATE);
+  };
+
+  const handleEdit = async (record: any) => {
+    setStatus(STATUS.EDIT);
+    form.setFieldsValue(record);
+    setIsModalOpen(true);
+    console.log("EDIT");
+    setNewDataEdit(data.filter((el: any) => el.id !== record.id))
+
+  };
+
+  const handleReset = () => { };
+
+  const onFinishFailed = (errorInfo: any) => {
+    console.log("Failed:", errorInfo);
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+    form.resetFields();
+  };
+
+
+  // fetchData();
+  useEffect(() => {
+    fetchData();
+
+
+  }, []);
+
+  const filterAddress = data.map((record: any) => {
+    return {
+      text: `${record.address}`,
+      value: `${record.address}`
+    }
+  })
 
   const columns: ColumnsType<DataType> = [
     {
@@ -125,17 +249,12 @@ export const TableUser = () => {
       title: "Address",
       dataIndex: "address",
       key: "address",
-      filters: [
-        {
-          text: "Ha Noi",
-          value: "Ha Noi",
-        },
-        {
-          text: "Ca mau",
-          value: "Ca mau",
-        },
-      ],
-      onFilter: (value: any, record: any) => record.address.startsWith(value),
+      filters: filterAddress.filter((record: any) => {
+        return record.value
+      }),
+      onFilter: (value: any, record: any) => {
+        return record.address.startsWith(value)
+      },
       filterSearch: true,
     },
     {
@@ -159,110 +278,7 @@ export const TableUser = () => {
     },
   ];
 
-  const onChange: TableProps<DataType>["onChange"] = (
-    pagination,
-    filters,
-    sorter,
-    extra
-  ) => {
-    console.log("params", pagination, filters, sorter, extra);
-  };
 
-  const fetchData = async () => {
-    //Cach 1: Call bang FETCH
-    // const response = await fetch("http://localhost:8888/account", {method: 'GET'});
-    // const jsonData = await response.json();
-    // if (jsonData.status === 'success') {
-    //   setData(jsonData.data)
-    // }
-
-    // Cach 2: Call bang Axios
-    // const response = await api.get("/postsUser");
-    // if (response.status === 200) {
-    //   console.log("response: ", response.data);
-    //   setData(response.data);
-    // }
-    store.dispatch(getAPI("postsUser"));
-  };
-
-  const handleDelete = async (record: any) => {
-    store.dispatch(deleteAPI1("postsUser", record.id));
-
-  };
-
-
-  const onFinish = async (values: any) => {
-    const newValue = {
-      ...values,
-      id: values.id ? values.id : values.id + 1, // có thể dùng timestamp để hiển thị giá trị.
-      username: values.username,
-      fullname: values.fullname,
-      address: values.address,
-      telephone: values.telephone,
-      email: values.email,
-    };
-    const handleUserName = data.find((item: any) => (item.username === values.username))
-    const handleTelephone = data.find((item: any) => (item.telephone === values.telephone))
-    if (status === STATUS.CREATE) {
-      if (!handleUserName && !handleTelephone) {
-        store.dispatch(postAPI1("postsUser", newValue));
-        form.resetFields();
-        setIsModalOpen(false);
-      }
-      else {
-        alert('tên đăng nhập hoặc số điện thoại đã bị trùng')
-      }
-    } else {
-      if ((handleUserName && handleTelephone) || (!handleUserName && !handleTelephone)) {
-        store.dispatch(putAPI1("postsUser", values.id, newValue));
-        form.resetFields();
-        setIsModalOpen(false);
-
-      }
-      else {
-        alert('tên đăng nhập hoặc số điện thoại đã bị trùng')
-      }
-    }
-  };
-
-  const openCreate = () => {
-    setIsModalOpen(true);
-    setStatus(STATUS.CREATE);
-  };
-
-  const handleEdit = async (record: any) => {
-    setStatus(STATUS.EDIT);
-    form.setFieldsValue(record);
-    setIsModalOpen(true);
-    console.log("EDIT");
-  };
-
-  const handleReset = () => { };
-
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
-  };
-
-  const handleOk = () => {
-    setIsModalOpen(false);
-  };
-  const handleCancel = () => {
-    setIsModalOpen(false);
-    form.resetFields();
-  };
-
-
-  // fetchData();
-  useEffect(() => {
-    fetchData();
-
-  }, []);
-
-
-  //!Test search
-  const [show, setShow] = useState(false);
-  const [value, setValue] = useState("");
-  const handleSearch = (e: any) => { };
 
   return (
     <>
@@ -276,9 +292,9 @@ export const TableUser = () => {
         onChange={(value: any) => {
           const searchData = data.filter(
             (record: any) => {
-              return record?.id === parseInt(value.target.value) 
-              || record?.username.toUpperCase().includes(value.target.value.toUpperCase())
-              || record?.telephone.includes(value.target.value)
+              return record?.id === parseInt(value.target.value)
+                || record?.username.toUpperCase().includes(value.target.value.toUpperCase())
+                || record?.telephone.includes(value.target.value)
             }
           );
           if (searchData.length > 0) {

@@ -105,6 +105,7 @@ const HotProduct: any = () => {
               return (
                 <div style={{ display: "flex", marginBottom: "20px" }}>
                   <Col
+                  key={itemCart.key}
                     style={{
                       marginRight: "10px",
                     }}
@@ -114,7 +115,7 @@ const HotProduct: any = () => {
                     xs={{ span: 6 }}
                   >
                     <a>
-                      <Image src={`http://localhost:8888/getPhoto/${itemCart.srcImage}`} alt="test" />
+                      <Image key={itemCart.key} src={`http://localhost:8888/getPhoto/${itemCart.srcImage}`} alt="test" />
                     </a>
                   </Col>
                   <Col

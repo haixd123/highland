@@ -13,6 +13,7 @@ import BlogPage from "../pages/blog";
 import Blog2 from "../pages/blog2";
 import Error from "../pages/error/error";
 import BuyProduct from "../pages/home/buyproduct";
+import Admin from "../pages/admin";
 
 
 const BrowerRouter = () => {
@@ -20,7 +21,7 @@ const BrowerRouter = () => {
     <BrowserRouter>
       <Routes>
         {/* Admin */}
-        <Route path="/admin" element={<ProductAdmin />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/admin/user" element={<UserAdmin />} />
         <Route path="/admin/product" element={<ProductAdmin />} />
         <Route path="/admin/news" element={<NewsAdmin />} />

@@ -29,9 +29,15 @@ const validateMessages = {
 const Register: React.FC = () => {
   const navigate = useNavigate();
 
-  const onFinish = async (values: { Username: string, Password: string }) => {
-    console.log('values: ', values);
-
+  const onFinish = async (values: {
+    Username: string,
+    Password: string,
+    id: number,
+    Fullname: string,
+    Email: string,
+    Telephone: string,
+    Address: string
+  }) => {
     // Luồng:
     // - Đăng ký xong
     // - push về trang login
@@ -43,16 +49,22 @@ const Register: React.FC = () => {
         password: values.Password,
       }
     });
-    const test:any = {
-      ...values
-    }
+
+    const testPostUser = await postAPI({
+      path: 'http://localhost:3000/postsUser',
+      body: {
+        id: values.id ? values.id : values.id + 1,
+        username: values.Username,
+        fullname: values.Fullname,
+        email: values.Email,
+        telephone: values.Telephone,
+        address: values.Address
+      }
+    })
+    console.log('testPostUser: ', testPostUser);
+
     console.log('postData: ', postData);
-
     if (postData.status === 200) { // trang thai API 
-      // store.dispatch(postAPI('postsUser', values))
-
-
-      console.log('test: ', test);
 
       if (postData.data.status === 'success') { // data thang BE tra ve co ok?
         alert("Đăng ký thành công!!!")
@@ -91,7 +103,18 @@ const Register: React.FC = () => {
             <Form.Item name={'Username'} label="Username" rules={[{ required: true }]}>
               <Input />
             </Form.Item>
-
+            <Form.Item name={'Fullname'} label="Fullname" rules={[{ required: true }]}>
+              <Input />
+            </Form.Item>
+            <Form.Item name={'Email'} label="Email" rules={[{ required: true }]}>
+              <Input />
+            </Form.Item>
+            <Form.Item name={'Telephone'} label="Telephone" rules={[{ required: true }]}>
+              <Input />
+            </Form.Item>
+            <Form.Item name={'Address'} label="Address" rules={[{ required: true }]}>
+              <Input />
+            </Form.Item>
             <Form.Item name={'Password'} label="Password" rules={[{ required: true }]}>
               <Input.Password />
             </Form.Item>

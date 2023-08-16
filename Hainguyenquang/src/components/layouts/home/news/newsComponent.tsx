@@ -15,9 +15,10 @@ const News: any = () => {
     fetchData();
   }, []);
 
-  return data.map((newData: any, index: any) => {
+  return data.map((newData: any) => {
     return (
       <Col
+      key={newData.id}
         style={{ padding: "0 15px" }}
         lg={{ span: 8 }}
         md={{ span: 8 }}
@@ -28,6 +29,7 @@ const News: any = () => {
           <div>
             <a href="#">
               <Image
+              key={newData.id}
                 // style={{ maxWidth: "100%" }}
                 src={`http://localhost:8888/getPhoto/${newData.srcImage}`}
               />

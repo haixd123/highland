@@ -100,21 +100,29 @@ Làm trang thanh toán -- xong
 
 -- search admin: thiếu phần: search k đầy đủ thông tin cũng hiện(đang làm dở search admin product) -- xong
 -- hiển thị quá nhiều drawer -- xong
+chưa xử lý trùng khi edit cho admin/news và admin/user -- xong
+-- Chưa làm lại search cho user và content -- xong
 -- Header => chuyển trang sẽ đổi tên header
+Chưa làm filter cho product -- xong
 
+Chưa xử lý input nhập số cho addcart -- failed
+-- làm news theo CKeditor -- failed
 
 
 json-server --watch db.json
 
--- Chưa làm lại search cho user và content
+
+trùng key siderbar admin -- xong
+thêm min-height cho pages admin -- xong
+lỗi giá = NaN thì cho default = 0 -- xong
+đặt hàng xong thì clear giỏ hàng -- xong
+tắt preview ở buyproduct -- xong
+input search cùng dòng với modal thêm người dùng -- xong
+thêm key lúc data.map -- xong
 
 
+-- Bọc admin đúng rồi nhưng ko access token đc
+-- Khi chỉ vào user thì sẽ hiện tên user mình đăng nhập
 
-
-
-Chưa đồng nhất user đăng nhập và user admin/user
-Chưa xử lý input nhập số cho addcart
--- Bọc admin đúng chưa
--- làm news theo CKeditor
-
-chưa xử lý trùng khi edit cho admin/news và admin/user
+số lượng cùng hàng tăng giảm(edit phần addcart)(giống grabfood)
+làm lại form phần buyproduct

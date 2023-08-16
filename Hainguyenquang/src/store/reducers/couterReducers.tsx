@@ -171,7 +171,6 @@ const productListReducer = (
         }
         return record
       })
-
       return {
         ...state,
         products: newList

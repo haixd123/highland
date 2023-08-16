@@ -128,6 +128,7 @@ const Product: any = () => {
           return (
             <div style={{ display: "flex", marginBottom: "20px" }}>
               <Col
+              key={itemCart.id}
                 style={{
                   marginRight: "10px",
                 }}
@@ -251,6 +252,7 @@ const Product: any = () => {
           <>
 
             <Col
+            key={newData.id}
               className="product"
               lg={{ span: 6 }}
               md={{ span: 6 }}

@@ -9,6 +9,8 @@ const Authentication = ({ children } : { children: React.ReactNode}) => {
   
     const checkAuth = async (refreshToken: string) => {
       try {
+        console.log('try again');
+        
         const refreshTokenResponse = await postAPI({
           path: 'auth/refresh-token',
           body: {
@@ -27,6 +29,7 @@ const Authentication = ({ children } : { children: React.ReactNode}) => {
       if (refreshToken === null) {
         navigate('/login');
       } else {
+        console.log('refresh-token false');
         checkAuth(refreshToken);
       }
     }, []);

@@ -14,10 +14,10 @@ import {
   ShoppingCartOutlined
 } from '@ant-design/icons';
 import { Menu } from 'antd';
-import '../style1.scss'
+import '../adminstyle.scss'
 import AdminSider from "../../../components/layouts/admin/adminSider/adminSider";
 import AdminHeader from "../../../components/layouts/admin/adminHeader/adminHeader";
-
+import Authentication from "../../../components/authentication";
 
 
 

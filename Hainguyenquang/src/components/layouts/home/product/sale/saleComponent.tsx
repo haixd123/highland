@@ -21,6 +21,7 @@ const Sale:any = (props:any) => {
   return data.map((newData: any, index: any) => {
     return(
             <Col
+            key={newData.id}
             style={{textAlign: 'center'}}
             className="colSale"
             lg={{ span: 6 }}

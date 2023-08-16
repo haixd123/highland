@@ -1,4 +1,4 @@
-import { Button, Empty, Form, Image, Input, Layout, Modal, Select, Space, Upload } from "antd";
+import { Button, Empty, Form, Image, Input, Layout, Modal, Popconfirm, Select, Space, Upload } from "antd";
 import Table, { ColumnsType, TableProps } from "antd/es/table";
 import { useEffect, useState } from "react";
 import { Content, Footer, Header } from "antd/es/layout/layout";
@@ -10,8 +10,9 @@ import { UploadOutlined, UserOutlined } from '@ant-design/icons';
 import { useSelector } from "react-redux";
 import AdminSider from "../../../components/layouts/admin/adminSider/adminSider";
 import { useNavigate } from "react-router";
-import '../style1.scss'
+import '../adminstyle.scss'
 import AdminHeader from "../../../components/layouts/admin/adminHeader/adminHeader";
+import Search from "antd/es/input/Search";
 
 
 enum STATUS {
@@ -92,7 +93,7 @@ export const TableProduct = () => {
   const [idImage, setIdImage] = useState(0)
   const [openModal2, setOpenModal2] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const [newData1, setNewData1] = useState<any>([])
+  const [newDataEdit, setNewDataEdit] = useState<any>([])
 
   const formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -117,13 +118,12 @@ export const TableProduct = () => {
     };
 
 
-    const handleName = data.find((item: any) => (item.name === newValue.name))
-    const handleSKU = data.find((item: any) => (item.SKU === newValue.SKU))
+    const handleName = data.filter((item: any) => item.name === newValue.name).length
+    const handleSKU = data.filter((item: any) => item.SKU === newValue.SKU).length
     console.log('handleName: ', handleName);
     console.log('handleSKU: ', handleSKU);
 
     if (status === STATUS.CREATE) {
-
       if (!handleName && !handleSKU) {
         store.dispatch(postAPI1('postsProduct', newValue));
         form.resetFields();
@@ -132,10 +132,9 @@ export const TableProduct = () => {
         alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
       }
     } else {
-
-      const a = newData1.filter((el: any) => el.name === newValue.name).length;
-      const b = newData1.filter((el: any) => el.SKU === newValue.SKU).length
-
+      const a = newDataEdit.filter((el: any) => el.name === newValue.name).length;
+      const b = newDataEdit.filter((el: any) => el.SKU === newValue.SKU).length
+      console.log('length: ', a);
 
       if (a > 0 || b > 0) {
         alert('tồn tại')
@@ -224,10 +223,8 @@ export const TableProduct = () => {
     form.setFieldsValue(record);
     setIsModalOpen(true);
     console.log("EDIT");
-    console.log('record.id: ', record.id);
-    
     setIdImage(record.id)
-    setNewData1(data.filter((el: any) => el.id !== record.id))
+    setNewDataEdit(data.filter((el: any) => el.id !== record.id))
   };
 
   const onChange: TableProps<DataType>["onChange"] = (
@@ -246,6 +243,10 @@ export const TableProduct = () => {
       return e;
     }
     return e?.file?.response;
+  };
+
+  const cancel = (e: any) => {
+    console.log(e);
   };
 
 
@@ -276,7 +277,7 @@ export const TableProduct = () => {
       title: "Price",
       dataIndex: "price",
       key: "price",
-      sorter: (a, b) => a.price - b.price,
+      sorter: (a: any, b: any) => Number(a.price.replace(/₫|,/g, '')) - Number(b.price.replace(/₫|,/g, '')),
     },
     {
       title: "Category",
@@ -331,9 +332,16 @@ export const TableProduct = () => {
           >
             Edit
           </Button>
-          <Button type="primary" danger onClick={() => handleDelete(record)}>
-            Delete
-          </Button>
+          <Popconfirm
+            title="Delete the task"
+            description="Bạn muốn xóa sản phẩm?"
+            onConfirm={() => {handleDelete(record)}}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="primary" danger >Delete</Button>
+          </Popconfirm>
         </>
       ),
     },
@@ -342,40 +350,41 @@ export const TableProduct = () => {
 
   return (
     <>
-      <Button type="primary" onClick={openCreate}>
-        Thêm người dùng mới
-      </Button>
+      <div className="Search">
+        <Button type="primary" onClick={openCreate}>
+          Thêm người dùng mới
+        </Button>
+        <Search
+          className="inputSearch"
+          onChange={(value: any) => {
+            const searchData = data.filter(
+              (record: any) => {
+                // const test = record?.SKU.split('')
+                // test.filter((newSKU:any) => { 
+                //   console.log('test: ', test);
 
-      <Input
-        className="inputSearch"
-
-        onChange={(value: any) => {
-          const searchData = data.filter(
-            (record: any) => {
-              // const test = record?.SKU.split('')
-              // test.filter((newSKU:any) => { 
-              //   console.log('test: ', test);
-
-              //   return newSKU == value.target.value
-              // })
-              return record?.id === parseInt(value.target.value) || record?.SKU.toUpperCase().includes(value.target.value.toUpperCase())
-            }
-          );
-          if (searchData.length > 0) {
-            setShow(false)
-            setNewData(searchData);
-          }
-          else {
-            if (!value.target.value) {
+                //   return newSKU == value.target.value
+                // })
+                return record?.id === parseInt(value.target.value) || record?.SKU.toUpperCase().includes(value.target.value.toUpperCase())
+              }
+            );
+            if (searchData.length > 0) {
               setShow(false)
-              setNewData(data)
+              setNewData(searchData);
             }
             else {
-              setShow(true)
+              if (!value.target.value) {
+                setShow(false)
+                setNewData(data)
+              }
+              else {
+                setShow(true)
+              }
             }
-          }
-        }} />
+          }} />
+      </div>
       {!show && <Table
+        rowKey={'id'}
         dataSource={newData.length === 0 ? data : newData}
         onChange={onChange}
         loading={isLoading}
@@ -497,8 +506,9 @@ export const TableProduct = () => {
             <Upload name="myFile" action={'http://localhost:8888/uploadfile'} listType="picture">
               {!(status === STATUS.CREATE) && data.map((record: any) => {
                 if (record.id === idImage) {
-                  return <Image placeholder={true} preview={false} style={{ height: '300px', width: '300px', margin: '0 50px 15px 0 ' }} src={`http://localhost:8888/getPhoto/${record.srcImage}`} />
+                  return <Image key={record.id} placeholder={true} preview={false} style={{ height: '300px', width: '300px', margin: '0 50px 15px 0 ' }} src={`http://localhost:8888/getPhoto/${record.srcImage}`} />
                 }
+                return null
               })}
               <Button icon={<UploadOutlined />}>Click to upload</Button>
             </Upload>
