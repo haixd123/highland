@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Empty, Form, Input, Layout, Modal, Space, Table } from "antd";
+import { Button, Empty, Form, Input, Layout, Modal, Popconfirm, Space, Table } from "antd";
 import type { ColumnsType, TableProps } from "antd/es/table";
 import { api } from "../../../api";
 import Sider from "antd/es/layout/Sider";
@@ -18,6 +18,8 @@ import { useNavigate } from "react-router";
 import '../adminstyle.scss'
 import { UserOutlined } from '@ant-design/icons';
 import AdminHeader from "../../../components/layouts/admin/adminHeader/adminHeader";
+import Search from "antd/es/input/Search";
+import '../adminstyle.scss'
 
 
 enum STATUS {
@@ -204,6 +206,10 @@ export const TableUser = () => {
     form.resetFields();
   };
 
+  const cancel = (e: any) => {
+    console.log(e);
+  };
+
 
   // fetchData();
   useEffect(() => {
@@ -270,9 +276,16 @@ export const TableUser = () => {
           >
             Edit
           </Button>
-          <Button type="primary" danger onClick={() => handleDelete(record)}>
-            Delete
-          </Button>
+          <Popconfirm
+            title="Delete the task"
+            description="Bạn muốn xóa sản phẩm?"
+            onConfirm={() => { handleDelete(record) }}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="primary" danger >Delete</Button>
+          </Popconfirm>
         </>
       ),
     },
@@ -282,35 +295,40 @@ export const TableUser = () => {
 
   return (
     <>
-      <Button type="primary" onClick={openCreate}>
-        Thêm người dùng mới
-      </Button>
+      <div className="Search">
 
-      <Input
-        className="inputSearch"
+        <Button type="primary" onClick={openCreate}>
+          Thêm người dùng mới
+        </Button>
+        <Search
+          className="inputSearch"
+          onChange={(value: any) => {
+            const searchData = data.filter(
+              (record: any) => {
+                // const test = record?.SKU.split('')
+                // test.filter((newSKU:any) => { 
+                //   console.log('test: ', test);
 
-        onChange={(value: any) => {
-          const searchData = data.filter(
-            (record: any) => {
-              return record?.id === parseInt(value.target.value)
-                || record?.username.toUpperCase().includes(value.target.value.toUpperCase())
-                || record?.telephone.includes(value.target.value)
-            }
-          );
-          if (searchData.length > 0) {
-            setShow(false)
-            setNewData(searchData);
-          }
-          else {
-            if (!value.target.value) {
+                //   return newSKU == value.target.value
+                // })
+                return record?.id === parseInt(value.target.value) || record?.username.toUpperCase().includes(value.target.value.toUpperCase())
+              }
+            );
+            if (searchData.length > 0) {
               setShow(false)
-              setNewData(data)
+              setNewData(searchData);
             }
             else {
-              setShow(true)
+              if (!value.target.value) {
+                setShow(false)
+                setNewData(data)
+              }
+              else {
+                setShow(true)
+              }
             }
-          }
-        }} />
+          }} />
+      </div>
       {!show && <Table
         dataSource={newData.length === 0 ? data : newData}
         onChange={onChange}

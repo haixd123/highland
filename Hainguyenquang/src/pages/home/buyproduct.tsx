@@ -1,22 +1,34 @@
+import { Button, Col, Form, Image, Input, InputNumber, Radio } from "antd";
 import TextArea from "antd/es/input/TextArea";
 import "../../App.css";
 import "./style.scss"
-import { Button, Col, Form, Image, Input, Radio } from "antd";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+
 
 
 const BuyProduct = () => {
     const dataRedux: any = useSelector(state => state)
     const data = dataRedux?.addToCartReducer?.cartItems || [];
     const [voucher, setVoucher] = useState('')
-    const [value, setValue] = useState(0)
+    const [value, setValue] = useState(1)
+    const navigate = useNavigate();
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
     const [addres, setAddress] = useState('')
-    const navigate = useNavigate();
+
+    const validateMessages = {
+        required: '${label} is required!',
+        types: {
+            email: '${label} is not a valid email!',
+            number: '${label} is not a valid number!',
+        },
+        number: {
+            range: '${label} must be between ${min} and ${max}',
+        },
+    };
 
     let dataLength = 0
     let totalSum1 = 0
@@ -32,6 +44,15 @@ const BuyProduct = () => {
         setValue(e.target.value);
     };
 
+    const onFinish = (values: any) => {
+        console.log(values);
+    };
+
+    const layout = {
+        labelCol: { span: 24 },
+        wrapperCol: { span: 24 },
+    };
+
     //! chưa có data
     return (
         <div className="wrapper" style={{ height: '715px' }}>
@@ -42,16 +63,37 @@ const BuyProduct = () => {
                 <div className="buyproductInfo">
                     <div className="buyproductInfoLabel" >Thông tin nhận hàng</div>
                     <div>
-                        <Input className="buyproductInput" placeholder="Họ tên" onChange={(e) => setName(e.target.value)} />
-                        <Input className="buyproductInput" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-                        <Input className="buyproductInput" placeholder="Số điện thoại" onChange={(e) => setPhone(e.target.value)} />
-                        <Input className="buyproductInput" placeholder="Địa chỉ" onChange={(e) => setAddress(e.target.value)} />
+                        <Form
+                            {...layout}
+                            name="nest-messages"
+                            onFinish={onFinish}
+                            style={{ width: 700 }}
+                            validateMessages={validateMessages}
+                        >
+                            <Form.Item name={['user', 'name']} label="Name" rules={[{ required: true, message: 'Please input your Name!' }]}>
+                                <Input className="buyproductInput" placeholder="Họ tên" onChange={(e) => setName(e.target.value)} />
+                            </Form.Item>
+                            <Form.Item name={['user', 'email']} label="Email" rules={[{ type: 'email' }]}>
+                                <Input className="buyproductInput" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                            </Form.Item>
+                            <Form.Item name={['user', 'phone']} label="Số điện thoại" rules={[{ type: 'number', min: 0, max: 999999999 }]}>
+                                <InputNumber style={{ padding: '4px 0' }} className="buyproductInput" controls={false} placeholder="Số điện thoại"
+                                //  onChange={(e) => setPhone(e.target.value)} 
+                                />
+                            </Form.Item>
+                            <Form.Item name={['user', 'address']} label="Địa chỉ" rules={[{ required: true }]}>
+                                <Input className="buyproductInput" placeholder="Địa chỉ" onChange={(e) => setAddress(e.target.value)} />
+                            </Form.Item>
+                            {/* <Input className="buyproductInput" placeholder="Email" />
+                                <Input className="buyproductInput" placeholder="Số điện thoại" />
+                                <Input className="buyproductInput" placeholder="Địa chỉ" /> */}
+                        </Form>
                         <div>
                             <div style={{ margin: '5px 0' }}>Phương thức thanh toán</div>
                             <div>
                                 <Radio.Group onChange={onChange} value={value}>
                                     <div className="buyproductRadio">
-                                        <Radio defaultChecked value={1}>Thoanh toán khi giao hàng(COD)</Radio>
+                                        <Radio value={1}>Thoanh toán khi giao hàng(COD)</Radio>
                                     </div>
                                     <div className="buyproductRadio">
                                         <Radio value={2}>Thanh toán online</Radio>
@@ -59,7 +101,9 @@ const BuyProduct = () => {
                                 </Radio.Group>
                             </div>
                         </div>
-                        <TextArea style={{ marginTop: '15px' }} rows={4} placeholder="Ghi chú" />
+                        <div style={{ marginTop: '15px', marginRight: '30px' }}>
+                            <TextArea rows={4} placeholder="Ghi chú" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -96,12 +140,12 @@ const BuyProduct = () => {
                                     </div>
                                     <div>
                                         <Image placeholder={true} preview={false} className="buyproductColImgLink"
-                                         style={{ width: '50px', height: '50px', border: '1px solid #fff', borderRadius: '15%', boxSizing: 'border-box' }} 
-                                         src={`http://localhost:8888/getPhoto/${record.srcImage}`} />
+                                            style={{ width: '50px', height: '50px', border: '1px solid #fff', borderRadius: '15%', boxSizing: 'border-box' }}
+                                            src={`http://localhost:8888/getPhoto/${record.srcImage}`} />
                                     </div>
                                 </Col>
                                 <Col className="buyProductName" span={16}>
-                                    <div  style={{ boxSizing: 'border-box' }}>{record.name}</div>
+                                    <div style={{ boxSizing: 'border-box' }}>{record.name}</div>
                                     <div>{record.desc}</div>
                                 </Col>
                                 <Col span={4}>
@@ -124,8 +168,13 @@ const BuyProduct = () => {
                 </div>
                 <div style={{ textAlign: 'right' }}>
                     <Button className="buyproductButton" onClick={() => {
-                        alert('Đặt hàng thành công')
-                        localStorage.removeItem('cartItems')
+                        if (name === '') { alert('Bạn cần nhập tên') } else {
+                            if (email === '') { alert('Bạn cần nhập email') } else {
+                                if (phone === '') { alert('Bạn cần nhập tên số điện thoại') } else {
+                                    if (addres === '') { alert('Bạn cần nhập tên địa chỉ') }
+                                }
+                            }
+                        }
                     }} >đặt hàng</Button>
                 </div>
             </div>

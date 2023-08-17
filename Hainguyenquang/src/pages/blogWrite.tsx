@@ -2,40 +2,42 @@ import React, { Component, useEffect, useState } from 'react';
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import axios from 'axios';
+import { Button, Input } from 'antd';
+import { postAPI } from '../api';
 
 document.querySelector('#ad')
 
 const BlogPage = () => {
-    const [textEditor, setTextEditor] = useState("<p>Hello from CKEditor 5!</p>")
-    console.log('textEditor: ', textEditor);
+    const [textEditor, setTextEditor] = useState("test")
     const fetchData = async () => {
-        const response = await axios.post('http://localhost:3000/postsDataNews', textEditor)
+
+        const response = await postAPI({
+            path: 'http://localhost:3000/postsDataNews',
+            body: {
+            //   id: id,
+              "title": textEditor,
+            }
+      
+          });
         // console.log('response: ', response);
         if(response.status === 201) {
-
         }
     }
-    
-    useEffect(() => {
-        fetchData();
-      }, [textEditor]);
+    // useEffect(() => {
+    //     fetchData();
+    //   }, submit);
     return (
         <>
         <div className="App">
-            <h2>Using CKEditor 5 build in React</h2>
             <CKEditor
                 editor={ClassicEditor}
                 data={textEditor}
                 onReady={editor => {
-                    // You can store the "editor" and use when it is needed.
-                    console.log('Editor is ready to use!', editor);
                 }}
                 onChange={(event, editor) => {
                     const data = editor.getData();
                     console.log({ event, editor, data });
-                    const test = JSON.stringify(data)
-                    setTextEditor(test)
-                    
+                    setTextEditor(data)
                 }}
                 onBlur={(event, editor) => {
                     console.log('Blur.', editor);
@@ -45,6 +47,7 @@ const BlogPage = () => {
                 }}
             />
         </div>
+        <Button onClick={() => fetchData()}>Submit</Button>
 
         <div dangerouslySetInnerHTML={{__html: textEditor}} />
         </>

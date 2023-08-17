@@ -119,10 +119,17 @@ lỗi giá = NaN thì cho default = 0 -- xong
 tắt preview ở buyproduct -- xong
 input search cùng dòng với modal thêm người dùng -- xong
 thêm key lúc data.map -- xong
+load lại trang mới reset CKEditor -- xong
+Tạo content từ CKeditor => tự thêm ở admin/news -- xong ==> Tạo CKEditor trong admin/news
+tạo content ở news => tự thêm ở CKeditor nhưng nội dung = 0 -- xong ==> Tạo CKEditor trong admin/news
 
 
 -- Bọc admin đúng rồi nhưng ko access token đc
 -- Khi chỉ vào user thì sẽ hiện tên user mình đăng nhập
 
+
+
 số lượng cùng hàng tăng giảm(edit phần addcart)(giống grabfood)
 làm lại form phần buyproduct
+
+thiếu validateMessages trong tất cả phần admin

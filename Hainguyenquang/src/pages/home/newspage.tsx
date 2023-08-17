@@ -9,6 +9,7 @@ const NewsPage = () => {
     <>
       <Header />
       <Col
+      style={{marginBottom: '40px'}}
         className="wrapper"
         // style={{display: 'flex', flexWrap: 'wrap'}}
       >
@@ -17,7 +18,7 @@ const NewsPage = () => {
         </div>
         <News />
       </Col>
-      //! ấn seemore
+      {/* ấn seemore */}
       {/* <SeeMore /> */}
       <Footer />
     </>

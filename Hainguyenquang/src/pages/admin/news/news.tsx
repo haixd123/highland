@@ -1,4 +1,4 @@
-import { Button, Empty, Form, Image, Input, Layout, Modal, Space, Upload } from "antd";
+import { Button, Empty, Form, Image, Input, Layout, Modal, Popconfirm, Space, Upload } from "antd";
 import Table, { ColumnsType, TableProps } from "antd/es/table";
 import { useEffect, useState } from "react";
 import { api } from "../../../api";
@@ -12,8 +12,10 @@ import { UploadOutlined, UserOutlined } from '@ant-design/icons';
 import '../adminstyle.scss'
 import { useNavigate } from "react-router";
 import AdminHeader from "../../../components/layouts/admin/adminHeader/adminHeader";
-
-
+import Search from "antd/es/input/Search";
+import '../adminstyle.scss'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 
 
@@ -33,9 +35,6 @@ interface DataType {
 }
 
 const NewsAdmin = () => {
-  // const [accountID, setAccountID] = useState()
-  const navigate = useNavigate();
-
   const headerStyle: React.CSSProperties = {
     textAlign: "center",
     color: "#fff",
@@ -94,9 +93,8 @@ export const TableNews = () => {
   const dataRedux: any = useSelector(state => state)
   const data = dataRedux?.productListReducer?.products || [];
   const isLoading = dataRedux.productListReducer.isLoading || false;
-  const [like, setLike] = useState('')
-  const [comment, setComment] = useState('')
-  const [date, setDate] = useState('')
+  const [textEditor, setTextEditor] = useState("")
+
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -105,10 +103,6 @@ export const TableNews = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
     form.resetFields();
-  };
-
-  const fetchData = async () => {
-    store.dispatch(getAPI('postsNews'))
   };
 
   const handleDelete = async (record: any) => {
@@ -122,10 +116,9 @@ export const TableNews = () => {
     console.log("EDIT");
     setIdImage(record.id)
     setNewDataEdit(data.filter((el: any) => el.id !== record.id))
-    setLike(record.like)
-    setComment(record.comment)
-    setDate(record.date)
-    // console.log('record.like: ', record.like);
+    setTextEditor(record.content)
+
+    console.log('record: ', record);
 
   };
 
@@ -137,7 +130,8 @@ export const TableNews = () => {
     }
     return e?.file?.response;
   };
-  // const date = new Date()
+  // const timeNow = new Date()
+
 
   const onFinish = async (values: any) => {
     const srcImage = await values?.srcImage;
@@ -146,9 +140,12 @@ export const TableNews = () => {
     const newValue = {
       ...values,
       id: values.id ? values.id : values.id + 1,
-      comment: values.comment ? comment : '', // có thể dùng timestamp để hiển thị giá trị.
-      like: values.like ? like : '', // có thể dùng timestamp để hiển thị giá trị.
-      date: values.date ? date : '', // có thể dùng timestamp để hiển thị giá trị.
+      comment: values.comment,
+      like: values.like,
+      date: values.date,
+      content: textEditor,
+      title: values.title,
+      slug: values.slug,
       srcImage: values.srcImage,
     };
 
@@ -158,7 +155,7 @@ export const TableNews = () => {
       setIsModalOpen(false);
     } else {
       const a = newDataEdit.filter((el: any) => el.id === newValue.id).length;
-      const b = newDataEdit.filter((el: any) => el.content === newValue.content).length
+      const b = newDataEdit.filter((el: any) => el.title === newValue.title).length
       if (a > 0 || b > 0) {
         alert('tồn tại')
       } else {
@@ -175,6 +172,13 @@ export const TableNews = () => {
     setStatus(STATUS.CREATE);
   };
 
+  const cancel = (e: any) => {
+    console.log(e);
+  };
+
+  const fetchData = async () => {
+    store.dispatch(getAPI('postsNews'))
+  };
 
   useEffect(() => {
     fetchData();
@@ -187,9 +191,19 @@ export const TableNews = () => {
       key: "id",
     },
     {
+      title: "Title",
+      dataIndex: "title",
+      key: "title",
+    },
+    {
+      title: "Slug",
+      dataIndex: "slug",
+      key: "slug",
+    },
+    {
       title: "Content",
       dataIndex: "content",
-      key: "decontentsc",
+      key: "content",
     },
     {
       title: "date",
@@ -235,9 +249,16 @@ export const TableNews = () => {
           >
             Edit
           </Button>
-          <Button type="primary" danger onClick={() => handleDelete(record)}>
-            Delete
-          </Button>
+          <Popconfirm
+            title="Delete the task"
+            description="Bạn muốn xóa sản phẩm?"
+            onConfirm={() => { handleDelete(record) }}
+            onCancel={cancel}
+            okText="Yes"
+            cancelText="No"
+          >
+            <Button type="primary" danger >Delete</Button>
+          </Popconfirm>
         </>
       ),
     },
@@ -254,33 +275,41 @@ export const TableNews = () => {
 
   return (
     <>
-      <Button type="primary" onClick={openCreate}>
-        Thêm người dùng mới
-      </Button>
+      <div className="Search">
 
-      <Input
-        className="inputSearch"
+        <Button type="primary" onClick={openCreate}>
+          Thêm người dùng mới
+        </Button>
 
-        onChange={(value: any) => {
-          const searchData = data.filter(
-            (record: any) => {
-              return record?.id === parseInt(value.target.value) || record?.content.toUpperCase().includes(value.target.value.toUpperCase())
-            }
-          );
-          if (searchData.length > 0) {
-            setShow(false)
-            setNewData(searchData);
-          }
-          else {
-            if (!value.target.value) {
+        <Search
+          className="inputSearch"
+          onChange={(value: any) => {
+            const searchData = data.filter(
+              (record: any) => {
+                // const test = record?.SKU.split('')
+                // test.filter((newSKU:any) => { 
+                //   console.log('test: ', test);
+
+                //   return newSKU == value.target.value
+                // })
+                return record?.id === parseInt(value.target.value) || record?.content.toUpperCase().includes(value.target.value.toUpperCase())
+              }
+            );
+            if (searchData.length > 0) {
               setShow(false)
-              setNewData(data)
+              setNewData(searchData);
             }
             else {
-              setShow(true)
+              if (!value.target.value) {
+                setShow(false)
+                setNewData(data)
+              }
+              else {
+                setShow(true)
+              }
             }
-          }
-        }} />
+          }} />
+      </div>
       {!show && <Table
         dataSource={newData.length === 0 ? data : newData}
         onChange={onChange}
@@ -322,33 +351,58 @@ export const TableNews = () => {
           )}
           <Form.Item
             style={{ marginBottom: "4px" }}
-            label="Content"
-            name="content"
-            rules={[{ required: true, message: "Please input your username!" }]}
+            label="Title"
+            name="title"
+            rules={[{ required: true, message: "Please input your title!" }]}
           >
             <Input />
           </Form.Item>
-          {false && <Form.Item
+          <Form.Item
+            style={{ marginBottom: "4px" }}
+            label="Slug"
+            name="slug"
+            rules={[{ required: true, message: "Please input your slug!" }]}
+          >
+            <Input />
+          </Form.Item>
+          <CKEditor
+            editor={ClassicEditor}
+            data={textEditor}
+            onReady={editor => {
+            }}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              console.log({ event, editor, data });
+              setTextEditor(data)
+            }}
+            onBlur={(event, editor) => {
+              console.log('Blur.', editor);
+            }}
+            onFocus={(event, editor) => {
+              console.log('Focus.', editor);
+            }}
+          />
+          <Form.Item
             style={{ marginBottom: "4px" }}
             label="comment"
             name="comment"
           >
             <Input disabled={true} />
-          </Form.Item>}
-          {false && <Form.Item
+          </Form.Item>
+          <Form.Item
             style={{ marginBottom: "4px" }}
             label="like"
             name="like"
           >
             <Input disabled={true} />
-          </Form.Item>}
-          {false && <Form.Item
+          </Form.Item>
+          <Form.Item
             style={{ marginBottom: "4px" }}
             label="date"
             name="date"
           >
             <Input disabled={true} />
-          </Form.Item>}
+          </Form.Item>
           <Form.Item
             name="srcImage"
             label="Upload"
@@ -360,7 +414,7 @@ export const TableNews = () => {
                 if (record.id === idImage) {
                   return <Image key={record.id} placeholder={true} preview={false} style={{ margin: '0 50px 15px 0 ' }} src={`http://localhost:8888/getPhoto/${record.srcImage}`} />
                 }
-                return record
+                return null
               })}
               <Button icon={<UploadOutlined />}>Click to upload</Button>
             </Upload>

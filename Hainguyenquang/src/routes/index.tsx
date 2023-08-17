@@ -9,8 +9,8 @@ import AdminPage from "../pages/admin/admin/admin";
 import NewsAdmin from "../pages/admin/news/news";
 import Register from "../pages/register";
 import Login from "../pages/login";
-import BlogPage from "../pages/blog";
-import Blog2 from "../pages/blog2";
+import BlogWrite from "../pages/blogWrite";
+import BlogRender from "../pages/blogRender";
 import Error from "../pages/error/error";
 import BuyProduct from "../pages/home/buyproduct";
 import Admin from "../pages/admin";
@@ -30,17 +30,18 @@ const BrowerRouter = () => {
         {/* Home */}
         <Route path="/home" element={<HomePage />} />
         <Route path="/content" element={<ContentPage />} />
-        <Route path="/news" element={<NewsPage />} />
-        <Route path="/blog" element={<BlogPage />} />
-        <Route path="/blog2" element={<Blog2 />} />
+        {/* <Route path="/blog" element={<BlogWrite />} />
+        <Route path="/blog2" element={<BlogRender />} /> */}
         <Route path="/buyproduct" element={<BuyProduct />} />
+        <Route path="/news" element={<NewsPage />} />
+        <Route path="/news/:slug" element={<BlogRender />} />
 
 
         {/* Login/Register */}
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
 
-        {/* Error */ }
+        {/* Error */}
         <Route path="/error" element={<Error />} />
 
       </Routes>
