@@ -17,6 +17,7 @@ const Header = () => {
       // style={{display: 'flex', alignItems: 'center', backgroundColor:'#b22830', padding: '0 15px'}}
       >
         <AppMenu />
+
         <div
           className="menuIcon"
         //  style={{fontSize: '30px', color: '#fff'}}
@@ -27,12 +28,13 @@ const Header = () => {
             }}
           />
         </div>
+
       </div>
 
       <Drawer
         closable={false}
-        placement="right"
-        title="Two-level Drawer"
+        placement="left"
+        title="Danh mục"
         width={320}
         open={openMenu}
         onClose={() => {
@@ -45,29 +47,30 @@ const Header = () => {
           onClick={(info) => { navigate(`/${info.key}`) }}
           items={[
             {
-              label: 'Home',
+              label: 'HOME',
               key: "home",
             },
             {
-              label: <a href="content">CONTENT</a>,
-              key: "ContactUs",
+              label: <a>CONTENT</a>,
+              key: "content",
             },
             {
               label: <a href="news">NEWS</a>,
-              key: "AboutUs",
-            },
-            {
-              label: "WE",
-              key: "We",
-            },
-            {
-              label: "fb",
-              key: "fb",
-            },
-            {
-              label: "gmail",
-              key: "gmail",
-            },
+              key: "news",
+            }
+            // ,
+            // {
+            //   label: "WE",
+            //   key: "We",
+            // },
+            // {
+            //   label: "fb",
+            //   key: "fb",
+            // },
+            // {
+            //   label: "gmail",
+            //   key: "gmail",
+            // },
           ]}
         ></Menu>
       </Drawer>
@@ -120,16 +123,15 @@ const AppMenu = () => {
             </a>
           </div>
         </Col>
-
         <Col
-          className=""
+          className="responsiveItem"
           // style={{ display: "flex", alignItems: "end" }}
           lg={{ span: 18, order: 2 }}
           md={{ span: 18, order: 2 }}
           sm={{ span: 20, order: 2 }}
-          xs={{ span: 20, order: 2 }}
+          xs={{ span: 18, order: 2 }}
         >
-          <div>
+          <div className="responsiveIcon">
             <div className="icon">
               <div className="iconUser">
                 <a className="iconLink">
@@ -189,7 +191,7 @@ const AppMenu = () => {
                         CONTENT
                       </a>
                     ),
-                    key: "ContactUs",
+                    key: "Content",
                   },
                   {
                     style: {
@@ -200,41 +202,42 @@ const AppMenu = () => {
                         NEWS
                       </a>
                     ),
-                    key: "AboutUs",
-                  },
-                  {
-                    style: {
-                      padding: "0",
-                    },
-                    label: (
-                      <a className="headerLink" href="news">
-                        NEWS
-                      </a>
-                    ),
-                    key: "We",
-                  },
-                  {
-                    style: {
-                      padding: "0",
-                    },
-                    label: (
-                      <a className="headerLink" href="news">
-                        NEWS
-                      </a>
-                    ),
-                    key: "fb",
-                  },
-                  {
-                    style: {
-                      padding: "0",
-                    },
-                    label: (
-                      <a className="headerLink" href="news">
-                        NEWS
-                      </a>
-                    ),
-                    key: "gmail",
-                  },
+                    key: "News",
+                  }
+                  // ,
+                  // {
+                  //   style: {
+                  //     padding: "0",
+                  //   },
+                  //   label: (
+                  //     <a className="headerLink" href="#">
+                  //       ABOUT US
+                  //     </a>
+                  //   ),
+                  //   key: "ABOUT US",
+                  // },
+                  // {
+                  //   style: {
+                  //     padding: "0",
+                  //   },
+                  //   label: (
+                  //     <a className="headerLink" href="#">
+                  //       CONTACT
+                  //     </a>
+                  //   ),
+                  //   key: "CONTACT",
+                  // },
+                  // {
+                  //   style: {
+                  //     padding: "0",
+                  //   },
+                  //   label: (
+                  //     <a className="headerLink" href="#">
+                  //       SALE
+                  //     </a>
+                  //   ),
+                  //   key: "SALE",
+                  // },
                 ]}
               ></Menu>
             </div>
@@ -242,10 +245,10 @@ const AppMenu = () => {
 
         </Col>
         <Col
-          lg={{ span: 0, order: 2 }}
-          md={{ span: 0, order: 2 }}
-          sm={{ span: 2, order: 2 }}
-          xs={{ span: 2, order: 2 }}
+          lg={{ span: 0, order: 1 }}
+          md={{ span: 0, order: 1 }}
+          sm={{ span: 2, order: 1 }}
+          xs={{ span: 2, order: 1 }}
         ></Col>
       </Row>
     </Layout>

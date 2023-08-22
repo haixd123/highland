@@ -22,7 +22,7 @@ const HomePage: any = () => {
   return (
     <Layout
     >
-  
+
       <Header />
       <Slide />
       <Col
@@ -32,19 +32,25 @@ const HomePage: any = () => {
         <div className="homepageContent">
           <span className="HomePage-sportTitles">Ưu đãi của bạn</span>
         </div>
-        <Sale />
+        <div className="homepageSale" >
+          <Sale />
+        </div>
       </Col>
       <Col className="wrapper homepageCol">
         <div className="homepageContent">
           <span className="HomePage-sportTitles">Tất cả sản phẩm</span>
         </div>
-        <Product />
+        <div className="homepageProduct">
+          <Product />
+        </div>
       </Col>
       <Col className="wrapper homepageCol">
         <div className="homepageContent">
           <span className="HomePage-sportTitles">Sản phẩm bán chạy</span>
         </div>
-        <HotProduct />
+        <div className="homepageProduct">
+          <HotProduct />
+        </div>
       </Col>
       <Footer />
     </Layout>

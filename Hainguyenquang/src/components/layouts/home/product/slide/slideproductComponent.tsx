@@ -18,16 +18,16 @@ const SlideProduct = () => {
   return (
     <>
       <Carousel
-      afterChange={onChange}>
+        afterChange={onChange}>
         <div>
-            <Image src="https://bizweb.dktcdn.net/100/465/740/themes/884110/assets/slider_2.jpg?1688168044703" />
+          <Image placeholder={true} preview={false} src="https://bizweb.dktcdn.net/100/465/740/themes/884110/assets/slider_2.jpg?1688168044703" />
         </div>
         <div>
-            <Image src="https://bizweb.dktcdn.net/100/465/740/themes/884110/assets/slider_3.jpg?1688168044703" />
+          <Image placeholder={true} preview={false} src="https://bizweb.dktcdn.net/100/465/740/themes/884110/assets/slider_3.jpg?1688168044703" />
         </div>
       </Carousel>
     </>
-    
+
   );
 };
 

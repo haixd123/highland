@@ -5,8 +5,23 @@
 }
 
 .homepageCol {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
+}
+
+.homepageSale {
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.homepageProduct {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .buyproductImg {
@@ -34,10 +49,15 @@
 
 .buyproductProduct {
   position: relative;
-  padding-top: 100px;
+  padding-top: 60px;
   background-color: #f6f6f6;
-  padding-right: 90px;
+  padding-right: 30px;
   padding-left: 25px;
+}
+
+.buyproductdataProduct {
+  width: 385px;
+  border-top: 1px solid #000;
 }
 
 .buyproductCol {
@@ -83,13 +103,11 @@
 }
 
 .buyproductTotalQuantity {
-  position: fixed;
+  position: absolute;
   display: flex;
   align-items: center;
   height: 60px;
   top: 0;
-  border-bottom: 1px solid #000;
-  width: 355px;
   background-color: #f6f6f6;
   z-index: 10;
   display: flex;
@@ -124,7 +142,7 @@
   font-weight: 500;
   display: flex;
   justify-content: space-between;
-  width: 355px;
+  width: 100%;
 }
 
 .buyproductButton {
@@ -132,4 +150,42 @@
   color: #fff;
   height: 35.6px;
   margin-left: 8px;
+}
+.productWrapper {
+  max-width: 700px;
+  width: 100%;
+  padding: 0 30px 30px 30px;
+}
+
+@media (max-width: 739px) {
+  .buyproductProduct {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .homepageProduct {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .homepageSale {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+  .productWrapper {
+    margin: auto;
+  }
+  .buyproductProduct {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
 }

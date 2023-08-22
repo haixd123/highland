@@ -101,6 +101,8 @@ export const TableProduct = () => {
   });
 
   const onFinish = async (values: any) => {
+    console.log('values: ', values);
+    
     const srcImage = await values?.srcImage;
     values.srcImage = srcImage?.filename || values.srcImage;
     const newValue = {
@@ -110,9 +112,9 @@ export const TableProduct = () => {
       desc: values.desc,
       SKU: values.SKU,
       category: values.category,
-      price: formatter.format(values.price),
-      discount: values.discount,
-      remaining: values.remaining,
+      price: Number(values.price) ? formatter.format(values.price) : formatter.format(1000),
+      discount: Number(values.discount) ? values.discount : 30,
+      remaining: Number(values.remaining) ? values.remaining : 99,
       srcImage: values.srcImage,
       quantity: 1
     };
@@ -137,7 +139,7 @@ export const TableProduct = () => {
       console.log('length: ', a);
 
       if (a > 0 || b > 0) {
-        alert('tồn tại')
+        alert('tên sản phẩm hoặc phân loại sản phẩm đã bị trùng')
       } else {
         console.log('values.id: ', values.id);
         store.dispatch(putAPI1('postsProduct', values.id, newValue));
@@ -335,7 +337,7 @@ export const TableProduct = () => {
           <Popconfirm
             title="Delete the task"
             description="Bạn muốn xóa sản phẩm?"
-            onConfirm={() => {handleDelete(record)}}
+            onConfirm={() => { handleDelete(record) }}
             onCancel={cancel}
             okText="Yes"
             cancelText="No"

@@ -17,4 +17,17 @@
   margin-top: 10px;
 }
 
+.imgProduct {
+  width: 270px;
+  height: 270px;
+  box-sizing: border-box;
+  min-height: 270px;
+  min-width: 270px;
+}
 
+@media (max-width: 600px) {
+  .imgProduct {
+    max-width: 390px !important;
+    max-height: 390px !important;
+  }
+}

@@ -128,7 +128,7 @@ const Product: any = () => {
           return (
             <div style={{ display: "flex", marginBottom: "20px" }}>
               <Col
-              key={itemCart.id}
+                key={itemCart.id}
                 style={{
                   marginRight: "10px",
                 }}
@@ -252,17 +252,17 @@ const Product: any = () => {
           <>
 
             <Col
-            key={newData.id}
+              key={newData.id}
               className="product"
               lg={{ span: 6 }}
               md={{ span: 6 }}
               sm={{ span: 12 }}
-              xs={{ span: 12 }}
+              xs={{ span: 18 }}
             >
               <div>
                 <a style={{ position: 'relative' }}>
                   <Image placeholder={true} preview={false}
-                    style={{ width: '100%', height: '100%', maxWidth: '270px', maxHeight: '270px', boxSizing: 'border-box', minHeight: '249.2px', minWidth: '249.2px' }}
+                    className="imgProduct"
                     src={`http://localhost:8888/getPhoto/${newData.srcImage}`} />
                 </a>
                 <span style={{ position: 'absolute', top: 10, left: 30, backgroundColor: 'red', padding: '4px 8px', color: '#fff', fontWeight: '500', fontSize: '14px' }}>{newData.discount}%</span>

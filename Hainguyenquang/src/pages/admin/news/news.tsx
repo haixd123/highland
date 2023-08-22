@@ -113,7 +113,6 @@ export const TableNews = () => {
     setStatus(STATUS.EDIT);
     form.setFieldsValue(record);
     setIsModalOpen(true);
-    console.log("EDIT");
     setIdImage(record.id)
     setNewDataEdit(data.filter((el: any) => el.id !== record.id))
     setTextEditor(record.content)
@@ -149,15 +148,21 @@ export const TableNews = () => {
       srcImage: values.srcImage,
     };
 
+    const handleTitle = data.filter((item: any) => item.title.toUpperCase() === newValue.title.toUpperCase()).length
+    const handleSlug = data.filter((item: any) => item.slug.toUpperCase() === newValue.slug.toUpperCase()).length
     if (status === STATUS.CREATE) {
-      store.dispatch(postAPI1('postsNews', newValue));
-      form.resetFields();
-      setIsModalOpen(false);
+      if (!handleTitle && !handleSlug) {
+        store.dispatch(postAPI1('postsNews', newValue));
+        form.resetFields();
+        setIsModalOpen(false);
+      } else {
+        alert('Tiêu đề hoặc tên miền đã tồn tại')
+      }
     } else {
-      const a = newDataEdit.filter((el: any) => el.id === newValue.id).length;
-      const b = newDataEdit.filter((el: any) => el.title === newValue.title).length
+      const a = newDataEdit.filter((el: any) => el.title.toUpperCase() === newValue.title.toUpperCase()).length;
+      const b = newDataEdit.filter((el: any) => el.slug.toUpperCase() === newValue.slug.toUpperCase()).length
       if (a > 0 || b > 0) {
-        alert('tồn tại')
+        alert('Tiêu đề hoặc tên miền đã tồn tại')
       } else {
         console.log('values.id: ', values.id);
         store.dispatch(putAPI1('postsNews', values.id, newValue));
@@ -169,6 +174,7 @@ export const TableNews = () => {
 
   const openCreate = () => {
     setIsModalOpen(true);
+    setTextEditor('')
     setStatus(STATUS.CREATE);
   };
 
@@ -292,7 +298,7 @@ export const TableNews = () => {
 
                 //   return newSKU == value.target.value
                 // })
-                return record?.id === parseInt(value.target.value) || record?.content.toUpperCase().includes(value.target.value.toUpperCase())
+                return record?.slug.toUpperCase().includes(value.target.value.toUpperCase()) || record?.title.toUpperCase().includes(value.target.value.toUpperCase())
               }
             );
             if (searchData.length > 0) {
@@ -387,21 +393,22 @@ export const TableNews = () => {
             label="comment"
             name="comment"
           >
-            <Input disabled={true} />
+            <Input />
           </Form.Item>
+
           <Form.Item
             style={{ marginBottom: "4px" }}
             label="like"
             name="like"
           >
-            <Input disabled={true} />
+            <Input />
           </Form.Item>
           <Form.Item
             style={{ marginBottom: "4px" }}
             label="date"
             name="date"
           >
-            <Input disabled={true} />
+            <Input />
           </Form.Item>
           <Form.Item
             name="srcImage"

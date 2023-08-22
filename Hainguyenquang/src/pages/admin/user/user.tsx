@@ -151,12 +151,13 @@ export const TableUser = () => {
       telephone: values.telephone,
       email: values.email,
     };
-    const handleUserName = data.find((item: any) => (item.username === values.username))
-    const handleTelephone = data.find((item: any) => (item.telephone === values.telephone))
+    const handleUserName = data.find((item: any) => (item.username.toUpperCase() === values.username.toUpperCase()))
+    const handleTelephone = data.find((item: any) => (item.telephone.toUpperCase() === values.telephone.toUpperCase()))
 
     if (status === STATUS.CREATE) {
       if (!handleUserName && !handleTelephone) {
         store.dispatch(postAPI1("postsUser", newValue));
+        
         form.resetFields();
         setIsModalOpen(false);
       }
@@ -164,11 +165,11 @@ export const TableUser = () => {
         alert('tên đăng nhập hoặc số điện thoại đã bị trùng')
       }
     } else {
-      const a = newDataEdit.filter((el: any) => el.username === newValue.username).length;
-      const b = newDataEdit.filter((el: any) => el.telephone === newValue.telephone).length
+      const a = newDataEdit.filter((el: any) => el.username.toUpperCase() === newValue.username.toUpperCase()).length;
+      const b = newDataEdit.filter((el: any) => el.telephone.toUpperCase() === newValue.telephone.toUpperCase()).length
 
       if (a > 0 || b > 0) {
-        alert('tồn tại')
+        alert('tên đăng nhập hoặc số điện thoại đã bị trùng')
       } else {
         console.log('values.id: ', values.id);
         store.dispatch(putAPI1('postsUser', values.id, newValue));
@@ -311,7 +312,7 @@ export const TableUser = () => {
 
                 //   return newSKU == value.target.value
                 // })
-                return record?.id === parseInt(value.target.value) || record?.username.toUpperCase().includes(value.target.value.toUpperCase())
+                return record?.telephone.toUpperCase().includes(value.target.value.toUpperCase()) || record?.username.toUpperCase().includes(value.target.value.toUpperCase())
               }
             );
             if (searchData.length > 0) {

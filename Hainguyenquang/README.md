@@ -120,6 +120,9 @@ tắt preview ở buyproduct -- xong
 input search cùng dòng với modal thêm người dùng -- xong
 thêm key lúc data.map -- xong
 load lại trang mới reset CKEditor -- xong
+làm lại form phần buyproduct -- xong
+drawer ở hotproduct đang lỗi render nhiều lần -- xong
+
 Tạo content từ CKeditor => tự thêm ở admin/news -- xong ==> Tạo CKEditor trong admin/news
 tạo content ở news => tự thêm ở CKeditor nhưng nội dung = 0 -- xong ==> Tạo CKEditor trong admin/news
 
@@ -129,7 +132,26 @@ tạo content ở news => tự thêm ở CKeditor nhưng nội dung = 0 -- xong 
 
 
 
-số lượng cùng hàng tăng giảm(edit phần addcart)(giống grabfood)
-làm lại form phần buyproduct
+Khi thêm mới ở Admin/News thì CKEditor vẫn lưu data cũ -- xong
+css ở responsive phần home/header: Icon fail
 
-thiếu validateMessages trong tất cả phần admin
+dùng slug kiểu gì?
+thêm user ở admin/user thì cũng tự thêm user ở server để đăng nhập
+
+Responsive ở home/header: đổi chỗ biểu tượng và menu -- xong
+
+
+swiper js(làm slide)
+babel build từ jsx thành html+css+js
+
+để width: 100% nếu hiển thị ảnh lỗi
+học useMemo, usereducer...
+
+9:34
+
+ngày mai:
+thêm lớp bọc cho admin và product để ko phải viết lại heeader và footer
+mỗi file có một file scss đi kèm, 
+đặt lại tên file
+chỉnh lại các file (pages, assets, component) (xử lý component product trong chính file product)
+làm thêm responsive

@@ -27,7 +27,7 @@ const Sale:any = (props:any) => {
             lg={{ span: 6 }}
             md={{ span: 6 }}
             sm={{ span: 12 }}
-            xs={{ span: 24 }}
+            xs={{ span: 18 }}
             >
                 <div 
                 className="saleContent"
