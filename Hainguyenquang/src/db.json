@@ -69,11 +69,11 @@
       "address": "Ca Mau"
     },
     {
-      "username": "nam test",
+      "username": "a",
       "fullname": "a",
-      "email": "a",
-      "telephone": "a",
-      "address": "a",
+      "email": "a@gmail.com",
+      "telephone": "0338767353",
+      "address": "Ha Nam",
       "id": 7
     }
   ],
@@ -83,8 +83,8 @@
       "name": "Cafe cốt dừa",
       "desc": "đồ uống tươi mát",
       "SKU": "Fy001",
-      "price": "₫49,500",
-      "category": "tea coffe",
+      "price": "₫39,000",
+      "category": "Tea",
       "discount": "19",
       "remaining": 65,
       "srcImage": "myFile-1692349687383.jpg",
@@ -95,8 +95,8 @@
       "name": "Cafe ca cao",
       "desc": "Vị ngọt nhẹ kèm đắng của ca cao",
       "SKU": "Fy002",
-      "price": "₫25,000",
-      "category": "tea coffe",
+      "price": "35000",
+      "category": "Coffee",
       "discount": "25",
       "remaining": 70,
       "srcImage": "myFile-1690977420654.jpg",
@@ -108,7 +108,7 @@
       "desc": "Dành cho người thích ngọt",
       "SKU": "Fy003",
       "price": "₫99,000",
-      "category": "tea coffe",
+      "category": "Tea",
       "discount": "41",
       "remaining": 89,
       "srcImage": "myFile-1691321821437.jpg",
@@ -149,18 +149,6 @@
       "remaining": 15,
       "srcImage": "myFile-1691321914489.jpg",
       "quantity": 1
-    },
-    {
-      "id": 7,
-      "name": "Latte",
-      "desc": "Trà sữa thanh mat, ngọt nhẹ",
-      "SKU": "Fy007",
-      "price": "₫19,800",
-      "category": "Tea",
-      "discount": "11",
-      "remaining": 1540,
-      "srcImage": "myFile-1692349937944.jpg",
-      "quantity": 1
     }
   ],
   "postsCategory": [
@@ -175,23 +163,23 @@
   ],
   "postsNews": [
     {
+      "id": 1,
       "title": "ĐÊM TRĂNG DIỆU KỲ CÙNG HIGHLANDS COFFEE",
       "slug": "Mua trung thu",
       "comment": "1954",
       "like": "35460",
       "date": "08/02/1999",
       "srcImage": "myFile-1691680729098.jpg",
-      "id": 1,
-      "content": "<h2>MỚI! TRÀ TUYẾT HIGHLANDS COFFEE</h2><p>Thứ tư, 17/05/2023, 12:09 GMT+7</p><p><strong>NGON SẢNG KHOÁI, LẠNH CỰC ĐÃ!!! TRÀ TUYẾT HIGHLANDS</strong></p><p><br>Hè này, Highlands Coffee đem lại nhiều bất ngờ và gây bão giới trẻ với nhiều thức uống mới lạ, ngon tuyệt vời. Với màn tạo “trend” của Trà Dưa Hấu Vải là một mở đầu cho dòng trà Hè ngon bất tận, Trà Tuyết Highlands tiếp tục được ra mắt như thức uống mát lạnh, xóa tan cơn nóng Hè này.</p><p><img src=\"https://www.highlandscoffee.com.vn/vnt_upload/news/05_2023/GRANITA/HCO-7702-GRANITA-TEA-SOCIAL-2000X878_1.jpg\" alt=\"HCO-7702-GRANITA-TEA-SOCIAL-2000X878_1\"></p><p>Highlands Coffee luôn tiên phong trong việc cung cấp những thức uống độc đáo và sảng khoái cho khách hàng khó tính. Với sự ra đời của Trà Tuyết, Highlands Coffee chắc chắn sẽ dẫn dắt các fans đồ uống rong chơi&nbsp;một trải nghiệm mới lạ. Trà Tuyết với vị trà lài thanh thoát, cùng với lớp thạch trái cây giòn dai được phủ trên lớp tuyết sóng sánh, mịn mang mà bắt mắt. Đảm bảo sẽ khiến bạn tê lưỡi, đắm say thức uống này&nbsp;vì bất ngờ!</p><p>Trà Tuyết Xoài Đào, Trà Tuyết Phúc Bồn Tử sẽ được bày bán tại tất cả các cửa hàng Highlands Coffee trên toàn quốc từ ngày 23.05.2023 Khách hàng có thể thưởng thức&nbsp;ngay tại cửa hàng Highlands yêu thích nhất của mình hoặc&nbsp;thông qua các dịch vụ mang đi từ đối tác khác.</p><p>Đến Highlands Coffee, thử ngay hôm nay!&nbsp;</p>"
+      "content": "<h2>MỚI! TRÀ TUYẾT HIGHLANDS COFFEE</h2><p>Thứ tư, 17/05/2023, 12:09 GMT+7</p><p><strong>NGON SẢNG KHOÁI, LẠNH CỰC ĐÃ!!! TRÀ TUYẾT HIGHLANDS</strong></p><p><br>Hè này, Highlands Coffee đem lại nhiều bất ngờ và gây bão giới trẻ với nhiều thức uống mới lạ, ngon tuyệt vời. Với màn tạo “trend” của Trà Dưa Hấu Vải là một mở đầu cho dòng trà Hè ngon bất tận, Trà Tuyết Highlands tiếp tục được ra mắt như thức uống mát lạnh, xóa tan cơn nóng Hè này.</p><figure class=\"image image-style-side\"><img src=\"https://www.highlandscoffee.com.vn/vnt_upload/news/05_2023/GRANITA/HCO-7702-GRANITA-TEA-SOCIAL-2000X878_1.jpg\" alt=\"HCO-7702-GRANITA-TEA-SOCIAL-2000X878_1\"></figure><p>Highlands Coffee luôn tiên phong trong việc cung cấp những thức uống độc đáo và sảng khoái cho khách hàng khó tính. Với sự ra đời của Trà Tuyết, Highlands Coffee chắc chắn sẽ dẫn dắt các fans đồ uống rong chơi&nbsp;một trải nghiệm mới lạ. Trà Tuyết với vị trà lài thanh thoát, cùng với lớp thạch trái cây giòn dai được phủ trên lớp tuyết sóng sánh, mịn mang mà bắt mắt. Đảm bảo sẽ khiến bạn tê lưỡi, đắm say thức uống này&nbsp;vì bất ngờ!</p><p>Trà Tuyết Xoài Đào, Trà Tuyết Phúc Bồn Tử sẽ được bày bán tại tất cả các cửa hàng Highlands Coffee trên toàn quốc từ ngày 23.05.2023 Khách hàng có thể thưởng thức&nbsp;ngay tại cửa hàng Highlands yêu thích nhất của mình hoặc&nbsp;thông qua các dịch vụ mang đi từ đối tác khác.</p><p>Đến Highlands Coffee, thử ngay hôm nay!&nbsp;</p>"
     },
     {
+      "id": 2,
       "title": "MANG CHÚT YÊU THƯƠNG MÁT LÀNH ĐẾN MIỀN NINH THUẬN NHIỀU NẮNG GIÓ",
       "slug": "Tet doan vien",
       "comment": "98",
       "like": "354",
       "date": "09/04/2007",
       "srcImage": "myFile-1691680743025.jpg",
-      "id": 2,
       "content": "<h2>PHINDI HẠT DẺ CƯỜI - HÉ MỞ NỤ CƯỜI!</h2><p>Thứ sáu, 04/08/2023, 00:00 GMT+7</p><p><img src=\"https://www.highlandscoffee.com.vn/vnt_upload/news/08_2023/HCO-7700-MID-AUTUMN-SOCIAL-WEB-BANNER-1440X460.jpg\" alt=\"HCO-7700-MID-AUTUMN-SOCIAL-WEB-BANNER-1440X460\"></p><p>&nbsp;</p><p><strong>Thưởng thức hương vị Phindi Hạt Dẻ Cười từ ngày 01.08.2023</strong></p><p>Mùa Thu này, Highlands Coffee hân hạnh giới thiệu đến bạn món đồ uống mang đậm hương vị mùa thu - Phindi Hạt Dẻ Cười. Là sự kết hợp tinh tế giữa chất phin êm, hạt dẻ cười xay nhuyễn thượng hạng. Phindi Hạt Dẻ Cười mang đến một trải nghiệm thưởng thức thú vị, khiến những buổi hẹn trong dịp này trở nên đặc biệt và ý nghĩa hơn bao giờ hết.</p><p><strong>Phindi Hạt Dẻ Cười - Sự kết hợp tinh tế, mới mẻ giữa Phin và Hạt Dẻ Cười</strong></p><p>Phindi Hạt Dẻ Cười là sự kết hợp tinh tế tuyệt vời giữa hương vị cà phê đậm đà nổi tiếng cùng chất phin êm đặc trưng của dòng Phindi Highlands Coffee và sự xuất hiện mới lạ của hạt dẻ cười xay nhuyễn. Tất cả những nguyên liệu đó hòa quyện, hé lộ nên một thức uống đại diện cho mùa thu này.</p><p><strong>Với Highlands Coffee, Mùa thu này nhất định phải là “Hé Mở Nụ Cười”</strong></p><p>Phindi Hạt Dẻ Cười gợi lên không khí mùa thu ấm áp. Hương vị độc đáo của Phindi Hạt Dẻ Cười là lựa chọn hoàn hảo để bạn thưởng thức trong những bữa tiệc và cuộc gặp gỡ trong dịp Lễ Trung Thu, thể hiện tinh thần đoàn kết và niềm hân hoan của mùa thu.</p><p><strong>Hãy thưởng thức ngay hôm nay</strong></p><p>Phindi Hạt Dẻ Cười chỉ được phục vụ trong mùa Mùa Thu này và độc quyền tại các cửa hàng Highlands Coffee. Hãy đến và trải nghiệm hương vị độc đáo của Phindi Hạt Dẻ Cười ngay hôm nay, để tận hưởng không gian mùa thu của bạn và chia sẻ niềm vui với gia đình, bạn bè.</p><p>#HighlandsCoffee #Trungthuxanhtuoi #Hemonucuoi #Hoichungcuoihehe #Phindihatdecuoi</p>"
     },
     {
@@ -223,16 +211,6 @@
       "date": "09/04/2007",
       "srcImage": "myFile-1691335745737.jpg",
       "content": "<h2>APP NÀY LÀ CỦA CHÚNG MÌNH</h2><p>Thứ ba, 10/01/2023, 00:00 GMT+7</p><p><strong>Highlands Coffee Mobile App </strong>chính thức trở lại với phiên bản mới và cải tiến. Sau một quãng thời gian ra mắt, Highlands đã nhận được rất nhiều sự yêu thương, chia sẻ và góp ý đến từ cộng đồng. Chúng mình luôn lắng nghe và không ngừng nỗ lực để ứng dụng Highlands ngày càng tốt hơn, trở thành ứng dụng cộng đồng phục vụ lợi ích cộng đồng.&nbsp;Với lần trở lại này, Highlands muốn lan tỏa thông điệp hướng về cộng đồng: “<strong>App này là của chúng mình</strong>”.</p><p><img src=\"https://www.highlandscoffee.com.vn/vnt_upload/news/01_2023/new-app-launchingblog-thumbnail-3x.png\" alt=\"New-App-launchingblog-thumbnail-3x\"></p><p>&nbsp;</p><p><strong>Highlands Coffee App đã lột xác để hoà vào cộng đồng bằng những chức năng nào?</strong></p>"
-    },
-    {
-      "id": 6,
-      "title": "TRUNG THU YÊU THƯƠNG - LỚP HỌC CHO EM 2017",
-      "slug": "Giai phong mien nam",
-      "comment": "25",
-      "like": "49",
-      "date": "09/04/2021",
-      "srcImage": "myFile-1691335562733.jpg",
-      "content": "<p>Ngay hôm nay, với hóa đơn từ 199.000đ&nbsp;Highlands Coffee® tặng ngay<strong>&nbsp;Bộ Game “Thật hay Thách” </strong>cho Chúng Mình<strong>, </strong>ai ai cũng vui theo một kiểu đặc biệt, ai ai cũng ăn Tết Theo Cách Khác Lạ.&nbsp;</p><p>Ý tưởng&nbsp;của ''Thật Hay Thách'' bắt đầu từ cách giao tiếp hiện nay giữa một xã hội đầy công nghệ,&nbsp;nơi mọi người chỉ trao đổi&nbsp;với nhau qua màn hình điện thoại và bộ thẻ Game này mang dụng ý phá vỡ ''bức tường'' đó, biến buổi hẹn hò, chầu cà phê&nbsp;trở nên thú vị, đầy niềm vui hơn. Cách lồng ghép những từ khóa gây bão mạng xã hội trong năm vừa qua, đan xen các tình huống &nbsp;''xỉu úp xỉu down''&nbsp;kèm các&nbsp;hình ảnh hề hước, các thử thách dí dỏm ➡️&nbsp;Chắc chắn <strong>\"Thật hay Thách''</strong> sẽ đem đến một sân chơi Tết đứng ngồi không yên&nbsp;tại Highlands Coffee® trong Tết Quý Mão.&nbsp;</p><p>****Xem thêm chương trình Khuyến Mãi khác của cửa hàng <a href=\"https://uudai.highlandscoffee.com.vn/\"><strong>tại đây</strong></a></p><p>&nbsp; &nbsp;</p><p><img src=\"https://www.highlandscoffee.com.vn/vnt_upload/news/12_2022/TETCAMPAIGN2023/HCO-7689-TET-2023-POS-LCD-GAME-CARD-1024X710.jpg\" alt=\"HCO-7689-TET-2023-POS-LCD-GAME-CARD-1024X710\"></p><p><br>&nbsp;</p><p>Với mỗi người yêu đồ uống tại Việt Nam, Highlands có một nét truyền thống đặc trưng về Tết mà ai cũng để ý được. Đó là sắc đỏ khắp muôn nơi, đại diện cho tinh thần người Việt, đại diện cho những sản phẩm của người Việt &amp; cái hồn Việt.</p><p>Đến với Highlands Coffee®&nbsp;</p><p>Đến chơi Tết Quý Mão tại đây. Bởi - Tết Này Là Của Chúng Mình.</p>"
     }
   ],
   "postsVouchers": [
@@ -247,6 +225,11 @@
       "id": 2,
       "desc": "Voucher 30K áp cho đơn hàng từ 10K",
       "sale": "KM50K"
+    },
+    {
+      "id": 3,
+      "desc": "Voucher 40K áp cho đơn hàng từ 10K",
+      "sale": "KM40K"
     }
   ],
   "poststContent": [

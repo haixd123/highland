@@ -6,7 +6,7 @@ const Error: React.FC = () => (
     status="404"
     title="SORRY"
     subTitle="Sorry, the page you visited does not exist."
-    extra={<Button href='/home' type="primary">Back Home</Button>}
+    extra={<Button href='/' type="primary">Back Home</Button>}
   />
 );
 

@@ -45,10 +45,6 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-
-
-
-
 Học redux -- xong
 làm db bằng json -- xong
 Call api with Json -- xong
@@ -65,7 +61,6 @@ Sửa category từ input thành thẻ cascader của ant -- xong
 
 gạch ngang phần giá cũ ở HomePage -- xong
 
-
 làm login-logout - xong
 xử lý ảnh của admin - xong
 logout: - xóa local storage push lại về login -- xong
@@ -79,7 +74,6 @@ chưa load lại khi sửa và xóa sản phẩm -- xong
 set ảnh thành default nếu ảnh lỗi ở product -- xong
 làm lại giao diện home(thêm giỏ hàng + User) -- xong
 
-
 Chưa bọc đc authen -- xong
 set rate cho product -- xong
 Hiển thị ảnh trong phần edit(modal) -- xong
@@ -89,14 +83,9 @@ remove hoặc giảm hết product thì card sẽ tự đóng -- xong
 Làm thêm số sản phẩm đang có trong giỏ hàng(hiển thị đè lên icon product) -- xong
 Chưa làm lớp giả làm cầu nối cho user -- xong
 
-
-
-
 reponsive trang home bị lỗi -- xong
 Làm trang thanh toán -- xong
 -- Xử lý trùng fail -- xong
-
-
 
 -- search admin: thiếu phần: search k đầy đủ thông tin cũng hiện(đang làm dở search admin product) -- xong
 -- hiển thị quá nhiều drawer -- xong
@@ -108,9 +97,7 @@ Chưa làm filter cho product -- xong
 Chưa xử lý input nhập số cho addcart -- failed
 -- làm news theo CKeditor -- failed
 
-
 json-server --watch db.json
-
 
 trùng key siderbar admin -- xong
 thêm min-height cho pages admin -- xong
@@ -126,11 +113,8 @@ drawer ở hotproduct đang lỗi render nhiều lần -- xong
 Tạo content từ CKeditor => tự thêm ở admin/news -- xong ==> Tạo CKEditor trong admin/news
 tạo content ở news => tự thêm ở CKeditor nhưng nội dung = 0 -- xong ==> Tạo CKEditor trong admin/news
 
-
 -- Bọc admin đúng rồi nhưng ko access token đc
 -- Khi chỉ vào user thì sẽ hiện tên user mình đăng nhập
-
-
 
 Khi thêm mới ở Admin/News thì CKEditor vẫn lưu data cũ -- xong
 css ở responsive phần home/header: Icon fail
@@ -140,18 +124,44 @@ thêm user ở admin/user thì cũng tự thêm user ở server để đăng nh�
 
 Responsive ở home/header: đổi chỗ biểu tượng và menu -- xong
 
+thêm lớp bọc cho admin và product để ko phải viết lại heeader và footer -- xong
+Thêm các folder cho chuẩn form: file TSX + SCSS -- xong
+mỗi file có một file scss đi kèm -- xong
+đặt lại tên file(đang làm cho features) -- xong
+chỉnh lại các file (pages, assets, component) (xử lý component product trong chính file product) -- xong
+đặt tên lại các folder -- xong
+làm thêm responsive(đang làm home/content) -- xong
+navigate giỏ hàng đang bị lỗi -- xong
+buyproduct đang lỗi responsive -- xong
+đơn hàng (0) sản phẩm của checkout đang lỗi -- xong
+tổng cộng k cùng hàng với số tiền -- xong
+home/product bị mất Sale của product -- xong
+chuyển hết phần viết style thẳng từ thẻ div sang scss -- xong
+xong thì bỏ hết phần comment -- xong
+
+
+học useMemo, usereducer...
 
 swiper js(làm slide)
 babel build từ jsx thành html+css+js
 
-để width: 100% nếu hiển thị ảnh lỗi
-học useMemo, usereducer...
 
-9:34
 
-ngày mai:
-thêm lớp bọc cho admin và product để ko phải viết lại heeader và footer
-mỗi file có một file scss đi kèm, 
-đặt lại tên file
-chỉnh lại các file (pages, assets, component) (xử lý component product trong chính file product)
-làm thêm responsive
+cần làm thẻ default nếu ảnh bị lỗi -- xong
+
+css blogrender
+
+
+interface IProduct {
+  "id": String;
+  "name": String;
+  // "ProductPrice": String;
+  // "ProductInfo": String;
+  // "ProductDetail": String;
+  // "RatingStar": null;
+  // "ProductImageName": String;
+  // "ManufacturerId": 1;
+  // "CategoryId": 1;
+}
+
+nếu k có id và name thì sao?

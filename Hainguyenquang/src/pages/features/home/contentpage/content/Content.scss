@@ -1,0 +1,231 @@
+.slideRow {
+  background-color: #bd945d;
+  box-sizing: border-box;
+}
+
+
+.backGroundColorImg1 {
+  background-color: #fff;
+  box-sizing: border-box;
+
+}
+
+.backGroundColorImg2 {
+  background-color: #bd945d;
+  box-sizing: border-box;
+
+}
+
+.backGroundColorImg3 {
+  background-color: #8e5a2d;
+  box-sizing: border-box;
+
+}
+
+.colContentReverse {
+  display: flex;
+  justify-content: start;
+}
+
+.sliceColTitle {
+  text-align: right;
+  font-size: 45px;
+  line-height: 55px;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.sliceColTitleReverse1 {
+  text-align: left;
+  font-size: 45px;
+  line-height: 55px;
+  color: #53382c;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.sliceColTitleReverse {
+  text-align: left;
+  font-size: 45px;
+  line-height: 55px;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.sliceColContent1 {
+  text-align: right;
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.sliceColContent1Reverse1 {
+  text-align: left;
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 500;
+  color: #53382c;
+}
+
+.sliceColContent1Reverse {
+  text-align: left;
+  font-size: 15px;
+  line-height: 23px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.sliceColContent2 {
+  text-align: right;
+  font-size: 15px;
+  line-height: 23px;
+  max-width: 90%;
+
+}
+
+.sliceColContent2Reverse {
+  text-align: left;
+  font-size: 15px;
+  line-height: 23px;
+  max-width: 90%;
+
+}
+
+.sliceContent {
+  animation: example ease-out 1s 1;
+}
+
+.colContent {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.ContentSeemoreLink1 {
+  background-color: transparent;
+  color: #b22830;
+  font-size: 16px;
+  line-height: 24px;
+  border: solid 1px #b22830;
+  text-transform: uppercase;
+  padding: 7px 63px;
+  border-radius: 5px;
+}
+
+.ContentSeemoreLink1:hover {
+  background-color: #b22830;
+  color: #fff;
+}
+
+.seeMoreContent {
+  margin: 30px 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.ContentSeemoreLink {
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+  line-height: 24px;
+  border: solid 1px #fff;
+  text-transform: uppercase;
+  padding: 7px 63px;
+  border-radius: 5px;
+}
+
+.ContentSeemoreLink:hover {
+  background-color: #fff;
+  color: #b22830;
+}
+
+@keyframes example {
+  from {
+    bottom: -50px;
+    opacity: 0.3;
+  }
+  to {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+
+.slice1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: -moz-linear-gradient(
+    left,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 59%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  /* background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 59%,rgba(255,255,255,0) 100%); */
+  /* background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 59%,rgba(255,255,255,0) 100%); */
+  background: linear-gradient(to right, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 59%,rgba(255,255,255,0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.slice2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: -moz-linear-gradient(
+    left,
+    rgba(255, 255, 255, 0) -1%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(222, 201, 173, 0) 50%,
+    rgba(192, 152, 100, 1) 95%,
+    rgba(189, 148, 93, 1) 99%
+  );
+  /* background: -webkit-linear-gradient(left, rgba(255,255,255,0) -1%,rgba(255,255,255,0) 0%,rgba(222,201,173,0) 50%,rgba(192,152,100,1) 95%,rgba(189,148,93,1) 99%); */
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) -1%,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(222, 201, 173, 0) 50%,
+    rgba(192, 152, 100, 1) 95%,
+    rgba(189, 148, 93, 1) 99%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+.slice3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: -moz-linear-gradient(
+    left,
+    rgba(142, 90, 45, 1) 0%,
+    rgba(194, 166, 142, 0) 46%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  /* background: -webkit-linear-gradient(left, rgba(142,90,45,1) 0%,rgba(194,166,142,0) 46%,rgba(255,255,255,0) 100%); */
+  background: linear-gradient(
+    to right,
+    rgba(142, 90, 45, 1) 0%,
+    rgba(194, 166, 142, 0) 46%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  z-index: 1;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .slice1::before,
+  .slice2::before,
+  .slice3::before {
+    background: transparent;
+  }
+}

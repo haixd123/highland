@@ -1,0 +1,151 @@
+.drawerHandledata {
+  display: flex;
+  margin-bottom: 20px;
+
+  .drawerCol {
+    margin-right: 10px;
+  }
+  .drawerColName {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .drawerColQuantity {
+    display: flex;
+    justify-content: space-between;
+  }
+  .drawerColQuantityHandle {
+    display: flex;
+    width: 100%;
+    max-width: 150px;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 4px;
+    border: 1px solid #e5e5e5;
+  }
+  .drawerColQuantityIconMinus {
+    width: 20px;
+    font-size: 15px;
+    margin-left: 5px;
+    color: #454444;
+  }
+  .drawerColQuantityInput {
+    box-sizing: border-box;
+    font-size: 16px;
+    width: 40px;
+    border: 1px solid #e5e5e5;
+    margin: 0 5px;
+    border-radius: 0;
+    text-align: center;
+    padding: 4px;
+  }
+  .drawerColQuantityIconPlus {
+    width: 20px;
+    font-size: 15px;
+    margin-right: 5px;
+    color: #454444;
+  }
+}
+.drawerMoney {
+  border-top: 1px solid #ccc;
+  .drawerMoneyLabel {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+  }
+  .drawerMoneyTotalLabel {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .drawerMoneyTotalCost {
+    font-size: 16px;
+    font-weight: 500;
+    color: #c60505;
+  }
+}
+
+.Checkout {
+  width: 100%;
+  background-color: #b5313a;
+  color: #fff;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 17px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  margin-top: 15px;
+  .CheckoutButton {
+    text-decoration: none;
+    color: #fff;
+    padding: 6px 100px;
+  }
+}
+
+.product {
+  margin: 20px 0;
+  padding: 0 15px;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.productTitle {
+  min-width: 270px;
+  width: 100%;
+  max-width: 342px;
+}
+
+.discount {
+  position: absolute;
+  top: 10px;
+  left: 35px;
+  background-color: red;
+  padding: 4px 8px;
+  color: #fff;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.productPrice {
+  text-decoration: line-through;
+  font-size: 14px;
+  font-weight: 400;
+}
+.productPriceNew {
+  color: #b5313a;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.textContent {
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 4px 5px 0 0;
+}
+
+.ButtonContent {
+  width: 100%;
+  border-color: #b5313a;
+  color: #b5313a;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.imgProduct {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  // min-height: 270px;
+  // min-width: 270px;
+}
+
+@media (max-width: 600px) {
+  .imgProduct {
+    width: 342px !important;
+    height: 342px !important;
+  }
+  .product {
+    display: flex;
+    justify-content: center;
+  }
+}

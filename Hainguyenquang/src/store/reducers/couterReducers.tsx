@@ -1,9 +1,5 @@
-import { useState } from "react";
 
-const productState = { products: [], isLoading: false };
-const choose_itemState = { cart: [] };
 const cartItemsJSON = localStorage.getItem("cartItems");
-const initialState1 = 0;
 const initialState = {
   cartItems: cartItemsJSON ? JSON.parse(cartItemsJSON) : [],
   total: 0,
